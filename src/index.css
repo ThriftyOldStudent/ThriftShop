@@ -2,6 +2,19 @@ section {
   margin: 20px 0 20px 0;
 }
 
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  position: relative;
+  left: 100px;
+  border: 1px solid gray;
+  padding: 2px;
+}
+
 .info-text {
   font-size: 1.1em;
 }
