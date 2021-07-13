@@ -1,9 +1,15 @@
-<form>
-  First name:<br>
-  <input type="text" name="firstname"><br>
-  Last name:<br>
-  <input type="text" name="lastname">
-  <input type="submit" value="Submit">
-</form>
 <!-- https://docs.google.com/forms/d/e/1FAIpQLSdGwo-EN-hbmL445zpBPN5jn-d623sqrOPO7bCrTRbJSmbqdQ/
 viewform?usp=pp_url&entry.763798046=TestFN&entry.1388809748=TestLN -->
+
+<form name="gform" id="gform" enctype="text/plain" 
+      action="https://docs.google.com/forms/d/e/1FAIpQLSdGwo-EN-hbmL445zpBPN5jn-d623sqrOPO7bCrTRbJSmbqdQ/formResponse?" 
+      target="hidden_iframe" onsubmit="submitted=true;">
+  First name:<br>
+  <input type="text" name="entry.763798046" id="entry.763798046"><br>
+  Last name:<br>
+  <input type="text" name="entry.1388809748" id="entry.1388809748">
+  <input type="submit" value="Submit">
+</form>
+
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
+
