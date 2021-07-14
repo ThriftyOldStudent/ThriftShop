@@ -81,6 +81,6 @@ const initialize = () => {
 window.addEventListener('DOMContentLoaded', initialize)
 addCartButton.onclick = switchGray
 
-function switchGray(){
-  document.getElementsByTagName('body')[0].style.backgroundColor = 'gray';
+const switchGray = () => {
+  onboardButton.innerText = 'Onboarding in progress'
 }
