@@ -79,7 +79,8 @@ const initialize = () => {
 }
 
 window.addEventListener('DOMContentLoaded', initialize)
-$(addCartButton).click(function(e) {
-  e.preventDefault();
-  $('html, body').animate({scrollTop:0}, '200');
-});
+addCartButton.onclick = switchGray
+
+function switchGray(){
+  document.getElementsByTagName('body')[0].style.backgroundColor = 'gray';
+}
