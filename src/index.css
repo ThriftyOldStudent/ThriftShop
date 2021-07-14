@@ -89,31 +89,22 @@ header {
 
 #ItemNumber {
   display: inline-block;
-  background-color: #725520;
   width: 30px;
   height: 30px;
   text-align: center;
   border-radius: 4px;
   position: fixed;
-  top: 30px;
-  right: 50px;
-  transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
+  top: 40px;
+  right: 40px;
   opacity: 1;
   visibility: visible;
   z-index: 1000;
 }
 #ItemNumber::after {
-  font-family: FontAwesome;
   font-weight: normal;
   font-style: normal;
   font-size: 1.5em;
   line-height: 30px;
   color: rgb(255, 0, 0);
 }
-#ItemNumber:hover {
-  cursor: pointer;
-  background-color: rgb(255, 196, 0);
-}
-#ItemNumber:active {
-  background-color: rgb(255, 136, 0);
-}
+
