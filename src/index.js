@@ -21,6 +21,7 @@ const forwarderOrigin =
   currentUrl.hostname === 'localhost' ? 'http://localhost:9010' : undefined
 
 const onboardButton = document.getElementById('connectButton')
+const addCartButton = document.getElementById('AddCartButton')
 
 const initialize = () => {
   const isMetaMaskInstalled = () => {
@@ -78,3 +79,7 @@ const initialize = () => {
 }
 
 window.addEventListener('DOMContentLoaded', initialize)
+$(addCartButton).click(function(e) {
+  e.preventDefault();
+  $('html, body').animate({scrollTop:0}, '200');
+});
