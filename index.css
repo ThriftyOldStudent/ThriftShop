@@ -98,7 +98,7 @@ header {
   opacity: 1;
   visibility: visible;
   z-index: 1000;
-  font-weight: normal;
+  font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.2em;
   line-height: 30px;
