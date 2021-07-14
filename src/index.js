@@ -83,9 +83,11 @@ window.addEventListener('DOMContentLoaded', initialize)
 
 const clickedBtnAddCart1 = () => {
   addCartButton1.disabled = true
+  addCartButton1.innerText = "Item added to cart!"
 }
 const clickedBtnAddCart2 = () => {
   addCartButton2.disabled = true
+  addCartButton2.innerText = "Item added to cart!"
 }
 addCartButton1.onclick = clickedBtnAddCart1
 addCartButton2.onclick = clickedBtnAddCart2
