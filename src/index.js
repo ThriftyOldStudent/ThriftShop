@@ -24,6 +24,7 @@ const onboardButton = document.getElementById('connectButton')
 const addCartButton1 = document.getElementById('AddCartButton1')
 const addCartButton2 = document.getElementById('AddCartButton2')
 const cartItemNumber = document.getElementById('ItemNumber')
+let startNumItem = 0
 
 const initialize = () => {
   const isMetaMaskInstalled = () => {
@@ -85,12 +86,14 @@ window.addEventListener('DOMContentLoaded', initialize)
 const clickedBtnAddCart1 = () => {
   addCartButton1.disabled = true
   addCartButton1.innerText = 'Item added to cart!'
-  cartItemNumber.innerText = '1'
+  startNumItem += 1
+  cartItemNumber.innerText = startNumItem
 }
 const clickedBtnAddCart2 = () => {
   addCartButton2.disabled = true
   addCartButton2.innerText = 'Item added to cart!'
-  cartItemNumber.innerText = '+1'
+  startNumItem += 1
+  cartItemNumber.innerText = startNumItem
 }
 addCartButton1.onclick = clickedBtnAddCart1
 addCartButton2.onclick = clickedBtnAddCart2
