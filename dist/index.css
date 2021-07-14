@@ -71,7 +71,7 @@ header {
   z-index: 1000;
 }
 #shopCart::after {
-  content: "\f077";
+  content: "\f07a";
   font-family: FontAwesome;
   font-weight: normal;
   font-style: normal;
