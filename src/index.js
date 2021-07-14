@@ -21,7 +21,8 @@ const forwarderOrigin =
   currentUrl.hostname === 'localhost' ? 'http://localhost:9010' : undefined
 
 const onboardButton = document.getElementById('connectButton')
-const addCartButton = document.getElementById('AddCartButton')
+const addCartButton1 = document.getElementById('AddCartButton1')
+const addCartButton2 = document.getElementById('AddCartButton2')
 
 const initialize = () => {
   const isMetaMaskInstalled = () => {
@@ -80,7 +81,11 @@ const initialize = () => {
 
 window.addEventListener('DOMContentLoaded', initialize)
 
-const switchGray = () => {
-  onboardButton.innerText = 'Onboarding in progress'
+const clickedBtnAddCart1 = () => {
+  addCartButton1.disabled = true
 }
-addCartButton.onclick = switchGray
+const clickedBtnAddCart2 = () => {
+  addCartButton2.disabled = true
+}
+addCartButton1.onclick = clickedBtnAddCart1
+addCartButton2.onclick = clickedBtnAddCart2
