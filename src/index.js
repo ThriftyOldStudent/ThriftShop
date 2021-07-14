@@ -79,8 +79,8 @@ const initialize = () => {
 }
 
 window.addEventListener('DOMContentLoaded', initialize)
-addCartButton.onclick = switchGray
 
 const switchGray = () => {
   onboardButton.innerText = 'Onboarding in progress'
 }
+addCartButton.onclick = switchGray
