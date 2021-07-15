@@ -57,7 +57,7 @@ header {
 
 #shopCart {
   display: inline-block;
-  background-color: #725520;
+  background-color: #13e900;
   width: 50px;
   height: 50px;
   text-align: center;
@@ -81,7 +81,7 @@ header {
 }
 #shopCart:hover {
   cursor: pointer;
-  background-color: rgb(255, 196, 0);
+  background-color: rgb(0, 162, 255);
 }
 #shopCart:active {
   background-color: rgb(255, 0, 0);
