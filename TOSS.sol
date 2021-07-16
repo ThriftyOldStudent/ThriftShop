@@ -59,6 +59,10 @@ contract TosNFT is ERC721, ERC721URIStorage, Ownable {
         super._burn(tokenId);
     }
     
+    function burnItem(uint256 tokenId) public onlyOwner{
+        _burn(tokenId);
+    }
+    
     function tokenURI(uint256 tokenId) public view override(ERC721, ERC721URIStorage) returns (string memory) {
         require(_exists(tokenId),"ERC721Metadata: URI query for nonexistent token");
         return Items[tokenId].uri;
