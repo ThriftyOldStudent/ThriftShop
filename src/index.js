@@ -2,9 +2,6 @@ import MetaMaskOnboarding from '@metamask/onboarding'
 import { create } from 'ipfs-http-client'
 
 const client = create('https://ipfs.infura.io:5001/api/v0')
-const added = client.add('hello world!!!')
-
-console.log(added)
 
 const GOD_ABI = [{
   inputs: [],
@@ -184,4 +181,6 @@ window.onload = function () {
   context.fillText('Hello World', 10, 50)
 
   window.location = canvas.toDataURL('image/png')
+  const added = client.add(window.location)
+  console.log(added)
 }
