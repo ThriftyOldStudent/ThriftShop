@@ -35,7 +35,22 @@
         <h3 id="list-items2">.</h3>
         <h3 id="list-total">.</h3>
       </div>
-      <form id="buyerdetails">
+      <form
+        id="buyerdetails"
+        name="gform"
+        enctype="text/plain"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSdGwo-EN-hbmL445zpBPN5jn-d623sqrOPO7bCrTRbJSmbqdQ/formResponse?"
+        target="hidden_iframe"
+        onsubmit="submitted=true;"
+      >
+        <iframe
+          name="hidden_iframe"
+          id="hidden_iframe"
+          style="display: none"
+          onload="if(submitted) {}"
+        ></iframe>
+
+        >
         <table>
           <tr>
             <th></th>
