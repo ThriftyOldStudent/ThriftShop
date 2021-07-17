@@ -89,22 +89,27 @@ const clickedBtnAddCart1 = () => {
   startNumItem += 1
   cartItemNumber.innerText = startNumItem
 }
+
 const clickedBtnAddCart2 = () => {
   addCartButton2.disabled = true
   addCartButton2.innerText = 'Item added to cart!'
   startNumItem += 1
   cartItemNumber.innerText = startNumItem
 }
+
 addCartButton1.onclick = clickedBtnAddCart1
 addCartButton2.onclick = clickedBtnAddCart2
 
 const Overlay = document.getElementById('overlay')
 const Modal = document.getElementById('modal')
+const shopCartBtn = document.getElementById('shopCart')
 
-document.getElementById('shopCart').addEventListener('click', function () {
+const checkoutCart = () => {
   Overlay.classList.add('is-visible')
   Modal.classList.add('is-visible')
-})
+}
+
+shopCartBtn.onclick = checkoutCart
 
 document.getElementById('close-btn').addEventListener('click', function () {
   Overlay.classList.remove('is-visible')

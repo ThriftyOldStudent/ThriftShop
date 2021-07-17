@@ -131,7 +131,7 @@ header {
 /** Overlay */
 .overlay {
   pointer-events: none;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 0.3s;
   position: fixed;
   top: 0;
