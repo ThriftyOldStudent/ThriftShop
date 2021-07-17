@@ -1,0 +1,10 @@
+{
+  "name":"TestAnimate",
+  "description":"TestAnimate",
+  "image":"https://ipfs.featured.market/ipfs/QmRCE5J347k9DXwYUXaAVM5brGkAjm79japiXhbkfpEMFq",
+  "external_url":null,
+  "attributes":{
+  "thumbnail_url":"https://thriftyoldstudent.github.io/ThriftShop/jesus.png",
+  "content_type":"image/gif"
+  }
+}
