@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
-import { Strings } from "@openzeppelin/contracts/utils/Strings.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol";
 import '@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol';
 
@@ -29,8 +29,8 @@ contract TosNFT is ERC721, ERC721URIStorage, Ownable {
     
     event ItemTransferred(address from, address to, uint256 tokenId);
     mapping(uint256 => Item) public Items;
-
     
+    address payable public deployWallet;
 
     function mintItem(string memory uri) public onlyOwner returns (uint256) {
         _tokenIds.increment();
@@ -73,5 +73,19 @@ contract TosNFT is ERC721, ERC721URIStorage, Ownable {
         emit ItemTransferred(from, to, tokenId);
     }
     
-    constructor(string memory name, string memory symbol) ERC721("TOSshop", "TOSS") {}
+    function buyItems(uint256 tokenId) public payable{
+        address payable nft_Wallet = payable(deployWallet);
+        require(msg.sender != address(0));
+        require(ownerOf(tokenId) == nft_Wallet);
+        uint256 etherUsed = msg.value;
+        require(etherUsed > 0);
+        
+        _approve(payable(msg.sender), tokenId);
+        safeTransferFrom(nft_Wallet,msg.sender,tokenId);
+        payable(nft_Wallet).transfer(etherUsed);
+    }
+    
+    constructor() ERC721("TOSshop", "TOSS") {
+        deployWallet = payable(address(msg.sender));
+    }
 }
