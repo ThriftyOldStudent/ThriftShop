@@ -16,6 +16,8 @@ const rmv2 = document.getElementById('rmv2')
 const Overlay = document.getElementById('overlay')
 const Modal = document.getElementById('modal')
 const shopCartBtn = document.getElementById('shopCart')
+const listItemPrice1 = document.getElementById('list-items1')
+const listItemPrice2 = document.getElementById('list-items')
 const totalPricedisplay = document.getElementById('list-total')
 const item1Price = 0.028
 const item2Price = 0.02
@@ -139,14 +141,14 @@ const checkoutCart = () => {
   Modal.classList.add('is-visible')
 
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
-    document.getElementById('list-items1').innerText += 'Miniso Marvel Speaker! 0.028BNB'
+    listItemPrice1.innerText += 'Miniso Marvel Speaker! 0.028BNB'
     totalPrice += item1Price
     totalPricedisplay.innerText = 'Total excluding gas fee = '
     totalPricedisplay.innerText += totalPrice
     totalPricedisplay.innerText += 'BNB'
   }
   if (addCartButton2.innerText === 'ITEM ADDED TO CART!') {
-    document.getElementById('list-items2').innerText += 'Craftholic Multipurpose Pouch! 0.02BNB'
+    listItemPrice2.innerText += 'Craftholic Multipurpose Pouch! 0.02BNB'
     totalPrice += item2Price
     totalPricedisplay.innerText = 'Total excluding gas fee = '
     totalPricedisplay.innerText += totalPrice
@@ -184,15 +186,38 @@ function fixBinary (bin) {
   return buf
 }
 
-window.onload = function () {
+function generateReceipt () {
+  const today = new Date();
+  const day = today.getDate();
+  const month = today.getMonth() + 1;
+  const year = today.getFullYear();
+
+  if (day < 10) {
+    day = '0' + day
+  }
+  if (month < 10) {
+    month = '0' + month
+  }
+  const datestr = day + "/" + month + "/" + year;
+
   const canvas = document.getElementById('canvas')
   const context = canvas.getContext('2d')
   context.font = '30px Arial'
-  context.fillText('Hello World', 10, 50)
+
+  context.fillText('Items Paid!', 10, 50)
+  context.fillText('---------------', 10, 70)
+  context.fillText(listItemPrice1.innerText, 10, 120)
+  context.fillText(listItemPrice2.innerText, 10, 170)
+  context.fillText(totalPricedisplay.innerText, 10, 220)
+  context.fillText('Receipt issue date: ', 10, 300)
+  context.fillText(datestr, 10, 350)
+  context.fillText('--TOS Thrift Shop--', 10, 420)
+
   const img64 = canvas.toDataURL('image/png')
   const imageData64 = img64.split(',')[1]
   const binary = fixBinary(atob(imageData64))
   const blob = new Blob([binary], { type: 'image/png' })
+
 
   const added = client.add(blob)
   console.log(added)
