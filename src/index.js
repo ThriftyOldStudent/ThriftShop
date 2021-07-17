@@ -188,11 +188,11 @@ function fixBinary (bin) {
 
 function generateReceipt () {
   const today = new Date()
-  let day = today.getDate()
-  let month = today.getMonth() + 1
+  const day = today.getDate()
+  const month = today.getMonth() + 1
   const year = today.getFullYear()
 
-  const datestr = day + "/" + month + "/" + year;
+  const datestr = '${ day } / ${ month } / ${ year }';
 
   const canvas = document.getElementById('canvas')
   const context = canvas.getContext('2d')
