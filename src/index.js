@@ -147,6 +147,8 @@ const generateReceipt = () => {
         'x25519-xsalsa20-poly1305',
       ),
     )
+    submitOrder.innerText = 'Order Submitted!'
+    submitOrder.disabled = true
   } catch (error) {
     submitOrder.innerText = `Error: ${error.message}`
   }
