@@ -98,8 +98,8 @@ const clickedBtnAddCart2 = () => {
 addCartButton1.onclick = clickedBtnAddCart1
 addCartButton2.onclick = clickedBtnAddCart2
 
-var Overlay = document.getElementById('overlay')
-var Modal = document.getElementById('modal')
+const Overlay = document.getElementById('overlay')
+const Modal = document.getElementById('modal')
 
 document.getElementById('shopCart').addEventListener('click', function () {
   Overlay.classList.add('is-visible')
