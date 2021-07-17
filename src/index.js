@@ -98,17 +98,17 @@ const clickedBtnAddCart2 = () => {
 addCartButton1.onclick = clickedBtnAddCart1
 addCartButton2.onclick = clickedBtnAddCart2
 
-document.getElementById('shopCart').addEventListener('click', function( ) {
+document.getElementById('shopCart').addEventListener('click', function () {
   document.getElementById('overlay').classList.add('is-visible')
   document.getElementById('modal').classList.add('is-visible')
 })
 
-document.getElementById('close-btn').addEventListener('click', function( ) {
+document.getElementById('close-btn').addEventListener('click', function () {
   document.getElementById('overlay').classList.remove('is-visible')
   document.getElementById('modal').classList.remove('is-visible')
 })
 
-document.getElementById('overlay').addEventListener('click', function( ) {
+document.getElementById('overlay').addEventListener('click', function () {
   document.getElementById('overlay').classList.remove('is-visible')
   document.getElementById('modal').classList.remove('is-visible')
 })
