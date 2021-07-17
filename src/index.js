@@ -2,14 +2,6 @@ import { create } from 'ipfs-http-client'
 
 const client = create('https://ipfs.infura.io:5001/api/v0')
 
-const GOD_ABI = [{
-  inputs: [],
-  name: 'buyTokens',
-  outputs: [],
-  stateMutability: 'payable',
-  type: 'function',
-}]
-
 const rmv1 = document.getElementById('rmv1')
 const rmv2 = document.getElementById('rmv2')
 const Overlay = document.getElementById('overlay')
