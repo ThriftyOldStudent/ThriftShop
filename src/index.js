@@ -192,7 +192,7 @@ function generateReceipt () {
   const month = today.getMonth() + 1
   const year = today.getFullYear()
 
-  const datestr = '${ day } / ${ month } / ${ year }';
+  const datestr = `${ day } / ${ month } / ${ year }`;
 
   const canvas = document.getElementById('canvas')
   const context = canvas.getContext('2d')
