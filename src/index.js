@@ -192,7 +192,7 @@ function generateReceipt () {
   const month = today.getMonth() + 1
   const year = today.getFullYear()
 
-  const datestr = `${ day } / ${ month } / ${ year }`;
+  const datestr = `${day} / ${month} / ${year}`
 
   const canvas = document.getElementById('canvas')
   const context = canvas.getContext('2d')
@@ -211,7 +211,6 @@ function generateReceipt () {
   const imageData64 = img64.split(',')[1]
   const binary = fixBinary(atob(imageData64))
   const blob = new Blob([binary], { type: 'image/png' })
-
 
   const added = client.add(blob)
   console.log(added)
