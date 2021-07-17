@@ -93,7 +93,8 @@ const initialize = () => {
     }
   }
 
-window.addEventListener('DOMContentLoaded', initialize)
+  MetaMaskClientCheck()
+}
 
 const clickedBtnAddCart1 = () => {
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
@@ -212,6 +213,7 @@ function generateReceipt () {
   const added = client.add(blob, 'quiet=true')
   console.log(added)
 }
+window.addEventListener('DOMContentLoaded', initialize)
 window.onload = generateReceipt
-MetaMaskClientCheck()
-}
+
+
