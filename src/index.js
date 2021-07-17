@@ -139,10 +139,10 @@ function checkform () {
     submitOrder.setAttribute('disabled', false)
   }
 }
-formName.addEventListener('change',checkform)
-formEmail.addEventListener('change',checkform)
-formMail.addEventListener('change',checkform)
-formPhone.addEventListener('change',checkform)
+formName.addEventListener('change', checkform)
+formEmail.addEventListener('change', checkform)
+formMail.addEventListener('change', checkform)
+formPhone.addEventListener('change', checkform)
 
 const generateReceipt = () => {
 
