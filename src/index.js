@@ -128,15 +128,15 @@ const formPhone = document.getElementsByName('phonenum').innerText
 const encryptedInfo = document.getElementsByName('entry.763798046').innerText
 function checkform () {
   if (formName === '') {
-    submitOrder.setAttribute('disabled', true)
+    submitOrder.disabled = true
   } else if (formEmail === '') {
-    submitOrder.setAttribute('disabled', true)
+    submitOrder.disabled = true
   } else if (formMail === '') {
-    submitOrder.setAttribute('disabled', true)
+    submitOrder.disabled = true
   } else if (formPhone === '') {
-    submitOrder.setAttribute('disabled', true)
+    submitOrder.disabled = true
   } else {
-    submitOrder.setAttribute('disabled', false)
+    submitOrder.disabled = false
   }
 }
 
