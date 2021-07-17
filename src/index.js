@@ -130,7 +130,7 @@ const generateReceipt = () => {
     submitOrder.disabled = true
   } else if (formMail === null) {
     submitOrder.disabled = true
-  } else if ( === null) {
+  } else if ( formPhone === null) {
     submitOrder.disabled = true
   } else {
     submitOrder.disabled = false
