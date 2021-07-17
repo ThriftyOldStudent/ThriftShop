@@ -1,5 +1,6 @@
 import { create } from 'ipfs-http-client'
 import { encrypt } from 'eth-sig-util'
+import { ethers } from 'ethers';
 
 const client = create('https://ipfs.infura.io:5001/api/v0')
 
