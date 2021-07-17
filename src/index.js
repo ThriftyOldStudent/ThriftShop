@@ -127,11 +127,7 @@ const checkoutCart = () => {
     totalPricedisplay.innerText += 'BNB'
   }
   if (!((addCartButton2.innerText === 'ITEM ADDED TO CART!')&&(addCartButton1.innerText === 'ITEM ADDED TO CART!'))) {
-    document.getElementById('list-items2').innerText += 'Craftholic Multipurpose Pouch! 0.02BNB'
-    totalPrice += item2Price
-    totalPricedisplay.innerText = 'Total excluding gas fee = '
-    totalPricedisplay.innerText += totalPrice
-    totalPricedisplay.innerText += 'BNB'
+    document.getElementById('checkout').innerText = 'Nothing to checkout!'
   }
 }
 
