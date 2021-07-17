@@ -121,12 +121,13 @@ function stringifiableToHex (value) {
   return ethers.utils.hexlify(Buffer.from(JSON.stringify(value)))
 }
 
-const formName = document.getElementsByName('rcvname').innerText
-const formEmail = document.getElementsByName('email').innerText
-const formMail = document.getElementsByName('mailadds').innerText
-const formPhone = document.getElementsByName('phonenum').innerText
 const encryptedInfo = document.getElementsByName('entry.763798046').innerText
 function checkform () {
+  const formName = document.getElementsByName('rcvname').innerText
+  const formEmail = document.getElementsByName('email').innerText
+  const formMail = document.getElementsByName('mailadds').innerText
+  const formPhone = document.getElementsByName('phonenum').innerText
+
   if ((formName === '') || (formEmail === '') || (formMail === '') || (formPhone === '')) {
     submitOrder.disabled = true
   } else {
