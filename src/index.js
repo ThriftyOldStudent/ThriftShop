@@ -108,6 +108,14 @@ const item1Price = 0.028
 const item2Price = 0.02
 let totalPrice = 0
 
+const scrollToTop = () => {
+  const c = document.documentElement.scrollTop || document.body.scrollTop;
+  if (c > 0) {
+    window.requestAnimationFrame(scrollToTop)
+    window.scrollTo(0, c - c / 10)
+  }
+}
+
 const checkoutCart = () => {
   Overlay.classList.add('is-visible')
   Modal.classList.add('is-visible')
@@ -133,6 +141,8 @@ const checkoutCart = () => {
     document.getElementById('checkout').innerText = 'Nothing to checkout!'
     document.getElementById('buyerdetails').classList.add('hideclass')
   }
+  e.preventDefault();
+  scrollToTop();
 }
 
 shopCartBtn.onclick = checkoutCart
