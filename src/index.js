@@ -79,9 +79,11 @@ const checkoutCart = () => {
   if (((addCartButton2.innerText === 'ITEM ADDED TO CART!') || (addCartButton1.innerText === 'ITEM ADDED TO CART!'))) {
     document.getElementById('checkout').innerText = 'Items to checkout!'
     document.getElementById('buyerdetails').classList.remove('hideclass')
+    document.getElementById('notes').classList.remove('hideclass')
   } else {
     document.getElementById('checkout').innerText = 'Nothing to checkout!'
     document.getElementById('buyerdetails').classList.add('hideclass')
+    document.getElementById('notes').classList.add('hideclass')
   }
   scrollToTop()
 }
