@@ -216,4 +216,4 @@ function generateReceipt () {
   console.log(added)
 }
 
-generateReceipt ()
+generateReceipt()
