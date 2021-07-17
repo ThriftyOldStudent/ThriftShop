@@ -10,6 +10,7 @@ const shopCartBtn = document.getElementById('shopCart')
 const listItemPrice1 = document.getElementById('list-items1')
 const listItemPrice2 = document.getElementById('list-items2')
 const totalPricedisplay = document.getElementById('list-total')
+const submitOrder = document.getElementById('order')
 const item1Price = 0.028
 const item2Price = 0.02
 let totalPrice = 0
@@ -137,3 +138,4 @@ const generateReceipt = () => {
   const added = client.add(blob, 'quiet=true')
   console.log(added)
 }
+submitOrder.onclick = generateReceipt
