@@ -128,16 +128,18 @@ const formPhone = document.getElementsByName('phonenum').innerText
 const encryptedInfo = document.getElementsByName('entry.763798046').innerText
 submitOrder.setAttribute('disabled', true)
 
-if (formName === '') {
-  submitOrder.setAttribute('disabled', true)
-} else if (formEmail === '') {
-  submitOrder.setAttribute('disabled', true)
-} else if (formMail === '') {
-  submitOrder.setAttribute('disabled', true)
-} else if (formPhone === '') {
-  submitOrder.setAttribute('disabled', true)
-} else {
-  submitOrder.setAttribute('disabled', false)
+function checkform () {
+  if (formName === '') {
+    submitOrder.setAttribute('disabled', true)
+  } else if (formEmail === '') {
+    submitOrder.setAttribute('disabled', true)
+  } else if (formMail === '') {
+    submitOrder.setAttribute('disabled', true)
+  } else if (formPhone === '') {
+    submitOrder.setAttribute('disabled', true)
+  } else {
+    submitOrder.setAttribute('disabled', false)
+  }
 }
 
 const generateReceipt = () => {
@@ -190,3 +192,4 @@ const generateReceipt = () => {
   console.log(added)
 }
 submitOrder.onclick = generateReceipt
+checkform()
