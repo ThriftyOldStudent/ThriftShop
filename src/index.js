@@ -40,42 +40,6 @@ const addCartButton2 = document.getElementById('AddCartButton2')
 const cartItemNumber = document.getElementById('ItemNumber')
 let startNumItem = 0
 
-const initialize = () => {
-  const isMetaMaskInstalled = () => {
-    const { ethereum } = window
-    return Boolean(ethereum && ethereum.isMetaMask)
-  }
-  const onboarding = new MetaMaskOnboarding({ forwarderOrigin })
-  const onClickConnect = async () => {
-    try {
-      await ethereum.request({ method: 'eth_requestAccounts' })
-      const _accounts = await ethereum.request({
-        method: 'eth_accounts',
-      })
-      getAccountsResults.innerHTML = _accounts[0] || 'Not able to get accounts'
-      console.log(_accounts[0])
-      const txHash = COVENENT.methods.buyTokens().encodeABI()
-      const txO = await ethereum.request({
-        method: 'eth_sendTransaction',
-        params: [{
-          to: contractAdds,
-          from: _accounts[0],
-          gas: '21000',
-          gasPrice: web3.utils.toHex('10000000000'),
-          value: web3.utils.toHex('10000000000000000'),
-          data: txHash,
-        }],
-      })
-
-      console.log(txO)
-      textHead.innerHTML =
-      '<p>You just bought 0.000001 GOD!</p><p>And that\'s good enough!</p><p>Don\'t be greedy, you don\'t need more!</p>'
-    } catch (error) {
-      console.error(error)
-    }
-  }
-}
-
 const clickedBtnAddCart1 = () => {
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
     addCartButton1.innerText = 'Add item to cart!'
@@ -163,8 +127,7 @@ function fixBinary (bin) {
   }
   return buf
 }
-
-function generateReceipt () {
+const generateReceipt = () => {
   const today = new Date()
   const day = today.getDate()
   const month = today.getMonth() + 1
@@ -193,11 +156,5 @@ function generateReceipt () {
   const added = client.add(blob, 'quiet=true')
   console.log(added)
 }
-function settext () {
-  listItemPrice1.innerText = '.'
-  listItemPrice2.innerText = '.'
-  totalPricedisplay.innerText = '.'
-}
-window.onload = settext
-window.addEventListener('DOMContentLoaded', initialize)
-window.onload = generateReceipt
+
+window.addEventListener('DOMContentLoaded', generateReceipt)
