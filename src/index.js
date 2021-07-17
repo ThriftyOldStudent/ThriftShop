@@ -120,11 +120,11 @@ function fixBinary (bin) {
 function stringifiableToHex (value) {
   return ethers.utils.hexlify(Buffer.from(JSON.stringify(value)))
 }
-const formName = document.getElementsByName('rcvname')
-const formEmail = document.getElementsByName('email')
-const formMail = document.getElementsByName('mailadds')
-const formPhone = document.getElementsByName('phonenum')
-const encryptedInfo = document.getElementsByName('entry.763798046').innerText
+const formName = document.getElementById('rcvname')
+const formEmail = document.getElementById('email')
+const formMail = document.getElementById('mailadds')
+const formPhone = document.getElementById('phonenum')
+const encryptedInfo = document.getElementById('entry.763798046').innerText
 function checkform () {
 
   if ((formName.values === '') || (formEmail.values === '') || (formMail.values === '') || (formPhone.values === '')) {
