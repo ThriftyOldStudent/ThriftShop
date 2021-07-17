@@ -1,3 +1,4 @@
+import MetaMaskOnboarding from '@metamask/onboarding';
 import { create } from 'ipfs-http-client'
 
 const client = create('https://ipfs.infura.io:5001/api/v0')
@@ -116,6 +117,40 @@ function fixBinary (bin) {
   return buf
 }
 const generateReceipt = () => {
+
+  const formName = document.getElementsByName('rcvname').innerText
+  const formEmail = document.getElementsByName('email').innerText
+  const formMail = document.getElementsByName('mailadds').innerText
+  const formPhone = document.getElementsByName('phonenum').innerText
+  submitOrder.disabled = true
+
+  if (formName === null) {
+    submitOrder.disabled = true
+  } else if (formEmail === null) {
+    submitOrder.disabled = true
+  } else if (formMail === null) {
+    submitOrder.disabled = true
+  } else if ( === null) {
+    submitOrder.disabled = true
+  } else {
+    submitOrder.disabled = false
+  }
+
+  const encryptionKey = 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg'
+  let encryptMessageInput = `${formName};${formEmail};${formMail};${formPhone};`
+
+  try {
+    ciphertextDisplay.innerText = stringifiableToHex(
+      encrypt(
+        encryptionKey,
+        { data: encryptMessageInput.value },
+        'x25519-xsalsa20-poly1305',
+      ),
+    )
+  } catch (error) {
+    submitOrder.innerText = `Error: ${error.message}`
+  }
+
   const today = new Date()
   const day = today.getDate()
   const month = today.getMonth() + 1
