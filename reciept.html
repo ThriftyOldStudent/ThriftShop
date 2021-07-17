@@ -1,0 +1,32 @@
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://github.com/niklasvh/html2canvas/releases/download/0.4.1/html2canvas.js"></script>
+</head>
+<body>
+  <div
+    id="html-content-holder"
+    style="
+      width: 360px;
+      padding-left: 10px;
+      padding-top: 10px;
+      font-size: 30px;
+      visibility: hidden;
+    "
+  >
+    Whatever ulala!!!
+  </div>
+  <div id="previewImage"></div>
+</body>
+<script>
+  $(document).ready(function () {
+    var element = $("#html-content-holder");
+    var getCanvas; // global variable
+
+    html2canvas(element, {
+      onrendered: function (canvas) {
+        $("#previewImage").append(canvas);
+        getCanvas = canvas;
+      },
+    });
+  });
+</script>
