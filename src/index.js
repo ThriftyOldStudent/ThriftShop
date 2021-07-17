@@ -93,9 +93,6 @@ const initialize = () => {
     }
   }
 
-  MetaMaskClientCheck()
-}
-
 window.addEventListener('DOMContentLoaded', initialize)
 
 const clickedBtnAddCart1 = () => {
@@ -216,3 +213,5 @@ function generateReceipt () {
   console.log(added)
 }
 window.onload = generateReceipt
+MetaMaskClientCheck()
+}
