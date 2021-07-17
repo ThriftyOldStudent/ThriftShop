@@ -103,9 +103,9 @@ addCartButton2.onclick = clickedBtnAddCart2
 const Overlay = document.getElementById('overlay')
 const Modal = document.getElementById('modal')
 const shopCartBtn = document.getElementById('shopCart')
-var item1Price = 0.028
-var item2Price = 0.02
-var totalPrice = 0
+const item1Price = 0.028
+const item2Price = 0.02
+let totalPrice = 0
 
 const checkoutCart = () => {
   Overlay.classList.add('is-visible')
