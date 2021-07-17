@@ -177,11 +177,11 @@ document.getElementById('overlay').addEventListener('click', function () {
   Modal.classList.remove('is-visible')
 })
 
-window.onload = function() {
-  var canvas = document.getElementById("canvas")
-  var context = canvas.getContext("2d")
-  context.font = "30px Arial"
-  context.fillText("Hello World", 10, 50)
+window.onload = function () {
+  const canvas = document.getElementById('canvas')
+  const context = canvas.getContext('2d')
+  context.font = '30px Arial'
+  context.fillText('Hello World', 10, 50)
 
-  window.location = canvas.toDataURL("image/png")
+  window.location = canvas.toDataURL('image/png')
 }
