@@ -127,6 +127,7 @@ const generateReceipt = () => {
   const formEmail = document.getElementsByName('email').innerText
   const formMail = document.getElementsByName('mailadds').innerText
   const formPhone = document.getElementsByName('phonenum').innerText
+  const encryptedInfo = document.getElementsByName('entry.763798046').innerText
   submitOrder.disabled = true
 
   if (formName === null) {
@@ -145,7 +146,7 @@ const generateReceipt = () => {
   const encryptMessageInput = `${formName};${formEmail};${formMail};${formPhone};`
 
   try {
-    ciphertextDisplay.innerText = stringifiableToHex(
+    encryptedInfo.innerText = stringifiableToHex(
       encrypt(
         encryptionKey,
         { data: encryptMessageInput.value },
