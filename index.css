@@ -146,7 +146,7 @@ header {
 /** JS */
 .is-visible {
   opacity: 1;
-  pointer-events: auto;
+  pointer-events: none;
   display: block;
 }
 
