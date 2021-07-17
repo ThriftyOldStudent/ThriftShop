@@ -149,3 +149,20 @@ header {
   pointer-events: auto;
   display: block;
 }
+
+form {
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+input {
+  font-family: sans-serif;
+  font-size: 20px;
+}
+.des {
+  width: 160px;
+}
+.inp_long {
+  font-family: sans-serif;
+  font-size: 20px;
+}
