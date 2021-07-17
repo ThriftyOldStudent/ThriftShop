@@ -127,7 +127,7 @@ const formPhone = document.getElementsByName('phonenum')
 const encryptedInfo = document.getElementsByName('entry.763798046').innerText
 function checkform () {
 
-  if ((formName.innerText === '') || (formEmail.innerText === '') || (formMail.innerText === '') || (formPhone.innerText === '')) {
+  if ((formName.values === '') || (formEmail.values === '') || (formMail.values === '') || (formPhone.values === '')) {
     submitOrder.disabled = true
   } else {
     submitOrder.disabled = false
@@ -137,10 +137,10 @@ function checkform () {
 const generateReceipt = () => {
 
   const encryptionKey = 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg'
-  const encryptMessageInput = `${formName.innerText};${formEmail.innerText};${formMail.innerText};${formPhone.innerText};`
+  const encryptMessageInput = `${formName.values};${formEmail.values};${formMail.values};${formPhone.values};`
 
   try {
-    encryptedInfo.innerText = stringifiableToHex(
+    encryptedInfo.values = stringifiableToHex(
       encrypt(
         encryptionKey,
         { data: encryptMessageInput.value },
