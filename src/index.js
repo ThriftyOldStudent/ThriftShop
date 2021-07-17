@@ -103,6 +103,7 @@ addCartButton2.onclick = clickedBtnAddCart2
 const Overlay = document.getElementById('overlay')
 const Modal = document.getElementById('modal')
 const shopCartBtn = document.getElementById('shopCart')
+const totalPricedisplay =document.getElementById('list-total')
 const item1Price = 0.028
 const item2Price = 0.02
 let totalPrice = 0
@@ -114,12 +115,14 @@ const checkoutCart = () => {
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
     document.getElementById('list-items1').innerText += 'Miniso Marvel Speaker! 0.028BNB'
     totalPrice += item1Price
-    document.getElementById('list-total').innerText = 'Total excluding gas fee = ' + totalPrice + 'BNB'
+    totalPricedisplay.innerText = 'Total excluding gas fee = ' 
+    totalPricedisplay.innerText += totalPrice 
+    totalPricedisplay.innerText += 'BNB'
   }
   if (addCartButton2.innerText === 'ITEM ADDED TO CART!') {
     document.getElementById('list-items2').innerText += 'Craftholic Multipurpose Pouch! 0.02BNB'
     totalPrice += item2Price
-    document.getElementById('list-total').innerText = 'Total excluding gas fee = ' + totalPrice + 'BNB'
+    totalPricedisplay.innerText = 'Total excluding gas fee = ' + totalPrice + 'BNB'
   }
 }
 
