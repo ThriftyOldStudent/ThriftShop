@@ -19,6 +19,9 @@ const shopCartBtn = document.getElementById('shopCart')
 const listItemPrice1 = document.getElementById('list-items1')
 const listItemPrice2 = document.getElementById('list-items')
 const totalPricedisplay = document.getElementById('list-total')
+listItemPrice1.innerText = '.'
+listItemPrice2.innerText = '.'
+totalPricedisplay.innerText = '.'
 const item1Price = 0.028
 const item2Price = 0.02
 let totalPrice = 0
@@ -83,7 +86,6 @@ const initialize = () => {
 
   const MetaMaskClientCheck = () => {
     if (isMetaMaskInstalled()) {
-      onboardButton.innerText = 'Connect'
       onboardButton.onclick = onClickConnect
       onboardButton.disabled = false
     } else {
