@@ -30,15 +30,31 @@
       </button>
       <h1>Checkout Items!</h1>
       <form>
-        Receiver name:
-        <input type="text" name="rcvname" /><br />
-        Email:
-        <input type="text" name="email" /><br />
-        Delivery address:
-        <input type="textarea" name="mailadds" /><br />
-        Phone number:
-        <input type="text" name="phonenum" />
-        <input type="submit" value="Checkout!" />
+        <table>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
+            <td class="des">Receiver name:</td>
+            <td><input class="inp" type="text" name="rcvname" /></td>
+          </tr>
+          <tr>
+            <td class="des">Email:</td>
+            <td><input class="inp" type="text" name="email" /></td>
+          </tr>
+          <tr>
+            <td class="des">Delivery address:</td>
+            <td>
+              <textarea class="inp_long" type="text" name="mailadds"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td class="des">Phone number:</td>
+            <td><input class="inp" type="text" name="phonenum" /></td>
+          </tr>
+        </table>
+        <input class="btn" type="submit" value="Checkout!" />
       </form>
     </div>
     <main class="container-fluid">
