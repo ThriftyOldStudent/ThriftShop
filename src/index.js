@@ -109,10 +109,10 @@ const checkoutCart = () => {
   Modal.classList.add('is-visible')
 
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
-    document.getElementById('list-items').innerText += 'Miniso Marvel Speaker! 0.028BNB <br>'
+    document.getElementById('list-items1').innerText += 'Miniso Marvel Speaker! 0.028BNB'
   }
   if (addCartButton2.innerText === 'ITEM ADDED TO CART!') {
-    document.getElementById('list-items').innerText += 'Craftholic Multipurpose Pouch! 0.02BNB <br>'
+    document.getElementById('list-items2').innerText += 'Craftholic Multipurpose Pouch! 0.02BNB'
   }
 }
 
