@@ -110,7 +110,7 @@ header {
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s;
-  position: absolute;
+  position: relative;
   top: 10px;
   left: 0;
   right: 0;
