@@ -108,11 +108,11 @@ const checkoutCart = () => {
   Overlay.classList.add('is-visible')
   Modal.classList.add('is-visible')
 
-  if(addCartButton1.innerText == 'Item added to cart!'){
-    document.getElementById('list-items').innerText += "addCartButton1 added"
+  if (addCartButton1.innerText === 'Item added to cart!') {
+    document.getElementById('list-items').innerText += 'addCartButton1 added'
   }
-  if(addCartButton2.innerText == 'Item added to cart!'){
-    document.getElementById('list-items').innerText += "addCartButton2 added"
+  if (addCartButton2.innerText === 'Item added to cart!') {
+    document.getElementById('list-items').innerText += 'addCartButton2 added'
   }
 }
 
