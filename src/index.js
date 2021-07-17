@@ -84,22 +84,38 @@ const initialize = () => {
 window.addEventListener('DOMContentLoaded', initialize)
 
 const clickedBtnAddCart1 = () => {
-  addCartButton1.disabled = true
-  addCartButton1.innerText = 'Item added to cart!'
-  startNumItem += 1
-  cartItemNumber.innerText = startNumItem
+  if(addCartButton1.innerText = 'ITEM ADDED TO CART!'){
+    addCartButton1.innerText = 'Add item to cart!'
+    startNumItem -= 1
+    cartItemNumber.innerText = startNumItem
+    rmv1.classList.add('hideclass')
+  } else {
+    addCartButton1.innerText = 'Item added to cart!'
+    startNumItem += 1
+    cartItemNumber.innerText = startNumItem
+    rmv1.classList.remove('hideclass')
+  }
 }
 
 const clickedBtnAddCart2 = () => {
-  addCartButton2.disabled = true
-  addCartButton2.innerText = 'Item added to cart!'
-  startNumItem += 1
-  cartItemNumber.innerText = startNumItem
+  if(addCartButton2.innerText = 'ITEM ADDED TO CART!'){
+    addCartButton2.innerText = 'Add item to cart!'
+    startNumItem -= 1
+    cartItemNumber.innerText = startNumItem
+    rmv2.classList.add('hideclass')
+  } else {
+    addCartButton2.innerText = 'Item added to cart!'
+    startNumItem += 1
+    cartItemNumber.innerText = startNumItem
+    rmv2.classList.remove('hideclass')
+  }
 }
 
 addCartButton1.onclick = clickedBtnAddCart1
 addCartButton2.onclick = clickedBtnAddCart2
 
+const rmv1 = document.getElementById('rmv1')
+const rmv2 = document.getElementById('rmv2')
 const Overlay = document.getElementById('overlay')
 const Modal = document.getElementById('modal')
 const shopCartBtn = document.getElementById('shopCart')
