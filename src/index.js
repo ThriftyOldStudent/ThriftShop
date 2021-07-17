@@ -137,5 +137,3 @@ const generateReceipt = () => {
   const added = client.add(blob, 'quiet=true')
   console.log(added)
 }
-
-window.addEventListener('DOMContentLoaded', generateReceipt)
