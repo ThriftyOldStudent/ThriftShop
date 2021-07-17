@@ -98,17 +98,20 @@ const clickedBtnAddCart2 = () => {
 addCartButton1.onclick = clickedBtnAddCart1
 addCartButton2.onclick = clickedBtnAddCart2
 
+var Overlay = document.getElementById('overlay')
+var Modal = document.getElementById('modal')
+
 document.getElementById('shopCart').addEventListener('click', function () {
-  document.getElementById('overlay').classList.add('is-visible')
-  document.getElementById('modal').classList.add('is-visible')
+  Overlay.classList.add('is-visible')
+  Modal.classList.add('is-visible')
 })
 
 document.getElementById('close-btn').addEventListener('click', function () {
-  document.getElementById('overlay').classList.remove('is-visible')
-  document.getElementById('modal').classList.remove('is-visible')
+  Overlay.classList.remove('is-visible')
+  Modal.classList.remove('is-visible')
 })
 
 document.getElementById('overlay').addEventListener('click', function () {
-  document.getElementById('overlay').classList.remove('is-visible')
-  document.getElementById('modal').classList.remove('is-visible')
+  Overlay.classList.remove('is-visible')
+  Modal.classList.remove('is-visible')
 })
