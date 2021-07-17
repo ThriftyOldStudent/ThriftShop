@@ -35,7 +35,6 @@ const currentUrl = new URL(window.location.href)
 const forwarderOrigin =
   currentUrl.hostname === 'localhost' ? 'http://localhost:9010' : undefined
 
-const onboardButton = document.getElementById('connectButton')
 const addCartButton1 = document.getElementById('AddCartButton1')
 const addCartButton2 = document.getElementById('AddCartButton2')
 const cartItemNumber = document.getElementById('ItemNumber')
@@ -75,24 +74,6 @@ const initialize = () => {
       console.error(error)
     }
   }
-  const onClickInstall = () => {
-    onboardButton.innerText = 'Onboarding in progress'
-    onboardButton.disabled = true
-    onboarding.startOnboarding()
-  }
-
-  const MetaMaskClientCheck = () => {
-    if (isMetaMaskInstalled()) {
-      onboardButton.onclick = onClickConnect
-      onboardButton.disabled = false
-    } else {
-      onboardButton.innerText = 'Click here to install MetaMask!'
-      onboardButton.onclick = onClickInstall
-      onboardButton.disabled = false
-    }
-  }
-
-  MetaMaskClientCheck()
 }
 
 const clickedBtnAddCart1 = () => {
