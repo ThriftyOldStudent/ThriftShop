@@ -175,7 +175,7 @@ document.getElementById('overlay').addEventListener('click', function () {
 })
 
 function fixBinary (bin) {
-  const length = bin.length
+  let length = bin.length
   let buf = new ArrayBuffer(length)
   let arr = new Uint8Array(buf)
   for (var i = 0; i < length; i++) {
