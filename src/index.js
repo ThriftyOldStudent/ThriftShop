@@ -180,7 +180,6 @@ window.onload = function () {
   context.font = '30px Arial'
   context.fillText('Hello World', 10, 50)
 
-  window.location = canvas.toDataURL('image/png')
-  const added = client.add(window.location)
+  const added = client.add(canvas.toDataURL('image/png'))
   console.log(added)
 }
