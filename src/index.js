@@ -117,9 +117,8 @@ const generateReceipt = () => {
   const canvas = document.getElementById('canvas')
   const context = canvas.getContext('2d')
   context.font = '20px Arial'
-  context.font = "20px Arial";
-  context.textAlign = 'center';
-  context.fillStyle = 'blue';
+  context.textAlign = 'center'
+  context.fillStyle = 'blue'
 
   context.fillText('Items Paid!', 160, 25)
   context.fillText('---------------', 160, 35)
