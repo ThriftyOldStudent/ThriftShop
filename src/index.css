@@ -107,8 +107,6 @@ header {
 
 /** Modal */
 .modal {
-  font-family: sans-serif;
-  font-size: 20px;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s;
@@ -156,10 +154,12 @@ input {
   font-family: sans-serif;
   font-size: 20px;
 }
-.des {
+td.des {
+  font-family: sans-serif;
+  font-size: 20px;
   width: 160px;
 }
-.inp_long {
+td.inp_long {
   font-family: sans-serif;
   font-size: 20px;
 }
