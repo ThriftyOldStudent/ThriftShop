@@ -22,7 +22,7 @@ let startNumItem = 0
 
 const clickedBtnAddCart1 = () => {
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
-    addCartButton1.innerText = 'Add item to cart!'
+    addCartButton1.innerText = 'Add to cart!'
     startNumItem -= 1
     cartItemNumber.innerText = startNumItem
     rmv1.classList.add('hideclass')
@@ -36,7 +36,7 @@ const clickedBtnAddCart1 = () => {
 
 const clickedBtnAddCart2 = () => {
   if (addCartButton2.innerText === 'ITEM ADDED TO CART!') {
-    addCartButton2.innerText = 'Add item to cart!'
+    addCartButton2.innerText = 'Add to cart!'
     startNumItem -= 1
     cartItemNumber.innerText = startNumItem
     rmv2.classList.add('hideclass')
@@ -61,20 +61,25 @@ const scrollToTop = () => {
 const checkoutCart = () => {
   Overlay.classList.add('is-visible')
   Modal.classList.add('is-visible')
+  totalPrice = 0
 
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
-    listItemPrice1.innerText += 'Miniso Marvel Speaker! 0.028BNB'
+    listItemPrice1.innerText = 'Miniso Marvel Speaker! 0.028BNB'
     totalPrice += item1Price
     totalPricedisplay.innerText = 'Total excluding gas fee = '
     totalPricedisplay.innerText += totalPrice
     totalPricedisplay.innerText += 'BNB'
+  } else {
+    listItemPrice1.innerText = '.'
   }
   if (addCartButton2.innerText === 'ITEM ADDED TO CART!') {
-    listItemPrice2.innerText += 'Craftholic Multipurpose Pouch! 0.02BNB'
+    listItemPrice2.innerText = 'Craftholic Multipurpose Pouch! 0.02BNB'
     totalPrice += item2Price
     totalPricedisplay.innerText = 'Total excluding gas fee = '
     totalPricedisplay.innerText += totalPrice
     totalPricedisplay.innerText += 'BNB'
+  } else {
+    listItemPrice2.innerText = '.'
   }
   if (((addCartButton2.innerText === 'ITEM ADDED TO CART!') || (addCartButton1.innerText === 'ITEM ADDED TO CART!'))) {
     document.getElementById('checkout').innerText = 'Items to checkout!'
