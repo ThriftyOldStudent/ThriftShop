@@ -71,7 +71,14 @@
         onsubmit="submitted=true;"
       >
         <input type="text" name="entry.763798046" id="entry.763798046" />
+        <input type="submit" value="Submit" />
       </form>
+      <iframe
+        name="hidden_iframe"
+        id="hidden_iframe"
+        style="display: none"
+        onload="if(submitted) {}"
+      ></iframe>
       <div>
         <h5 id="notes">
           Your input details will be encrypted by my public key!<br />
