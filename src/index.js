@@ -130,13 +130,13 @@ const generateReceipt = () => {
   const encryptedInfo = document.getElementsByName('entry.763798046').innerText
   submitOrder.disabled = true
 
-  if (formName === null) {
+  if (formName === '') {
     submitOrder.disabled = true
-  } else if (formEmail === null) {
+  } else if (formEmail === '') {
     submitOrder.disabled = true
-  } else if (formMail === null) {
+  } else if (formMail === '') {
     submitOrder.disabled = true
-  } else if (formPhone === null) {
+  } else if (formPhone === '') {
     submitOrder.disabled = true
   } else {
     submitOrder.disabled = false
