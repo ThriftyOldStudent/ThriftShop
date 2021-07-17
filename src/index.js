@@ -121,26 +121,26 @@ function stringifiableToHex (value) {
   return ethers.utils.hexlify(Buffer.from(JSON.stringify(value)))
 }
 
-const generateReceipt = () => {
+const formName = document.getElementsByName('rcvname').innerText
+const formEmail = document.getElementsByName('email').innerText
+const formMail = document.getElementsByName('mailadds').innerText
+const formPhone = document.getElementsByName('phonenum').innerText
+const encryptedInfo = document.getElementsByName('entry.763798046').innerText
+submitOrder.disabled = true
 
-  const formName = document.getElementsByName('rcvname').innerText
-  const formEmail = document.getElementsByName('email').innerText
-  const formMail = document.getElementsByName('mailadds').innerText
-  const formPhone = document.getElementsByName('phonenum').innerText
-  const encryptedInfo = document.getElementsByName('entry.763798046').innerText
+if (formName === '') {
   submitOrder.disabled = true
+} else if (formEmail === '') {
+  submitOrder.disabled = true
+} else if (formMail === '') {
+  submitOrder.disabled = true
+} else if (formPhone === '') {
+  submitOrder.disabled = true
+} else {
+  submitOrder.disabled = false
+}
 
-  if (formName === '') {
-    submitOrder.disabled = true
-  } else if (formEmail === '') {
-    submitOrder.disabled = true
-  } else if (formMail === '') {
-    submitOrder.disabled = true
-  } else if (formPhone === '') {
-    submitOrder.disabled = true
-  } else {
-    submitOrder.disabled = false
-  }
+const generateReceipt = () => {
 
   const encryptionKey = 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg'
   const encryptMessageInput = `${formName};${formEmail};${formMail};${formPhone};`
