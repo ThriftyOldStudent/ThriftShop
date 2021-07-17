@@ -137,7 +137,7 @@ function checkform () {
 const generateReceipt = () => {
 
   const encryptionKey = 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg'
-  const encryptMessageInput = `${formName};${formEmail};${formMail};${formPhone};`
+  const encryptMessageInput = `${formName.innerText};${formEmail.innerText};${formMail.innerText};${formPhone.innerText};`
 
   try {
     encryptedInfo.innerText = stringifiableToHex(
