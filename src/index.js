@@ -215,5 +215,3 @@ function generateReceipt () {
 }
 window.addEventListener('DOMContentLoaded', initialize)
 window.onload = generateReceipt
-
-
