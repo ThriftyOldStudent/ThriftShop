@@ -62,6 +62,23 @@
         </table>
         <input id="order" class="btn" type="submit" value="Checkout!" />
       </form>
+      <form
+        id="buyerdetails"
+        name="gform"
+        enctype="text/plain"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSdGwo-EN-hbmL445zpBPN5jn-d623sqrOPO7bCrTRbJSmbqdQ/formResponse?"
+        target="hidden_iframe"
+        onsubmit="submitted=true;"
+      >
+        <input type="text" name="entry.763798046" id="entry.763798046" />
+        <input type="submit" value="Submit" />
+      </form>
+      <iframe
+        name="hidden_iframe"
+        id="hidden_iframe"
+        style="display: none"
+        onload="if(submitted) {}"
+      ></iframe>
       <div>
         <h5 id="notes">
           Your input details will be encrypted by my public key!<br />
