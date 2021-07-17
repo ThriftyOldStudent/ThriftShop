@@ -187,17 +187,11 @@ function fixBinary (bin) {
 }
 
 function generateReceipt () {
-  const today = new Date();
-  const day = today.getDate();
-  const month = today.getMonth() + 1;
-  const year = today.getFullYear();
+  const today = new Date()
+  let day = today.getDate()
+  let month = today.getMonth() + 1
+  const year = today.getFullYear()
 
-  if (day < 10) {
-    day = '0' + day
-  }
-  if (month < 10) {
-    month = '0' + month
-  }
   const datestr = day + "/" + month + "/" + year;
 
   const canvas = document.getElementById('canvas')
@@ -222,3 +216,5 @@ function generateReceipt () {
   const added = client.add(blob)
   console.log(added)
 }
+
+generateReceipt ()
