@@ -173,3 +173,8 @@ td.inp_long {
   top: 20px;
   left: 16px;
 }
+
+input[type="submit"]:disabled {
+  background: grey;
+  cursor: not-allowed;
+}

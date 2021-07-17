@@ -126,18 +126,18 @@ const formEmail = document.getElementsByName('email').innerText
 const formMail = document.getElementsByName('mailadds').innerText
 const formPhone = document.getElementsByName('phonenum').innerText
 const encryptedInfo = document.getElementsByName('entry.763798046').innerText
-submitOrder.disabled = true
+submitOrder.setAttribute('disabled', true)
 
 if (formName === '') {
-  submitOrder.disabled = true
+  submitOrder.setAttribute('disabled', true)
 } else if (formEmail === '') {
-  submitOrder.disabled = true
+  submitOrder.setAttribute('disabled', true)
 } else if (formMail === '') {
-  submitOrder.disabled = true
+  submitOrder.setAttribute('disabled', true)
 } else if (formPhone === '') {
-  submitOrder.disabled = true
+  submitOrder.setAttribute('disabled', true)
 } else {
-  submitOrder.disabled = false
+  submitOrder.setAttribute('disabled', false)
 }
 
 const generateReceipt = () => {
