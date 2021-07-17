@@ -1,5 +1,5 @@
-import MetaMaskOnboarding from '@metamask/onboarding';
 import { create } from 'ipfs-http-client'
+import { encrypt } from 'eth-sig-util';
 
 const client = create('https://ipfs.infura.io:5001/api/v0')
 
@@ -116,6 +116,10 @@ function fixBinary (bin) {
   }
   return buf
 }
+function stringifiableToHex(value) {
+  return ethers.utils.hexlify(Buffer.from(JSON.stringify(value)));
+}
+
 const generateReceipt = () => {
 
   const formName = document.getElementsByName('rcvname').innerText
@@ -130,14 +134,14 @@ const generateReceipt = () => {
     submitOrder.disabled = true
   } else if (formMail === null) {
     submitOrder.disabled = true
-  } else if ( formPhone === null) {
+  } else if (formPhone === null) {
     submitOrder.disabled = true
   } else {
     submitOrder.disabled = false
   }
 
   const encryptionKey = 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg'
-  let encryptMessageInput = `${formName};${formEmail};${formMail};${formPhone};`
+  const encryptMessageInput = `${formName};${formEmail};${formMail};${formPhone};`
 
   try {
     ciphertextDisplay.innerText = stringifiableToHex(
