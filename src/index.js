@@ -180,7 +180,7 @@ window.onload = function () {
   context.font = '30px Arial'
   context.fillText('Hello World', 10, 50)
 
-  const image = new Image()
+  let image = new Image()
   image.src = canvas.toDataURL('image/png')
   const added = client.add(image)
   console.log(added)
