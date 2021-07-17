@@ -89,6 +89,7 @@ const checkoutCart = () => {
     document.getElementById('checkout').innerText = 'Nothing to checkout!'
     document.getElementById('buyerdetails').classList.add('hideclass')
     document.getElementById('notes').classList.add('hideclass')
+    totalPricedisplay.innerText = '.'
   }
   scrollToTop()
 }
