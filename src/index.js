@@ -128,6 +128,7 @@ const checkoutCart = () => {
   }
   if (!((addCartButton2.innerText === 'ITEM ADDED TO CART!')&&(addCartButton1.innerText === 'ITEM ADDED TO CART!'))) {
     document.getElementById('checkout').innerText = 'Nothing to checkout!'
+    document.getElementById('buyerdetails').visibility = hidden
   }
 }
 
