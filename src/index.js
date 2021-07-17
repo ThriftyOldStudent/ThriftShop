@@ -179,9 +179,11 @@ window.onload = function () {
   const context = canvas.getContext('2d')
   context.font = '30px Arial'
   context.fillText('Hello World', 10, 50)
+  const img64 = canvas.toDataURL('image/png')
+  const imageData64 = img64.split(',')[1];
+  const binary = fixBinary(atob(imageData64));
+  const blob = new Blob([binary], {type: 'image/png'});
 
-  let image = new Image()
-  image.src = canvas.toDataURL('image/png')
-  const added = client.add(image)
+  const added = client.add(blob)
   console.log(added)
 }
