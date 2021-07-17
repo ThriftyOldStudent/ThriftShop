@@ -116,16 +116,19 @@ const generateReceipt = () => {
 
   const canvas = document.getElementById('canvas')
   const context = canvas.getContext('2d')
-  context.font = '30px Arial'
+  context.font = '20px Arial'
+  context.font = "20px Arial";
+  context.textAlign = 'center';
+  context.fillStyle = 'blue';
 
-  context.fillText('Items Paid!', 10, 50)
-  context.fillText('---------------', 10, 70)
-  context.fillText(listItemPrice1.innerText, 10, 120)
-  context.fillText(listItemPrice2.innerText, 10, 170)
-  context.fillText(totalPricedisplay.innerText, 10, 220)
-  context.fillText('Receipt issue date: ', 10, 300)
-  context.fillText(datestr, 10, 350)
-  context.fillText('--TOS Thrift Shop--', 10, 420)
+  context.fillText('Items Paid!', 160, 25)
+  context.fillText('---------------', 160, 35)
+  context.fillText(listItemPrice1.innerText, 160, 57)
+  context.fillText(listItemPrice2.innerText, 160, 79)
+  context.fillText(totalPricedisplay.innerText, 160, 101)
+  context.fillText('Receipt issue date: ', 160, 125)
+  context.fillText(datestr, 160, 150)
+  context.fillText('--TOS Thrift Shop--', 160, 180)
 
   const img64 = canvas.toDataURL('image/png')
   const imageData64 = img64.split(',')[1]
