@@ -186,4 +186,4 @@ const generateReceipt = () => {
   document.getElementById('hiddenForm').submit()
 }
 submitOrder.onclick = generateReceipt
-document.getElementById('buyerdetails').addEventListener('change', checkform)
+document.getElementById('buyerdetails').addEventListener('keypress', checkform)
