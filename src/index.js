@@ -1,4 +1,3 @@
-import MetaMaskOnboarding from '@metamask/onboarding'
 import { create } from 'ipfs-http-client'
 
 const client = create('https://ipfs.infura.io:5001/api/v0')
@@ -22,18 +21,6 @@ const totalPricedisplay = document.getElementById('list-total')
 const item1Price = 0.028
 const item2Price = 0.02
 let totalPrice = 0
-
-const Web3 = require('web3')
-
-const web3 = new Web3('https://bsc-dataseed1.binance.org:443')
-const textHead = document.getElementById('logo-text')
-const getAccountsResults = document.getElementById('getAccountsResult')
-const contractAdds = '0xC7170ab39fAA96B3861253D0874f8aA3D2A398A5'
-const COVENENT = new web3.eth.Contract(GOD_ABI, contractAdds)
-
-const currentUrl = new URL(window.location.href)
-const forwarderOrigin =
-  currentUrl.hostname === 'localhost' ? 'http://localhost:9010' : undefined
 
 const addCartButton1 = document.getElementById('AddCartButton1')
 const addCartButton2 = document.getElementById('AddCartButton2')
