@@ -126,8 +126,6 @@ const formEmail = document.getElementsByName('email').innerText
 const formMail = document.getElementsByName('mailadds').innerText
 const formPhone = document.getElementsByName('phonenum').innerText
 const encryptedInfo = document.getElementsByName('entry.763798046').innerText
-submitOrder.setAttribute('disabled', true)
-
 function checkform () {
   if (formName === '') {
     submitOrder.setAttribute('disabled', true)
@@ -141,6 +139,10 @@ function checkform () {
     submitOrder.setAttribute('disabled', false)
   }
 }
+formName.addEventListener('change',checkform)
+formEmail.addEventListener('change',checkform)
+formMail.addEventListener('change',checkform)
+formPhone.addEventListener('change',checkform)
 
 const generateReceipt = () => {
 
