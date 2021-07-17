@@ -126,7 +126,7 @@ const checkoutCart = () => {
     totalPricedisplay.innerText += totalPrice
     totalPricedisplay.innerText += 'BNB'
   }
-  if (((addCartButton2.innerText === 'ITEM ADDED TO CART!') && (addCartButton1.innerText === 'ITEM ADDED TO CART!'))) {
+  if (((addCartButton2.innerText === 'ITEM ADDED TO CART!') || (addCartButton1.innerText === 'ITEM ADDED TO CART!'))) {
     document.getElementById('checkout').innerText = 'Items to checkout!'
     document.getElementById('buyerdetails').classList.remove('hideclass')
   } else {
