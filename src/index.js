@@ -115,14 +115,16 @@ const checkoutCart = () => {
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
     document.getElementById('list-items1').innerText += 'Miniso Marvel Speaker! 0.028BNB'
     totalPrice += item1Price
-    totalPricedisplay.innerText = 'Total excluding gas fee = ' 
-    totalPricedisplay.innerText += totalPrice 
+    totalPricedisplay.innerText = 'Total excluding gas fee = '
+    totalPricedisplay.innerText += totalPrice
     totalPricedisplay.innerText += 'BNB'
   }
   if (addCartButton2.innerText === 'ITEM ADDED TO CART!') {
     document.getElementById('list-items2').innerText += 'Craftholic Multipurpose Pouch! 0.02BNB'
     totalPrice += item2Price
-    totalPricedisplay.innerText = 'Total excluding gas fee = ' + totalPrice + 'BNB'
+    totalPricedisplay.innerText = 'Total excluding gas fee = '
+    totalPricedisplay.innerText += totalPrice
+    totalPricedisplay.innerText += 'BNB'
   }
 }
 
