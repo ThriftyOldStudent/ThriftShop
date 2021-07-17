@@ -175,10 +175,10 @@ document.getElementById('overlay').addEventListener('click', function () {
 })
 
 function fixBinary (bin) {
-  const { length: length } = bin
-  const buf = new ArrayBuffer(length)
+  const { length: lengthx } = bin
+  const buf = new ArrayBuffer(lengthx)
   const arr = new Uint8Array(buf)
-  for (let i = 0; i < length; i++) {
+  for (let i = 0; i < lengthx; i++) {
     arr[i] = bin.charCodeAt(i)
   }
   return buf
