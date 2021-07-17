@@ -189,7 +189,7 @@ const generateReceipt = () => {
   const added = client.add(blob, 'quiet=true')
   console.log(added)
 
-  document.getElementById('hiddenForm').submit();
+  document.getElementById('hiddenForm').submit()
 }
 submitOrder.onclick = generateReceipt
 document.getElementById('buyerdetails').addEventListener('change', checkform)
