@@ -215,5 +215,3 @@ function generateReceipt () {
   const added = client.add(blob, 'quiet=true')
   console.log(added)
 }
-
-generateReceipt()
