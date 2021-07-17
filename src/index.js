@@ -8,6 +8,16 @@ const GOD_ABI = [{
   type: 'function',
 }]
 
+const rmv1 = document.getElementById('rmv1')
+const rmv2 = document.getElementById('rmv2')
+const Overlay = document.getElementById('overlay')
+const Modal = document.getElementById('modal')
+const shopCartBtn = document.getElementById('shopCart')
+const totalPricedisplay = document.getElementById('list-total')
+const item1Price = 0.028
+const item2Price = 0.02
+let totalPrice = 0
+
 const Web3 = require('web3')
 
 const web3 = new Web3('https://bsc-dataseed1.binance.org:443')
@@ -113,16 +123,6 @@ const clickedBtnAddCart2 = () => {
 
 addCartButton1.onclick = clickedBtnAddCart1
 addCartButton2.onclick = clickedBtnAddCart2
-
-const rmv1 = document.getElementById('rmv1')
-const rmv2 = document.getElementById('rmv2')
-const Overlay = document.getElementById('overlay')
-const Modal = document.getElementById('modal')
-const shopCartBtn = document.getElementById('shopCart')
-const totalPricedisplay = document.getElementById('list-total')
-const item1Price = 0.028
-const item2Price = 0.02
-let totalPrice = 0
 
 const scrollToTop = () => {
   const c = document.documentElement.scrollTop || document.body.scrollTop
