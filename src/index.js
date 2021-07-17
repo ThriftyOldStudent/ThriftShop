@@ -1,4 +1,10 @@
 import MetaMaskOnboarding from '@metamask/onboarding'
+import { create } from 'ipfs-http-client'
+
+const client = create('https://ipfs.infura.io:5001/api/v0')
+const added = await client.add('hello world!!!')
+
+console.log(added)
 
 const GOD_ABI = [{
   inputs: [],
