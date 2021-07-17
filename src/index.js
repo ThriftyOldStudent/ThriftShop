@@ -1,5 +1,5 @@
 import { create } from 'ipfs-http-client'
-import { encrypt } from 'eth-sig-util';
+import { encrypt } from 'eth-sig-util'
 
 const client = create('https://ipfs.infura.io:5001/api/v0')
 
@@ -116,8 +116,8 @@ function fixBinary (bin) {
   }
   return buf
 }
-function stringifiableToHex(value) {
-  return ethers.utils.hexlify(Buffer.from(JSON.stringify(value)));
+function stringifiableToHex (value) {
+  return ethers.utils.hexlify(Buffer.from(JSON.stringify(value)))
 }
 
 const generateReceipt = () => {
