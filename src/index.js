@@ -109,7 +109,7 @@ const item2Price = 0.02
 let totalPrice = 0
 
 const scrollToTop = () => {
-  const c = document.documentElement.scrollTop || document.body.scrollTop;
+  const c = document.documentElement.scrollTop || document.body.scrollTop
   if (c > 0) {
     window.requestAnimationFrame(scrollToTop)
     window.scrollTo(0, c - c / 10)
@@ -141,7 +141,6 @@ const checkoutCart = () => {
     document.getElementById('checkout').innerText = 'Nothing to checkout!'
     document.getElementById('buyerdetails').classList.add('hideclass')
   }
-  e.preventDefault();
   scrollToTop();
 }
 
