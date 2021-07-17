@@ -84,7 +84,7 @@ const initialize = () => {
 window.addEventListener('DOMContentLoaded', initialize)
 
 const clickedBtnAddCart1 = () => {
-  if(addCartButton1.innerText = 'ITEM ADDED TO CART!'){
+  if (addCartButton1.innerText === 'ITEM ADDED TO CART!'){
     addCartButton1.innerText = 'Add item to cart!'
     startNumItem -= 1
     cartItemNumber.innerText = startNumItem
@@ -98,7 +98,7 @@ const clickedBtnAddCart1 = () => {
 }
 
 const clickedBtnAddCart2 = () => {
-  if(addCartButton2.innerText = 'ITEM ADDED TO CART!'){
+  if (addCartButton2.innerText === 'ITEM ADDED TO CART!'){
     addCartButton2.innerText = 'Add item to cart!'
     startNumItem -= 1
     cartItemNumber.innerText = startNumItem
