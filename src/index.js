@@ -190,7 +190,4 @@ const generateReceipt = () => {
   console.log(added)
 }
 submitOrder.onclick = generateReceipt
-formName.addEventListener('change', checkform)
-formEmail.addEventListener('change', checkform)
-formMail.addEventListener('change', checkform)
-formPhone.addEventListener('change', checkform)
+document.getElementById('buyerdetails').addEventListener('change', checkform)
