@@ -16,7 +16,6 @@ const submitOrder = document.getElementById('order')
 const item1Price = 0.028
 const item2Price = 0.02
 let totalPrice = 0
-let IPFSval
 
 const addCartButton1 = document.getElementById('AddCartButton1')
 const addCartButton2 = document.getElementById('AddCartButton2')
@@ -183,12 +182,12 @@ const generateReceipt = () => {
 
   const uploadImage = async (e) => {
     e.preventDefault();
-    console.log("Submitting File to IPFS...");
+    console.log("Submitting File to IPFS...")
 
     try {
       const postresponse =  await client.add(blob)
       console.log("postResponse", postresponse.path)
-      setIpfsHash(postresponse.path);
+      setIpfsHash(postresponse.path)
       setUploadedFile({ fileName:filename })
       console.log(postresponse.path)
     }
