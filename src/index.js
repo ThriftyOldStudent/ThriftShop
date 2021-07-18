@@ -192,8 +192,6 @@ const runMetamask = () => {
         document.getElementById('notes').innerHTML = `Token ID: ${newItemId}`
       })
       console.log(txO)
-      console.log('TokenID')
-      console.log(TokenID)
       document.getElementById('notes').innerHTML +=
       '<p>Thank you for your order!</p><p>Contract address: 0xA830E473CBFB32b688EE59828eDBb147f3c3aBCc</p>'
       if (!ItemStatus1) {
