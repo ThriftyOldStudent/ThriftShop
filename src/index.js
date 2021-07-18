@@ -4,7 +4,7 @@ import { ethers } from 'ethers'
 import MetaMaskOnboarding from '@metamask/onboarding'
 
 const TOSS_ABI = [{
-  inputs:  [{ 'name': 'BaseUri', 'type': 'string memory' }],
+  inputs: [{ 'name': 'BaseUri', 'type': 'string memory' }],
   name: 'mintItem',
   outputs: [],
   stateMutability: 'payable',
@@ -17,7 +17,7 @@ const web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545')
 const textHead = document.getElementById('logo-text')
 const getAccountsResults = document.getElementById('getAccountsResult')
 const contractAdds = '0xA830E473CBFB32b688EE59828eDBb147f3c3aBCc'
-const TOSS_receipt_contract = new web3.eth.Contract(GOD_ABI, contractAdds)
+const TOSScontract = new web3.eth.Contract(TOSS_ABI, contractAdds)
 
 const currentUrl = new URL(window.location.href)
 const forwarderOrigin =
@@ -57,9 +57,8 @@ const initialize = () => {
       })
       getAccountsResults.innerHTML = _accounts[0] || 'Not able to get accounts'
       console.log(_accounts[0])
-      
-      const totalBNB = totalPrice * (10**18)
-      const txHash = TOSS_receipt_contract.methods.mintItem().encodeABI()
+      const totalBNB = totalPrice * (10 ** 18)
+      const txHash = TOSScontract.methods.mintItem().encodeABI()
       const txO = await ethereum.request({
         method: 'eth_sendTransaction',
         params: [{
@@ -98,13 +97,6 @@ const initialize = () => {
   }
   MetaMaskClientCheck()
 }
-
-
-
-
-
-
-
 
 const clickedBtnAddCart1 = () => {
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
