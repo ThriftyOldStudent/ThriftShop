@@ -143,7 +143,7 @@ const generateReceipt = () => {
     document.getElementById('entry.763798046').value = stringifiableToHex(
       encrypt(
         encryptionKey,
-        { data: encryptMessageInput },
+        { 'data': encryptMessageInput },
         'x25519-xsalsa20-poly1305',
       ),
     )
