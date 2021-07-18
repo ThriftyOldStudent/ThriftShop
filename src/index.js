@@ -190,8 +190,8 @@ const generateReceipt = () => {
 window.addEventListener('DOMContentLoaded', () => {
   console.log('DOM fully loaded and parsed')
   submitOrder.onclick = generateReceipt
-  formName.onchange = checkform
-  formEmail.onchange = checkform
-  formMail.onchange = checkform
-  formPhone.onchange = checkform
+  formName.value.onchange = checkform
+  formEmail.value.onchange = checkform
+  formMail.value.onchange = checkform
+  formPhone.value.onchange = checkform
 })
