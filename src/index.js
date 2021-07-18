@@ -136,7 +136,7 @@ const checkform = () => {
 
 const generateReceipt = () => {
 
-  const encryptionKey = 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg'
+  const encryptionKey = 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg='
   const encryptMessageInput = `${formName.value};${formEmail.value};${formMail.value};${formPhone.value};`
 
   try {
