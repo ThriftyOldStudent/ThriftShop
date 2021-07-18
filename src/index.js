@@ -41,7 +41,6 @@ let totalPrice = 0
 let ItemStatus1 = true
 let ItemStatus2 = true
 
-
 const addCartButton1 = document.getElementById('AddCartButton1')
 const addCartButton2 = document.getElementById('AddCartButton2')
 const cartItemNumber = document.getElementById('ItemNumber')
@@ -263,7 +262,6 @@ const runMetamask = () => {
         addCartButton2.innerHTML = 'Item Sold!'
         addCartButton2.disabled = true
       } 
-
     } catch (error) {
       console.error('error')
       console.error(error)
