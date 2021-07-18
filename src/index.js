@@ -4,7 +4,7 @@ import { ethers } from 'ethers'
 import MetaMaskOnboarding from '@metamask/onboarding'
 
 const TOSS_ABI = [{
-  inputs: [{ 'name': 'BaseUri', 'type': 'string memory' }],
+  inputs: [{ 'name': 'BaseUri', 'type': 'string' }],
   name: 'mintItem',
   outputs: [{ 'name': 'newItemId', 'type': 'uint256' }],
   stateMutability: 'payable',
