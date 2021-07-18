@@ -212,8 +212,7 @@ const runMetamask = () => {
 
   const MetaMaskClientCheck = () => {
     if (isMetaMaskInstalled()) {
-      submitOrder.innerText = 'Connect'
-      submitOrder.onclick = onClickConnect
+      onClickConnect()
       submitOrder.disabled = false
     } else {
       submitOrder.innerText = 'Click here to install MetaMask!'
