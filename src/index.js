@@ -4,8 +4,8 @@ import { ethers } from 'ethers'
 import MetaMaskOnboarding from '@metamask/onboarding'
 
 const TOSS_ABI = [{
-  inputs: [],
-  name: 'buyTokens',
+  inputs:  [{ 'name': 'BaseUri', 'type': 'string memory' }],
+  name: 'mintItem',
   outputs: [],
   stateMutability: 'payable',
   type: 'function',
@@ -43,8 +43,6 @@ const addCartButton2 = document.getElementById('AddCartButton2')
 const cartItemNumber = document.getElementById('ItemNumber')
 let startNumItem = 0
 
-
-
 const initialize = () => {
   const isMetaMaskInstalled = () => {
     const { ethereum } = window
@@ -61,7 +59,7 @@ const initialize = () => {
       console.log(_accounts[0])
       
       const totalBNB = totalPrice * (10**18)
-      const txHash = COVENENT.methods.buyTokens().encodeABI()
+      const txHash = TOSS_receipt_contract.methods.mintItem().encodeABI()
       const txO = await ethereum.request({
         method: 'eth_sendTransaction',
         params: [{
