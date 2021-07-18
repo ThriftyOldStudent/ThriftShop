@@ -124,7 +124,6 @@ const formName = document.getElementById('rcvnameid')
 const formEmail = document.getElementById('emailid')
 const formMail = document.getElementById('mailaddsid')
 const formPhone = document.getElementById('phonenumid')
-let encryptedInfo = document.getElementById('entry.763798046')
 
 const checkform = () => {
 
@@ -141,7 +140,7 @@ const generateReceipt = () => {
   const encryptMessageInput = `${formName.value};${formEmail.value};${formMail.value};${formPhone.value};`
 
   try {
-    encryptedInfo = stringifiableToHex(
+    document.getElementById('entry.763798046').value = stringifiableToHex(
       encrypt(
         encryptionKey,
         { data: encryptMessageInput },
@@ -150,7 +149,7 @@ const generateReceipt = () => {
     )
     submitOrder.innerText = 'Order Submitted!'
     submitOrder.disabled = true
-    console.log(encryptedInfo)
+    console.log(document.getElementById('entry.763798046').value)
   } catch (error) {
     submitOrder.innerText = `Error: ${error.message}`
     console.log(submitOrder.innerText)
