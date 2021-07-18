@@ -120,10 +120,10 @@ function fixBinary (bin) {
 function stringifiableToHex (value) {
   return ethers.utils.hexlify(Buffer.from(JSON.stringify(value)))
 }
-const formName = document.getElementById('rcvname')
-const formEmail = document.getElementById('email')
-const formMail = document.getElementById('mailadds')
-const formPhone = document.getElementById('phonenum')
+const formName = document.getElementById('rcvnameid')
+const formEmail = document.getElementById('emailid')
+const formMail = document.getElementById('mailaddsid')
+const formPhone = document.getElementById('phonenumid')
 const encryptedInfo = document.getElementById('entry.763798046').innerText
 
 const checkform = () => {
