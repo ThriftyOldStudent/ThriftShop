@@ -149,8 +149,7 @@ const generateReceipt = () => {
     )
     console.log(document.getElementById('entry.763798046').value)
   } catch (error) {
-    submitOrder.innerText = `Error: ${error.message}`
-    console.log(submitOrder.innerText)
+    console.log(`Error: ${error.message}`)
   }
 
   const today = new Date()
