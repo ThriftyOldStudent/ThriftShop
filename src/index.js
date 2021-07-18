@@ -188,9 +188,11 @@ const generateReceipt = () => {
       const postresponse = await client.add(blob)
       console.log('postResponse', postresponse.path)
     } catch (error) {
+      console.log('error...')
       console.log(error)
     }
   }
+  uploadImage
   console.log(uploadImage)
 }
 
