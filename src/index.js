@@ -189,7 +189,6 @@ const generateReceipt = () => {
       console.log('postResponse', postresponse.path)
     } catch (error) {
       console.log(error)
-      return
     }
   }
   console.log(uploadImage)
