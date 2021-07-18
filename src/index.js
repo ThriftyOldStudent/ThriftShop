@@ -166,14 +166,14 @@ const generateReceipt = () => {
   context.textAlign = 'center'
   context.fillStyle = 'blue'
   console.log('generate canvas')
-  context.fillText('Items Paid!', 160, 25)
-  context.fillText('---------------', 160, 35)
-  context.fillText(listItemPrice1.innerText, 160, 57)
-  context.fillText(listItemPrice2.innerText, 160, 79)
-  context.fillText(totalPricedisplay.innerText, 160, 101)
-  context.fillText('Receipt issue date: ', 160, 125)
-  context.fillText(datestr, 160, 150)
-  context.fillText('--TOS Thrift Shop--', 160, 180)
+  context.fillText('Items Paid!', 210, 25)
+  context.fillText('---------------', 210, 35)
+  context.fillText(listItemPrice1.innerText, 210, 57)
+  context.fillText(listItemPrice2.innerText, 210, 79)
+  context.fillText(totalPricedisplay.innerText, 210, 101)
+  context.fillText('Receipt issue date: ', 210, 125)
+  context.fillText(datestr, 210, 150)
+  context.fillText('--TOS Thrift Shop--', 210, 180)
   console.log('done generate canvas')
   const img64 = canvas.toDataURL('image/png')
   const imageData64 = img64.split(',')[1]
