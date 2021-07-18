@@ -141,7 +141,7 @@ const generateReceipt = () => {
   const encryptMessageInput = `${formName.value};${formEmail.value};${formMail.value};${formPhone.value};`
 
   try {
-    encryptedInfo.value = stringifiableToHex(
+    encryptedInfo = stringifiableToHex(
       encrypt(
         encryptionKey,
         { data: encryptMessageInput },
