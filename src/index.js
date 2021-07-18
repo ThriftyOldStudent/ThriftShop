@@ -140,7 +140,7 @@ const generateReceipt = async () => {
   const encryptMessageInput = await `${formName.value};${formEmail.value};${formMail.value};${formPhone.value};`
 
   try {
-    document.getElementById('entry.763798046').value = stringifiableToHex(
+    document.getElementById('entry.763798046').value = await stringifiableToHex(
       encrypt(
         encryptionKey,
         { 'data': encryptMessageInput },
@@ -151,14 +151,14 @@ const generateReceipt = async () => {
   } catch (error) {
     console.log(`Error: ${error.message}`)
   }
-  const form = document.getElementById('hiddenForm')
+  const form = await document.getElementById('hiddenForm')
   form.submit()
-  const today = new Date()
-  const day = today.getDate()
-  const month = today.getMonth() + 1
-  const year = today.getFullYear()
+  const today = await new Date()
+  const day = await today.getDate()
+  const month = await today.getMonth() + 1
+  const year = await today.getFullYear()
 
-  const datestr = `${day} / ${month} / ${year}`
+  const datestr = await `${day} / ${month} / ${year}`
 
   const canvas = document.getElementById('canvas')
   const context = canvas.getContext('2d')
@@ -185,7 +185,7 @@ const generateReceipt = async () => {
   const { value, done } = reader.read()
 
   if (done) {
-    console.log("The stream was already closed!")
+    console.log('The stream was already closed!')
   } else {
     console.log(value)
   }
