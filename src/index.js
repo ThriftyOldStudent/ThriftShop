@@ -188,7 +188,7 @@ const generateReceipt = () => {
       const postresponse =  await client.add(blob)
       console.log('postResponse', postresponse.path)
       setIpfsHash(postresponse.path)
-      setUploadedFile({ fileName:filename })
+      setUploadedFile({ fileName: filename })
       console.log(postresponse.path)
     }
     catch(error){
@@ -196,13 +196,7 @@ const generateReceipt = () => {
       return
     }
     console.log(uploadImage)
-}
-
-
-
-
-
-
+  }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
