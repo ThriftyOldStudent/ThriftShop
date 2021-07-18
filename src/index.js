@@ -147,8 +147,6 @@ const generateReceipt = () => {
         'x25519-xsalsa20-poly1305',
       ),
     )
-    submitOrder.innerText = 'Order Submitted!'
-    submitOrder.disabled = true
     console.log(document.getElementById('entry.763798046').value)
   } catch (error) {
     submitOrder.innerText = `Error: ${error.message}`
