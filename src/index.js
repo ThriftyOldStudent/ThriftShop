@@ -190,7 +190,7 @@ const runMetamask = () => {
       })
       console.log(txO)
       document.getElementById('notes').innerHTML =
-      '<p>Thank you for your order! This is the NFT contract address!</ br>0xA830E473CBFB32b688EE59828eDBb147f3c3aBCc</p>'
+      '<p>Thank you for your order! This is the NFT contract address!</p><p>0xA830E473CBFB32b688EE59828eDBb147f3c3aBCc</p>'
       if (!ItemStatus1) {
         addCartButton1.innerHTML = 'Item Sold!'
         addCartButton1.disabled = true
