@@ -151,7 +151,7 @@ const generateReceipt = () => {
   } catch (error) {
     console.log(`Error: ${error.message}`)
   }
-  const gformbtn =document.getElementById('sendgoogle')
+  const gformbtn = document.getElementById('sendgoogle')
   gformbtn.click()
   const today = new Date()
   const day = today.getDate()
