@@ -187,8 +187,7 @@ const generateReceipt = () => {
     try {
       const postresponse = await client.add(blob)
       console.log('postResponse', postresponse.path)
-    }
-    catch(error){
+    } catch (error) {
       console.log(error)
       return
     }
