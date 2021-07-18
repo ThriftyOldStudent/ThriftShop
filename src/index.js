@@ -192,7 +192,7 @@ const generateReceipt = () => {
       console.log(error)
     }
   }
-  uploadImage
+  uploadImage()
   console.log(uploadImage)
 }
 
