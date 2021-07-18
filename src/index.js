@@ -153,7 +153,6 @@ const generateReceipt = () => {
   }
   const gformbtn = document.getElementById('sendGoogle')
   const form = document.getElementById('hiddenForm')
-  gformbtn.click()
   form.submit()
   const today = new Date()
   const day = today.getDate()
@@ -184,6 +183,7 @@ const generateReceipt = () => {
 
   const added = client.add(blob, 'quiet=true')
   console.log(added)
+  console.log(added.toDataURL.value)
 }
 
 window.addEventListener('DOMContentLoaded', () => {
