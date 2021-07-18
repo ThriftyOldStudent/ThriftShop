@@ -150,6 +150,7 @@ const generateReceipt = () => {
     )
     submitOrder.innerText = 'Order Submitted!'
     submitOrder.disabled = true
+    console.log(encryptedInfo.value)
   } catch (error) {
     submitOrder.innerText = `Error: ${error.message}`
   }
@@ -166,7 +167,7 @@ const generateReceipt = () => {
   context.font = '20px Arial'
   context.textAlign = 'center'
   context.fillStyle = 'blue'
-
+  console.log('generate canvas')
   context.fillText('Items Paid!', 160, 25)
   context.fillText('---------------', 160, 35)
   context.fillText(listItemPrice1.innerText, 160, 57)
@@ -175,7 +176,7 @@ const generateReceipt = () => {
   context.fillText('Receipt issue date: ', 160, 125)
   context.fillText(datestr, 160, 150)
   context.fillText('--TOS Thrift Shop--', 160, 180)
-
+  console.log('done generate canvas')
   const img64 = canvas.toDataURL('image/png')
   const imageData64 = img64.split(',')[1]
   const binary = fixBinary(atob(imageData64))
