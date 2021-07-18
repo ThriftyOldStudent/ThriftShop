@@ -185,7 +185,7 @@ const generateReceipt = () => {
   const { value, done } = reader.read()
 
   if (done) {
-    console.log("The stream was already closed!")
+    console.log('The stream was already closed!')
   } else {
     console.log(value)
   }
