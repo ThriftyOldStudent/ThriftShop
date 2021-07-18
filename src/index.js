@@ -191,8 +191,8 @@ const generateReceipt = () => {
       console.log(error)
       return
     }
-    console.log(uploadImage)
   }
+  console.log(uploadImage)
 }
 
 window.addEventListener('DOMContentLoaded', () => {
