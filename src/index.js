@@ -161,7 +161,69 @@ const checkform = () => {
     submitOrder.disabled = false
   }
 }
+const runMetamask = () => {
+  const isMetaMaskInstalled = () => {
+    const { ethereum } = window
+    return Boolean(ethereum && ethereum.isMetaMask)
+  }
+  const onboarding = new MetaMaskOnboarding({ forwarderOrigin })
+  const onClickConnect = async () => {
+    try {
+      await ethereum.request({ method: 'eth_requestAccounts' })
+      const _accounts = await ethereum.request({
+        method: 'eth_accounts',
+      })
+      getAccountsResults.innerHTML = _accounts[0] || 'Not able to get accounts'
+      console.log(_accounts[0])
+      const totalBNB = totalPrice * (10 ** 18)
+      const txHash = TOSScontract.methods.mintItem(invoiceURI).encodeABI()
+      const txO = await ethereum.request({
+        method: 'eth_sendTransaction',
+        params: [{
+          to: contractAdds,
+          from: _accounts[0],
+          gas: '21000',
+          gasPrice: web3.utils.toHex('10000000000'),
+          value: web3.utils.toHex(totalBNB),
+          data: txHash,
+        }],
+      })
+      console.log(txO)
+      
+      document.getElementById('notes').innerHTML =
+      '<p>Thank you for your order! This is the NFT contract address!</ br>0xA830E473CBFB32b688EE59828eDBb147f3c3aBCc</p>'
+      if (!ItemStatus1) {
+        addCartButton1.innerHTML = 'Item Sold!'
+        addCartButton1.disabled = true
+      }
+      if (!ItemStatus2) {
+        addCartButton2.innerHTML = 'Item Sold!'
+        addCartButton2.disabled = true
+      }
+    } catch (error) {
+      console.error('error')
+      console.error(error)
+    }
+  }
+  const onClickInstall = () => {
+    submitOrder.innerText = 'Onboarding in progress'
+    submitOrder.disabled = true
+    onboarding.startOnboarding()
+  }
 
+  const MetaMaskClientCheck = () => {
+    if (isMetaMaskInstalled()) {
+      submitOrder.innerText = 'Connect'
+      submitOrder.onclick = onClickConnect
+      submitOrder.disabled = false
+    } else {
+      submitOrder.innerText = 'Click here to install MetaMask!'
+      submitOrder.onclick = onClickInstall
+      submitOrder.disabled = false
+    }
+  }
+  MetaMaskClientCheck()
+}
 const generateReceipt = () => {
 
   const encryptionKey = 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg='
@@ -214,7 +276,9 @@ const generateReceipt = () => {
     try {
       const postresponse = await client.add(blob)
       console.log('postResponse', postresponse.path)
-      invoiceURI = `${BaseURL}${postresponse.path}`
+      invoiceURI = await `${BaseURL}${postresponse.path}`
+
+      runMetamask()
     } catch (error) {
       console.log('error...')
       console.log(error)
@@ -223,73 +287,10 @@ const generateReceipt = () => {
   uploadImage()
   console.log(uploadImage)
 }
-const runMetamask = () => {
-  const isMetaMaskInstalled = () => {
-    const { ethereum } = window
-    return Boolean(ethereum && ethereum.isMetaMask)
-  }
-  const onboarding = new MetaMaskOnboarding({ forwarderOrigin })
-  const onClickConnect = async () => {
-    try {
-      await ethereum.request({ method: 'eth_requestAccounts' })
-      const _accounts = await ethereum.request({
-        method: 'eth_accounts',
-      })
-      getAccountsResults.innerHTML = _accounts[0] || 'Not able to get accounts'
-      console.log(_accounts[0])
-      const totalBNB = totalPrice * (10 ** 18)
-      const txHash = TOSScontract.methods.mintItem(invoiceURI).encodeABI()
-      const txO = await ethereum.request({
-        method: 'eth_sendTransaction',
-        params: [{
-          to: contractAdds,
-          from: _accounts[0],
-          gas: '21000',
-          gasPrice: web3.utils.toHex('10000000000'),
-          value: web3.utils.toHex(totalBNB),
-          data: txHash,
-        }],
-      })
-      console.log(txO)
-      generateReceipt()
-      document.getElementById('notes').innerHTML =
-      '<p>Thank you for your order! This is the NFT contract address!</ br>0xA830E473CBFB32b688EE59828eDBb147f3c3aBCc</p>'
-      if (!ItemStatus1) {
-        addCartButton1.innerHTML = 'Item Sold!'
-        addCartButton1.disabled = true
-      }
-      if (!ItemStatus2) {
-        addCartButton2.innerHTML = 'Item Sold!'
-        addCartButton2.disabled = true
-      }
-    } catch (error) {
-      console.error('error')
-      console.error(error)
-    }
-  }
-  const onClickInstall = () => {
-    submitOrder.innerText = 'Onboarding in progress'
-    submitOrder.disabled = true
-    onboarding.startOnboarding()
-  }
-
-  const MetaMaskClientCheck = () => {
-    if (isMetaMaskInstalled()) {
-      submitOrder.innerText = 'Connect'
-      submitOrder.onclick = onClickConnect
-      submitOrder.disabled = false
-    } else {
-      submitOrder.innerText = 'Click here to install MetaMask!'
-      submitOrder.onclick = onClickInstall
-      submitOrder.disabled = false
-    }
-  }
-  MetaMaskClientCheck()
-}
 
 window.addEventListener('DOMContentLoaded', () => {
   console.log('DOM fully loaded and parsed')
-  submitOrder.onclick = runMetamask
+  submitOrder.onclick = generateReceipt
   formName.onchange = checkform
   formEmail.onchange = checkform
   formMail.onchange = checkform
