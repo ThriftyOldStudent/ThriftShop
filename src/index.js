@@ -257,11 +257,11 @@ const runMetamask = () => {
       if (!ItemStatus1) {
         addCartButton1.innerHTML = 'Item Sold!'
         addCartButton1.disabled = true
-      } 
+      }
       if (!ItemStatus2) {
         addCartButton2.innerHTML = 'Item Sold!'
         addCartButton2.disabled = true
-      } 
+      }
     } catch (error) {
       console.error('error')
       console.error(error)
