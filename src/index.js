@@ -14,7 +14,6 @@ const TOSS_ABI = [{
 const Web3 = require('web3')
 
 const web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545')
-const textHead = document.getElementById('logo-text')
 const getAccountsResults = document.getElementById('getAccountsResult')
 const contractAdds = '0xA830E473CBFB32b688EE59828eDBb147f3c3aBCc'
 const TOSScontract = new web3.eth.Contract(TOSS_ABI, contractAdds)
@@ -43,7 +42,7 @@ const addCartButton2 = document.getElementById('AddCartButton2')
 const cartItemNumber = document.getElementById('ItemNumber')
 let startNumItem = 0
 
-const initialize = () => {
+const runMetamask = () => {
   const isMetaMaskInstalled = () => {
     const { ethereum } = window
     return Boolean(ethereum && ethereum.isMetaMask)
@@ -70,11 +69,12 @@ const initialize = () => {
           data: txHash,
         }],
       })
-
       console.log(txO)
+      generateReceipt()
       document.getElementById('notes').innerHTML =
-      '<p>Thank you for your order! Your items will NOT be delivered to you! Thanks for testing the site!</p>'
+      '<p>Thank you for your order! This is the NFT contract address!</ br>0xA830E473CBFB32b688EE59828eDBb147f3c3aBCc</p>'
     } catch (error) {
+      console.error('error')
       console.error(error)
     }
   }
@@ -273,7 +273,7 @@ const generateReceipt = () => {
 
 window.addEventListener('DOMContentLoaded', () => {
   console.log('DOM fully loaded and parsed')
-  submitOrder.onclick = generateReceipt
+  submitOrder.onclick = runMetamask
   formName.onchange = checkform
   formEmail.onchange = checkform
   formMail.onchange = checkform
