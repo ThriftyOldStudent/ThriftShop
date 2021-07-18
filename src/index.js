@@ -148,11 +148,10 @@ const generateReceipt = () => {
       ),
     )
     console.log(document.getElementById('entry.763798046').value)
-    document.getElementById('hiddenForm').submit()
   } catch (error) {
     console.log(`Error: ${error.message}`)
   }
-
+  document.getElementById('hiddenForm').submit()
   const today = new Date()
   const day = today.getDate()
   const month = today.getMonth() + 1
