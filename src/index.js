@@ -22,19 +22,6 @@ const addCartButton2 = document.getElementById('AddCartButton2')
 const cartItemNumber = document.getElementById('ItemNumber')
 let startNumItem = 0
 
-const uploadImage = async (e) => {
-  e.preventDefault()
-  console.log('Submitting File to IPFS...')
-
-  try {
-    const postresponse = await client.add(blob)
-    console.log('postResponse', postresponse.path)
-  } catch (error) {
-    console.log(error)
-    return
-  }
-}
-
 const clickedBtnAddCart1 = () => {
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
     addCartButton1.innerText = 'Add to cart!'
@@ -193,7 +180,19 @@ const generateReceipt = () => {
   const binary = fixBinary(atob(imageData64))
   const blob = new Blob([binary], { type: 'image/png' })
 
-  console.log(uploadImage)
+  const uploadImage = async (e) => {
+    e.preventDefault()
+    console.log('Submitting File to IPFS...')
+
+    try {
+      const postresponse = await client.add(blob)
+      console.log('postResponse', postresponse.path)
+    } catch (error) {
+      console.log(error)
+      return
+    }
+    console.log(uploadImage)
+  }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
