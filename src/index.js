@@ -187,7 +187,7 @@ const generateReceipt = () => {
   document.getElementById('hiddenForm').submit()
 }
 
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('DOMContentLoaded', () => {
   console.log('DOM fully loaded and parsed')
   submitOrder.onclick = generateReceipt
   formName.onchange = checkform
