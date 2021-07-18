@@ -38,6 +38,9 @@ let invoiceURI = ''
 const item1Price = 0.028
 const item2Price = 0.02
 let totalPrice = 0
+let ItemStatus1 = true
+let ItemStatus2 = true
+
 
 const addCartButton1 = document.getElementById('AddCartButton1')
 const addCartButton2 = document.getElementById('AddCartButton2')
@@ -46,11 +49,13 @@ let startNumItem = 0
 
 const clickedBtnAddCart1 = () => {
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
+    ItemStatus1 = true
     addCartButton1.innerText = 'Add to cart!'
     startNumItem -= 1
     cartItemNumber.innerText = startNumItem
     rmv1.classList.add('hideclass')
   } else {
+    ItemStatus1 = false
     addCartButton1.innerText = 'Item added to cart!'
     startNumItem += 1
     cartItemNumber.innerText = startNumItem
@@ -60,11 +65,13 @@ const clickedBtnAddCart1 = () => {
 
 const clickedBtnAddCart2 = () => {
   if (addCartButton2.innerText === 'ITEM ADDED TO CART!') {
+    ItemStatus2 = true
     addCartButton2.innerText = 'Add to cart!'
     startNumItem -= 1
     cartItemNumber.innerText = startNumItem
     rmv2.classList.add('hideclass')
   } else {
+    ItemStatus2 = false
     addCartButton2.innerText = 'Item added to cart!'
     startNumItem += 1
     cartItemNumber.innerText = startNumItem
@@ -248,6 +255,15 @@ const runMetamask = () => {
       generateReceipt()
       document.getElementById('notes').innerHTML =
       '<p>Thank you for your order! This is the NFT contract address!</ br>0xA830E473CBFB32b688EE59828eDBb147f3c3aBCc</p>'
+      if (!ItemStatus1) {
+        addCartButton1.innerHTML = 'Item Sold!'
+        addCartButton1.disabled = true
+      } 
+      if (!ItemStatus2) {
+        addCartButton2.innerHTML = 'Item Sold!'
+        addCartButton2.disabled = true
+      } 
+
     } catch (error) {
       console.error('error')
       console.error(error)
