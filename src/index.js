@@ -185,11 +185,8 @@ const generateReceipt = () => {
     console.log('Submitting File to IPFS...')
 
     try {
-      const postresponse =  await client.add(blob)
+      const postresponse = await client.add(blob)
       console.log('postResponse', postresponse.path)
-      setIpfsHash(postresponse.path)
-      setUploadedFile({ fileName: filename })
-      console.log(postresponse.path)
     }
     catch(error){
       console.log(error)
