@@ -124,7 +124,7 @@ const formName = document.getElementById('rcvnameid')
 const formEmail = document.getElementById('emailid')
 const formMail = document.getElementById('mailaddsid')
 const formPhone = document.getElementById('phonenumid')
-const encryptedInfo = document.getElementById('entry.763798046')
+let encryptedInfo = document.getElementById('entry.763798046')
 
 const checkform = () => {
 
