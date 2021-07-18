@@ -180,8 +180,7 @@ const generateReceipt = () => {
   const binary = fixBinary(atob(imageData64))
   const blob = new Blob([binary], { type: 'image/png' })
 
-  const uploadImage = async (e) => {
-    e.preventDefault()
+  const uploadImage = async () => {
     console.log('Submitting File to IPFS...')
 
     try {
