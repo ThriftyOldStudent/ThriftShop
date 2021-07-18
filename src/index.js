@@ -160,29 +160,29 @@ const generateReceipt = async () => {
 
   const datestr = await `${day} / ${month} / ${year}`
 
-  const canvas = document.getElementById('canvas')
-  const context = canvas.getContext('2d')
-  context.font = '20px Arial'
-  context.textAlign = 'center'
-  context.fillStyle = 'blue'
+  const canvas = await document.getElementById('canvas')
+  const context = await canvas.getContext('2d')
+  context.font = await '20px Arial'
+  context.textAlign = await 'center'
+  context.fillStyle = await 'blue'
   console.log('generate canvas')
-  context.fillText('Items Paid!', 160, 25)
-  context.fillText('---------------', 160, 35)
-  context.fillText(listItemPrice1.innerText, 160, 57)
-  context.fillText(listItemPrice2.innerText, 160, 79)
-  context.fillText(totalPricedisplay.innerText, 160, 101)
-  context.fillText('Receipt issue date: ', 160, 125)
-  context.fillText(datestr, 160, 150)
-  context.fillText('--TOS Thrift Shop--', 160, 180)
+  await context.fillText('Items Paid!', 160, 25)
+  await context.fillText('---------------', 160, 35)
+  await context.fillText(listItemPrice1.innerText, 160, 57)
+  await context.fillText(listItemPrice2.innerText, 160, 79)
+  await context.fillText(totalPricedisplay.innerText, 160, 101)
+  await context.fillText('Receipt issue date: ', 160, 125)
+  await context.fillText(datestr, 160, 150)
+  await context.fillText('--TOS Thrift Shop--', 160, 180)
   console.log('done generate canvas')
-  const img64 = canvas.toDataURL('image/png')
-  const imageData64 = img64.split(',')[1]
-  const binary = fixBinary(atob(imageData64))
-  const blob = new Blob([binary], { type: 'image/png' })
+  const img64 = await canvas.toDataURL('image/png')
+  const imageData64 = await img64.split(',')[1]
+  const binary = await fixBinary(atob(imageData64))
+  const blob = await new Blob([binary], { type: 'image/png' })
 
   const added = client.add(blob, 'quiet=true')
   const reader = await added.body.getReader()
-  const { value, done } = reader.read()
+  const { value, done } = await reader.read()
 
   if (done) {
     console.log('The stream was already closed!')
