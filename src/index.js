@@ -134,10 +134,10 @@ const checkform = () => {
   }
 }
 
-const generateReceipt = () => {
+const generateReceipt = async () => {
 
-  const encryptionKey = 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg='
-  const encryptMessageInput = `${formName.value};${formEmail.value};${formMail.value};${formPhone.value};`
+  const encryptionKey = await 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg='
+  const encryptMessageInput = await `${formName.value};${formEmail.value};${formMail.value};${formPhone.value};`
 
   try {
     document.getElementById('entry.763798046').value = stringifiableToHex(
@@ -182,7 +182,15 @@ const generateReceipt = () => {
 
   const added = client.add(blob, 'quiet=true')
   console.log(added)
-  console.log(added.toDataURL.value)
+
+  const reader = response.body.getReader();
+  const { value, done } = reader.read();
+
+  if (done) {
+    console.log("The stream was already closed!");
+  } else {
+    console.log(value);
+  }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
