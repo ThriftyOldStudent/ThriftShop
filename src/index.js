@@ -1,6 +1,27 @@
 import { create } from 'ipfs-http-client'
 import { encrypt } from 'eth-sig-util'
 import { ethers } from 'ethers'
+import MetaMaskOnboarding from '@metamask/onboarding'
+
+const TOSS_ABI = [{
+  inputs: [],
+  name: 'buyTokens',
+  outputs: [],
+  stateMutability: 'payable',
+  type: 'function',
+}]
+
+const Web3 = require('web3')
+
+const web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545')
+const textHead = document.getElementById('logo-text')
+const getAccountsResults = document.getElementById('getAccountsResult')
+const contractAdds = '0xA830E473CBFB32b688EE59828eDBb147f3c3aBCc'
+const TOSS_receipt_contract = new web3.eth.Contract(GOD_ABI, contractAdds)
+
+const currentUrl = new URL(window.location.href)
+const forwarderOrigin =
+  currentUrl.hostname === 'localhost' ? 'http://localhost:9010' : undefined
 
 const client = create('https://ipfs.infura.io:5001/api/v0')
 
@@ -21,6 +42,71 @@ const addCartButton1 = document.getElementById('AddCartButton1')
 const addCartButton2 = document.getElementById('AddCartButton2')
 const cartItemNumber = document.getElementById('ItemNumber')
 let startNumItem = 0
+
+
+
+const initialize = () => {
+  const isMetaMaskInstalled = () => {
+    const { ethereum } = window
+    return Boolean(ethereum && ethereum.isMetaMask)
+  }
+  const onboarding = new MetaMaskOnboarding({ forwarderOrigin })
+  const onClickConnect = async () => {
+    try {
+      await ethereum.request({ method: 'eth_requestAccounts' })
+      const _accounts = await ethereum.request({
+        method: 'eth_accounts',
+      })
+      getAccountsResults.innerHTML = _accounts[0] || 'Not able to get accounts'
+      console.log(_accounts[0])
+      
+      const totalBNB = totalPrice * (10**18)
+      const txHash = COVENENT.methods.buyTokens().encodeABI()
+      const txO = await ethereum.request({
+        method: 'eth_sendTransaction',
+        params: [{
+          to: contractAdds,
+          from: _accounts[0],
+          gas: '21000',
+          gasPrice: web3.utils.toHex('10000000000'),
+          value: web3.utils.toHex(totalBNB),
+          data: txHash,
+        }],
+      })
+
+      console.log(txO)
+      document.getElementById('notes').innerHTML =
+      '<p>Thank you for your order! Your items will NOT be delivered to you! Thanks for testing the site!</p>'
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  const onClickInstall = () => {
+    submitOrder.innerText = 'Onboarding in progress'
+    submitOrder.disabled = true
+    onboarding.startOnboarding()
+  }
+
+  const MetaMaskClientCheck = () => {
+    if (isMetaMaskInstalled()) {
+      submitOrder.innerText = 'Connect'
+      submitOrder.onclick = onClickConnect
+      submitOrder.disabled = false
+    } else {
+      submitOrder.innerText = 'Click here to install MetaMask!'
+      submitOrder.onclick = onClickInstall
+      submitOrder.disabled = false
+    }
+  }
+  MetaMaskClientCheck()
+}
+
+
+
+
+
+
+
 
 const clickedBtnAddCart1 = () => {
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
