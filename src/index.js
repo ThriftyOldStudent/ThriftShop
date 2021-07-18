@@ -16,6 +16,7 @@ const submitOrder = document.getElementById('order')
 const item1Price = 0.028
 const item2Price = 0.02
 let totalPrice = 0
+let IPFSval
 
 const addCartButton1 = document.getElementById('AddCartButton1')
 const addCartButton2 = document.getElementById('AddCartButton2')
@@ -180,12 +181,8 @@ const generateReceipt = () => {
   const binary = fixBinary(atob(imageData64))
   const blob = new Blob([binary], { type: 'image/png' })
 
-  const { value, done } = client.add(blob)
-  if (done) {
-    console.log('The stream was already closed!')
-  } else {
-    console.log(value)
-  }
+  IPFSval = client.add(blob)
+  console.log(IPFSval)
 }
 
 window.addEventListener('DOMContentLoaded', () => {
