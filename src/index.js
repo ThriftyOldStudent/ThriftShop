@@ -150,7 +150,7 @@ const generateReceipt = () => {
     )
     submitOrder.innerText = 'Order Submitted!'
     submitOrder.disabled = true
-    console.log(encryptedInfo.value)
+    console.log(encryptedInfo)
   } catch (error) {
     submitOrder.innerText = `Error: ${error.message}`
     console.log(submitOrder.innerText)
