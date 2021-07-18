@@ -40,6 +40,7 @@ const item2Price = 0.02
 let totalPrice = 0
 let ItemStatus1 = true
 let ItemStatus2 = true
+let TokenID = 0
 
 const addCartButton1 = document.getElementById('AddCartButton1')
 const addCartButton2 = document.getElementById('AddCartButton2')
@@ -187,8 +188,10 @@ const runMetamask = () => {
           value: web3.utils.toHex(totalBNB),
           data: txHash,
         }],
-      }).then(console.log)
+      }).then(TokenID)
       console.log(txO)
+      console.log('TokenID')
+      console.log(TokenID)
       document.getElementById('notes').innerHTML =
       '<p>Thank you for your order! This is the ID: </p><p>Contract address: 0xA830E473CBFB32b688EE59828eDBb147f3c3aBCc</p>'
       if (!ItemStatus1) {
