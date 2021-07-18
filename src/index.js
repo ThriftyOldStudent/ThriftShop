@@ -187,9 +187,9 @@ const runMetamask = () => {
           value: web3.utils.toHex(totalBNB),
           data: txHash,
         }],
-      }).then((TokenID) => {
-        console.log(TokenID)
-        document.getElementById('notes').innerHTML = `Token ID: ${TokenID}`
+      }).then((newItemId) => {
+        console.log(newItemId)
+        document.getElementById('notes').innerHTML = `Token ID: ${newItemId}`
       })
       console.log(txO)
       console.log('TokenID')
