@@ -181,8 +181,29 @@ const generateReceipt = () => {
   const binary = fixBinary(atob(imageData64))
   const blob = new Blob([binary], { type: 'image/png' })
 
-  IPFSval = client.add(blob)
-  console.log(IPFSval)
+  const uploadImage = async (e) => {
+    e.preventDefault();
+    console.log("Submitting File to IPFS...");
+
+    try {
+      const postresponse =  await client.add(blob)
+      console.log("postResponse", postresponse.path)
+      setIpfsHash(postresponse.path);
+      setUploadedFile({ fileName:filename })
+      console.log(postresponse.path)
+    }
+    catch(error){
+      console.log(error)
+      return
+    }
+    console.log(uploadImage)
+}
+
+
+
+
+
+
 }
 
 window.addEventListener('DOMContentLoaded', () => {
