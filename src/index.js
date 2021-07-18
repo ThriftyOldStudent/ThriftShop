@@ -181,9 +181,7 @@ const generateReceipt = async () => {
   const blob = new Blob([binary], { type: 'image/png' })
 
   const added = client.add(blob, 'quiet=true')
-  console.log(added)
-
-  const reader = response.body.getReader()
+  const reader = await added.body.getReader()
   const { value, done } = reader.read()
 
   if (done) {
