@@ -6,7 +6,7 @@ import MetaMaskOnboarding from '@metamask/onboarding'
 const TOSS_ABI = [{
   inputs: [{ 'name': 'BaseUri', 'type': 'string memory' }],
   name: 'mintItem',
-  outputs: [],
+  outputs: [{ 'name': 'newItemId', 'type': 'uint256' }],
   stateMutability: 'payable',
   type: 'function',
 }]
@@ -33,6 +33,8 @@ const listItemPrice1 = document.getElementById('list-items1')
 const listItemPrice2 = document.getElementById('list-items2')
 const totalPricedisplay = document.getElementById('list-total')
 const submitOrder = document.getElementById('order')
+const BaseURL = 'https://ipfs.io/ipfs/'
+const invoiceURI;
 const item1Price = 0.028
 const item2Price = 0.02
 let totalPrice = 0
@@ -206,6 +208,7 @@ const generateReceipt = () => {
     try {
       const postresponse = await client.add(blob)
       console.log('postResponse', postresponse.path)
+      invoiceURI = `${BaseURL}${postresponse.path}`
     } catch (error) {
       console.log('error...')
       console.log(error)
@@ -229,7 +232,7 @@ const runMetamask = () => {
       getAccountsResults.innerHTML = _accounts[0] || 'Not able to get accounts'
       console.log(_accounts[0])
       const totalBNB = totalPrice * (10 ** 18)
-      const txHash = TOSScontract.methods.mintItem().encodeABI()
+      const txHash = TOSScontract.methods.mintItem(invoiceURI).encodeABI()
       const txO = await ethereum.request({
         method: 'eth_sendTransaction',
         params: [{

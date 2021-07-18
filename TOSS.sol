@@ -39,20 +39,7 @@ contract TosNFT is ERC721, ERC721URIStorage, Ownable {
 
         Items[newItemId] = Item(newItemId, msg.sender, uri);
         emit ItemMinted(newItemId, msg.sender, uri, msg.sender);
-
         return newItemId;
-    }
-    
-    function mintItemLoop(string memory BaseUri, uint256 TotalNum) public onlyOwner returns (uint256) {
-        uint256 totItemId;
-        string memory UriGen;
-        
-        for(uint256 i=0; i<TotalNum; i++){
-            UriGen = string(abi.encodePacked(BaseUri,i.toString(),".jpeg"));
-            totItemId = mintItem(UriGen);
-        }
-    
-        return totItemId;
     }
     
     function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
