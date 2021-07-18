@@ -144,7 +144,7 @@ const generateReceipt = () => {
     encryptedInfo.value = stringifiableToHex(
       encrypt(
         encryptionKey,
-        { data: encryptMessageInput.value },
+        { data: encryptMessageInput },
         'x25519-xsalsa20-poly1305',
       ),
     )
