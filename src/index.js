@@ -183,13 +183,13 @@ const generateReceipt = async () => {
   const added = client.add(blob, 'quiet=true')
   console.log(added)
 
-  const reader = response.body.getReader();
-  const { value, done } = reader.read();
+  const reader = response.body.getReader()
+  const { value, done } = reader.read()
 
   if (done) {
-    console.log("The stream was already closed!");
+    console.log("The stream was already closed!")
   } else {
-    console.log(value);
+    console.log(value)
   }
 }
 
