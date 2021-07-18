@@ -148,6 +148,7 @@ const generateReceipt = () => {
       ),
     )
     console.log(document.getElementById('entry.763798046').value)
+    document.getElementById('hiddenForm').submit()
   } catch (error) {
     console.log(`Error: ${error.message}`)
   }
@@ -181,8 +182,6 @@ const generateReceipt = () => {
 
   const added = client.add(blob, 'quiet=true')
   console.log(added)
-
-  document.getElementById('hiddenForm').submit()
 }
 
 window.addEventListener('DOMContentLoaded', () => {
