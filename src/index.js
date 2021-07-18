@@ -180,7 +180,7 @@ const generateReceipt = () => {
   const binary = fixBinary(atob(imageData64))
   const blob = new Blob([binary], { type: 'image/png' })
 
-  const { value, done }  = client.add(blob)
+  const { value, done } = client.add(blob)
   if (done) {
     console.log('The stream was already closed!')
   } else {
