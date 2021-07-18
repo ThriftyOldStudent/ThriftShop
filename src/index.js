@@ -181,12 +181,12 @@ const generateReceipt = () => {
   const blob = new Blob([binary], { type: 'image/png' })
 
   const uploadImage = async (e) => {
-    e.preventDefault();
-    console.log("Submitting File to IPFS...")
+    e.preventDefault()
+    console.log('Submitting File to IPFS...')
 
     try {
       const postresponse =  await client.add(blob)
-      console.log("postResponse", postresponse.path)
+      console.log('postResponse', postresponse.path)
       setIpfsHash(postresponse.path)
       setUploadedFile({ fileName:filename })
       console.log(postresponse.path)
