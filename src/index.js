@@ -125,7 +125,8 @@ let formEmail = document.getElementById('email')
 let formMail = document.getElementById('mailadds')
 let formPhone = document.getElementById('phonenum')
 let encryptedInfo = document.getElementById('entry.763798046').innerText
-function checkform () {
+
+const checkform = () => { 
 
   if ((formName.value === '') || (formEmail.value === '') || (formMail.value === '') || (formPhone.value === '')) {
     submitOrder.disabled = true
@@ -186,4 +187,7 @@ const generateReceipt = () => {
   document.getElementById('hiddenForm').submit()
 }
 submitOrder.onclick = generateReceipt
-document.getElementById('buyerdetails').addEventListener('keypress', checkform)
+formName.onchange = checkform
+formEmail.onchange = checkform
+formMail.onchange = checkform
+formPhone.onchange = checkform
