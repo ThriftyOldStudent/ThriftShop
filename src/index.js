@@ -186,8 +186,12 @@ const generateReceipt = () => {
 
   document.getElementById('hiddenForm').submit()
 }
-submitOrder.onclick = generateReceipt
-formName.onchange = checkform
-formEmail.onchange = checkform
-formMail.onchange = checkform
-formPhone.onchange = checkform
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  console.log('DOM fully loaded and parsed')
+  submitOrder.onclick = generateReceipt
+  formName.onchange = checkform
+  formEmail.onchange = checkform
+  formMail.onchange = checkform
+  formPhone.onchange = checkform
+})
