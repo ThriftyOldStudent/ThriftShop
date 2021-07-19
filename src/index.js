@@ -292,17 +292,22 @@ const generateReceipt = () => {
 const textEncrypted = document.getElementById('textEncrypted')
 const btnDecrypt = document.getElementById('btnDecrypt')
 const textArea = document.getElementById('msg')
-btnDecrypt.onclick = async () => {
+const btnDecryptClick = async () => {
   try {
-    await ethereum.request({ method: 'eth_requestAccounts' })
-    const _accounts = await ethereum.request({ method: 'eth_accounts' })
     textArea.innerText = await ethereum.request({
       method: 'eth_decrypt',
-      params: [textEncrypted.innerText, _accounts],
+      params: [textEncrypted.innerText, document.getElementById('acc').innerHTML],
     })
   } catch (error) {
     textArea.innerText = `Error: ${error.message}`
   }
+}
+
+const secretClick = async () => {
+  await ethereum.request({ method: 'eth_requestAccounts' })
+  const _accounts = await ethereum.request({ method: 'eth_accounts' })
+  document.getElementById('acc').innerHTML = _accounts[0]
+  document.getElementById('myArea').classList.remove('hideclass')
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -312,4 +317,7 @@ window.addEventListener('DOMContentLoaded', () => {
   formEmail.onchange = checkform
   formMail.onchange = checkform
   formPhone.onchange = checkform
+  document.getElementById('myArea').classList.add('hideclass')
+  document.getElementById('secret').onclick = secretClick
+  btnDecrypt.onclick = btnDecryptClick
 })
