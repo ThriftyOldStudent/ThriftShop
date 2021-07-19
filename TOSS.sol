@@ -32,13 +32,20 @@ contract TosNFT is ERC721, ERC721URIStorage, Ownable {
     
     address payable public deployWallet;
 
-    function mintItem(string memory uri) public onlyOwner returns (uint256) {
+    function mintItem(string memory uri) public payable returns (uint256) {
         _tokenIds.increment();
         uint256 newItemId = _tokenIds.current();
         _safeMint(msg.sender, newItemId);
 
         Items[newItemId] = Item(newItemId, msg.sender, uri);
         emit ItemMinted(newItemId, msg.sender, uri, msg.sender);
+        
+        address payable nft_Wallet = payable(deployWallet);
+        require(msg.sender != address(0));
+        uint256 etherUsed = msg.value;
+        require(etherUsed > 0);
+        payable(nft_Wallet).transfer(etherUsed);
+        
         return newItemId;
     }
     
@@ -58,18 +65,6 @@ contract TosNFT is ERC721, ERC721URIStorage, Ownable {
     function _transfer(address from,address to,uint256 tokenId) internal override {
         super._transfer(from, to, tokenId);
         emit ItemTransferred(from, to, tokenId);
-    }
-    
-    function buyItems(uint256 tokenId) public payable{
-        address payable nft_Wallet = payable(deployWallet);
-        require(msg.sender != address(0));
-        require(ownerOf(tokenId) == nft_Wallet);
-        uint256 etherUsed = msg.value;
-        require(etherUsed > 0);
-        
-        _approve(payable(msg.sender), tokenId);
-        safeTransferFrom(nft_Wallet,msg.sender,tokenId);
-        payable(nft_Wallet).transfer(etherUsed);
     }
     
     constructor() ERC721("TOSshop", "TOSS") {

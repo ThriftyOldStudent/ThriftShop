@@ -15,7 +15,7 @@ const Web3 = require('web3')
 
 const web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545')
 const getAccountsResults = document.getElementById('getAccountsResult')
-const contractAdds = '0x9224e655ce7e456eBce65B6A5821E93d38f96427'
+const contractAdds = '0x976Fb8326cc314d19ec9cbEd855dB6539540867d'
 const TOSScontract = new web3.eth.Contract(TOSS_ABI, contractAdds)
 
 const currentUrl = new URL(window.location.href)
@@ -177,7 +177,7 @@ const runMetamask = () => {
       console.log(_accounts[0])
       const totalBNB = totalPrice * (10 ** 18)
       const txHash = TOSScontract.methods.mintItem(invoiceURI).encodeABI()
-      const txO = await ethereum.request({
+      const { txO, what } = await ethereum.request({
         method: 'eth_sendTransaction',
         params: [{
           to: contractAdds,
@@ -187,13 +187,12 @@ const runMetamask = () => {
           value: web3.utils.toHex(totalBNB),
           data: txHash,
         }],
-      }).then((newItemId) => {
-        console.log(newItemId)
-        document.getElementById('notes').innerHTML += `Token ID: ${newItemId}`
       })
+
       console.log(txO)
-      document.getElementById('notes').innerHTML +=
-      '<p>Thank you for your order!</p><p>Contract address: 0x9224e655ce7e456eBce65B6A5821E93d38f96427</p>'
+      console.log(what)
+      document.getElementById('notes').innerHTML =
+      '<p>Thank you for your order!</p><p>Contract address: 0x976Fb8326cc314d19ec9cbEd855dB6539540867d</p>'
       submitOrder.disabled = true
       document.getElementById('buyerdetails').classList.add('hideclass')
       if (!ItemStatus1) {
