@@ -194,7 +194,7 @@ const runMetamask = () => {
       console.log(txO)
       document.getElementById('notes').innerHTML +=
       '<p>Thank you for your order!</p><p>Contract address: 0xA830E473CBFB32b688EE59828eDBb147f3c3aBCc</p>'
-      submitOrder.disabled =true
+      submitOrder.disabled = true
       document.getElementById('buyerdetails').classList.add('hideclass')
       if (!ItemStatus1) {
         addCartButton1.innerHTML = 'Item Sold!'
