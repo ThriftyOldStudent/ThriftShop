@@ -201,8 +201,9 @@ const runMetamask = () => {
       const tokID = await TOSScontract.methods.getLastID().call()
       console.log('tokID')
       console.log(tokID)
-
-      document.getElementById('notes').innerHTML =
+      document.getElementById('notes').innerHTML = 'Receipt Token ID'
+      document.getElementById('notes').innerHTML += `${tokID}`
+      document.getElementById('notes').innerHTML +=
       '<p>Thank you for your order!</p><p>Contract address: 0x8c9f146DF25fb4B9E339764d1D71B31F03a3454d</p>'
       submitOrder.disabled = true
       document.getElementById('buyerdetails').classList.add('hideclass')
