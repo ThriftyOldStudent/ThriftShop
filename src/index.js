@@ -175,9 +175,11 @@ const runMetamask = () => {
       })
       getAccountsResults.innerHTML = _accounts[0] || 'Not able to get accounts'
       console.log(_accounts[0])
+      console.log('invoiceURI')
+      console.log(invoiceURI)
       const totalBNB = await totalPrice * (10 ** 18)
       const txHash = await TOSScontract.methods.mintItem(invoiceURI).encodeABI()
-      const { txO, what } = await ethereum.request({
+      const txO = await ethereum.request({
         method: 'eth_sendTransaction',
         params: [{
           to: contractAdds,
@@ -187,10 +189,11 @@ const runMetamask = () => {
           value: web3.utils.toHex(totalBNB),
           data: txHash,
         }],
+      }).then((result) => {
+        console.log(result)
       })
 
       console.log(txO)
-      console.log(what)
       document.getElementById('notes').innerHTML =
       '<p>Thank you for your order!</p><p>Contract address: 0x976Fb8326cc314d19ec9cbEd855dB6539540867d</p>'
       submitOrder.disabled = true
