@@ -184,8 +184,6 @@ const runMetamask = () => {
         params: [{
           to: contractAdds,
           from: _accounts[0],
-          gas: '21000',
-          gasPrice: web3.utils.toHex('10000000000'),
           value: web3.utils.toHex(totalBNB),
           data: txHash,
         }],
