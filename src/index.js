@@ -188,6 +188,7 @@ const runMetamask = () => {
           data: txHash,
         }],
       }).then((result) => {
+        console.log('result')
         console.log(result)
       })
 
