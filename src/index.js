@@ -175,8 +175,8 @@ const runMetamask = () => {
       })
       getAccountsResults.innerHTML = _accounts[0] || 'Not able to get accounts'
       console.log(_accounts[0])
-      const totalBNB = totalPrice * (10 ** 18)
-      const txHash = TOSScontract.methods.mintItem(invoiceURI).encodeABI()
+      const totalBNB = await totalPrice * (10 ** 18)
+      const txHash = await TOSScontract.methods.mintItem(invoiceURI).encodeABI()
       const { txO, what } = await ethereum.request({
         method: 'eth_sendTransaction',
         params: [{

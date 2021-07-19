@@ -165,7 +165,7 @@ td.inp_long {
 }
 
 .hideclass {
-  visibility: hidden;
+  display: none;
 }
 
 .top-left {
