@@ -9,7 +9,16 @@ const TOSS_ABI = [{
   'outputs': [{ 'internalType': 'uint256', 'name': '', 'type': 'uint256' }],
   'stateMutability': 'payable',
   'type': 'function',
+}, {
+  'inputs': [],
+  'name': '_tokenIds',
+  'outputs': [{ 'internalType': 'uint256','name': '_value','type': 'uint256' }],
+  'stateMutability': 'view',
+  'type': 'function',
 }]
+
+
+
 
 const Web3 = require('web3')
 
@@ -191,8 +200,9 @@ const runMetamask = () => {
         console.log('result')
         console.log(result)
       })
-
-      console.log(txO)
+      const tokID = await TOSScontract.methods._tokenIds().encodeABI().call()
+      console.log('tokID')
+      console.log(tokID)
       document.getElementById('notes').innerHTML =
       '<p>Thank you for your order!</p><p>Contract address: 0x9AC03c722f1b67dC792fd2d25fCEff864d47B3B6</p>'
       submitOrder.disabled = true
