@@ -12,13 +12,10 @@ const TOSS_ABI = [{
 }, {
   'inputs': [],
   'name': '_tokenIds',
-  'outputs': [{ 'internalType': 'uint256','name': '_value','type': 'uint256' }],
+  'outputs': [{ 'internalType': 'uint256', 'name': '_value', 'type': 'uint256' }],
   'stateMutability': 'view',
   'type': 'function',
 }]
-
-
-
 
 const Web3 = require('web3')
 
