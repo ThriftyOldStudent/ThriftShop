@@ -15,7 +15,7 @@ const Web3 = require('web3')
 
 const web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545')
 const getAccountsResults = document.getElementById('getAccountsResult')
-const contractAdds = '0xA830E473CBFB32b688EE59828eDBb147f3c3aBCc'
+const contractAdds = '0x9224e655ce7e456eBce65B6A5821E93d38f96427'
 const TOSScontract = new web3.eth.Contract(TOSS_ABI, contractAdds)
 
 const currentUrl = new URL(window.location.href)
@@ -189,11 +189,11 @@ const runMetamask = () => {
         }],
       }).then((newItemId) => {
         console.log(newItemId)
-        document.getElementById('notes').innerHTML = `Token ID: ${newItemId}`
+        document.getElementById('notes').innerHTML += `Token ID: ${newItemId}`
       })
       console.log(txO)
       document.getElementById('notes').innerHTML +=
-      '<p>Thank you for your order!</p><p>Contract address: 0xA830E473CBFB32b688EE59828eDBb147f3c3aBCc</p>'
+      '<p>Thank you for your order!</p><p>Contract address: 0x9224e655ce7e456eBce65B6A5821E93d38f96427</p>'
       submitOrder.disabled = true
       document.getElementById('buyerdetails').classList.add('hideclass')
       if (!ItemStatus1) {
