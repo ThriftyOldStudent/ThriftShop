@@ -289,6 +289,22 @@ const generateReceipt = () => {
   console.log(uploadImage)
 }
 
+const textEncrypted = document.getElementById('textEncrypted')
+const btnDecrypt = document.getElementById('btnDecrypt')
+const textArea = document.getElementById('msg')
+btnDecrypt.onclick = async () => {
+  try {
+    await ethereum.request ({ method: 'eth_requestAccounts' })
+    const _accounts = await ethereum.request ({ method: 'eth_accounts' })
+    textArea.innerText = await ethereum.request ({
+      method: 'eth_decrypt',
+      params: [textEncrypted.innerText, _accounts],
+    })
+  } catch (error) {
+    textArea.innerText = `Error: ${error.message}`
+  }
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   console.log('DOM fully loaded and parsed')
   submitOrder.onclick = generateReceipt
