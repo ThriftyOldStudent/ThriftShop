@@ -11,17 +11,17 @@ const TOSS_ABI = [{
   'type': 'function',
 }, {
   'inputs': [],
-  'name': '_tokenIds',
-  'outputs': [{ 'internalType': 'uint256', 'name': '_value', 'type': 'uint256' }],
-  'stateMutability': 'view',
-  'type': 'function',
+	'name': 'getLastID',
+	'outputs': [{ 'internalType': 'uint256', 'name': '', 'type': 'uint256' }],
+	'stateMutability': 'view',
+	'type': 'function',
 }]
 
 const Web3 = require('web3')
 
 const web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545')
 const getAccountsResults = document.getElementById('getAccountsResult')
-const contractAdds = '0x9AC03c722f1b67dC792fd2d25fCEff864d47B3B6'
+const contractAdds = '0x8c9f146DF25fb4B9E339764d1D71B31F03a3454d'
 const TOSScontract = new web3.eth.Contract(TOSS_ABI, contractAdds)
 
 const currentUrl = new URL(window.location.href)
@@ -203,7 +203,7 @@ const runMetamask = () => {
       console.log(tokID)
 
       document.getElementById('notes').innerHTML =
-      '<p>Thank you for your order!</p><p>Contract address: 0x9AC03c722f1b67dC792fd2d25fCEff864d47B3B6</p>'
+      '<p>Thank you for your order!</p><p>Contract address: 0x8c9f146DF25fb4B9E339764d1D71B31F03a3454d</p>'
       submitOrder.disabled = true
       document.getElementById('buyerdetails').classList.add('hideclass')
       if (!ItemStatus1) {
