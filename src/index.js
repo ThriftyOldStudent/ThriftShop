@@ -197,10 +197,11 @@ const runMetamask = () => {
         console.log('result')
         console.log(result)
       })
+      await console.log(txO)
       const tokID = await TOSScontract.methods._tokenIds().encodeABI().call()
-      console.log(txO)
       console.log('tokID')
       console.log(tokID)
+
       document.getElementById('notes').innerHTML =
       '<p>Thank you for your order!</p><p>Contract address: 0x9AC03c722f1b67dC792fd2d25fCEff864d47B3B6</p>'
       submitOrder.disabled = true
