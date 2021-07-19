@@ -11,10 +11,10 @@ const TOSS_ABI = [{
   'type': 'function',
 }, {
   'inputs': [],
-	'name': 'getLastID',
-	'outputs': [{ 'internalType': 'uint256', 'name': '', 'type': 'uint256' }],
-	'stateMutability': 'view',
-	'type': 'function',
+  'name': 'getLastID',
+  'outputs': [{ 'internalType': 'uint256', 'name': '', 'type': 'uint256' }],
+  'stateMutability': 'view',
+  'type': 'function',
 }]
 
 const Web3 = require('web3')
