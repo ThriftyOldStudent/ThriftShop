@@ -198,7 +198,7 @@ const runMetamask = () => {
         console.log(result)
       })
       await console.log(txO)
-      const tokID = await TOSScontract.methods._tokenIds().encodeABI().call()
+      const tokID = await TOSScontract.methods.getLastID().encodeABI().call()
       console.log('tokID')
       console.log(tokID)
 
