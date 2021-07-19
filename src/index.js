@@ -4,18 +4,18 @@ import { ethers } from 'ethers'
 import MetaMaskOnboarding from '@metamask/onboarding'
 
 const TOSS_ABI = [{
-  inputs: [{ 'name': 'uri', 'type': 'string' }],
-  name: 'mintItem',
-  outputs: [{ 'name': 'newItemId', 'type': 'uint256' }],
-  stateMutability: 'payable',
-  type: 'function',
+  'inputs': [{ 'internalType': 'string', 'name': 'uri', 'type': 'string' }],
+  'name': 'mintItem',
+  'outputs': [{ 'internalType': 'uint256', 'name': '', 'type': 'uint256' }],
+  'stateMutability': 'payable',
+  'type': 'function',
 }]
 
 const Web3 = require('web3')
 
 const web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545')
 const getAccountsResults = document.getElementById('getAccountsResult')
-const contractAdds = '0x976Fb8326cc314d19ec9cbEd855dB6539540867d'
+const contractAdds = '0x9AC03c722f1b67dC792fd2d25fCEff864d47B3B6'
 const TOSScontract = new web3.eth.Contract(TOSS_ABI, contractAdds)
 
 const currentUrl = new URL(window.location.href)
@@ -194,7 +194,7 @@ const runMetamask = () => {
 
       console.log(txO)
       document.getElementById('notes').innerHTML =
-      '<p>Thank you for your order!</p><p>Contract address: 0x976Fb8326cc314d19ec9cbEd855dB6539540867d</p>'
+      '<p>Thank you for your order!</p><p>Contract address: 0x9AC03c722f1b67dC792fd2d25fCEff864d47B3B6</p>'
       submitOrder.disabled = true
       document.getElementById('buyerdetails').classList.add('hideclass')
       if (!ItemStatus1) {
@@ -279,7 +279,6 @@ const generateReceipt = () => {
 
     try {
       const postresponse = await client.add(blob)
-      console.log('postResponse', postresponse.path)
       invoiceURI = await `${BaseURL}${postresponse.path}`
 
       runMetamask()
