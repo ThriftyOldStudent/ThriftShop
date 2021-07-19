@@ -12,7 +12,7 @@ import '@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol';
 contract TosNFT is ERC721, ERC721URIStorage, Ownable {
     using Strings for uint256;
     using Counters for Counters.Counter;
-    Counters.Counter private _tokenIds;
+    Counters.Counter public _tokenIds;
     
     struct Item {
         uint256 id;
