@@ -31,6 +31,11 @@ contract TosNFT is ERC721, ERC721URIStorage, Ownable {
     mapping(uint256 => Item) public Items;
     
     address payable public deployWallet;
+    
+    function getLastID() public view returns (uint256) {
+        uint256 curTokId = _tokenIds.current();
+        return curTokId;
+    }
 
     function mintItem(string memory uri) public payable returns (uint256) {
         _tokenIds.increment();
