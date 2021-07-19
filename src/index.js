@@ -294,9 +294,9 @@ const btnDecrypt = document.getElementById('btnDecrypt')
 const textArea = document.getElementById('msg')
 btnDecrypt.onclick = async () => {
   try {
-    await ethereum.request ({ method: 'eth_requestAccounts' })
-    const _accounts = await ethereum.request ({ method: 'eth_accounts' })
-    textArea.innerText = await ethereum.request ({
+    await ethereum.request({ method: 'eth_requestAccounts' })
+    const _accounts = await ethereum.request({ method: 'eth_accounts' })
+    textArea.innerText = await ethereum.request({
       method: 'eth_decrypt',
       params: [textEncrypted.innerText, _accounts],
     })
