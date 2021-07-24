@@ -240,6 +240,11 @@ const runMetamask = () => {
 }
 const generateReceipt = () => {
 
+//entry.763798046=testing+123
+//entry.1244046060=testing+321
+//entry.1849450571=testing+453
+//entry.605718897=testing+865
+
   const encryptionKey = 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg='
   const encryptMessageInput = `${formName.value};${formEmail.value};${formMail.value};${formPhone.value};`
 
@@ -308,7 +313,7 @@ const btnDecryptClick = async () => {
   try {
     textArea.innerText = await ethereum.request({
       method: 'eth_decrypt',
-      params: [textEncrypted.innerText, document.getElementById('acc').innerText],
+      params: [textEncrypted.value, document.getElementById('acc').innerText],
     })
   } catch (error) {
     textArea.innerText = `Error: ${error.message}`
