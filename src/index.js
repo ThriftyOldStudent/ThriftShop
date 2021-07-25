@@ -62,7 +62,6 @@ const item2priceBNB = document.getElementById('item2priceBNB')
 let item1valBNB
 let item2valBNB
 let curBNBprice
-let preBNBprice
 
 const clickedBtnAddCart1 = () => {
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
@@ -342,7 +341,6 @@ const updatePriceBNB = () => {
   })
   .then(function(data){
     curBNBprice = data.price
-    preBNBprice = curBNBprice
   }).catch(function (error) {
     console.log('Error during fetch: ' + error.message)
   })
