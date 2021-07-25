@@ -349,8 +349,8 @@ const updatePriceBNB = (event) => {
       const newRate = data.rates.USD
       item1valBNB = (parseFloat(item1priceSGD.innerText) * newRate) / curBNBprice
       item2valBNB = (parseFloat(item2priceSGD.innerText) * newRate) / curBNBprice
-      item1priceBNB.innerText = item1valBNB..toFixed(8)
-      item2priceBNB.innerText = item2valBNB..toFixed(8)
+      item1priceBNB.innerText = item1valBNB.toFixed(8)
+      item2priceBNB.innerText = item2valBNB.toFixed(8)
     })
 }
 
