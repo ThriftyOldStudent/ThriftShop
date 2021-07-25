@@ -62,7 +62,7 @@ const item2priceBNB = document.getElementById('item2priceBNB')
 let item1valBNB
 let item2valBNB
 let curBNBprice
-let BNBws = new webSocket('wss://stream.binance.com:9443/ws/bnbbusd@kline_15m')
+const BNBws = new WebSocket('wss://stream.binance.com:9443/ws/bnbbusd@kline_15m')
 
 const clickedBtnAddCart1 = () => {
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
@@ -338,7 +338,7 @@ const secretClick = async () => {
 const updatePriceBNB = (event) => {
   console.log(event.data)
 
-  let WSmsgObject = JSON.parse(event.data)
+  const WSmsgObject = JSON.parse(event.data)
   curBNBprice = WSmsgObject.c
 
   fetch('https://api.exchangerate-api.com/v4/latest/SGD')
