@@ -44,7 +44,7 @@ const totalPricedisplay = document.getElementById('list-total')
 const submitOrder = document.getElementById('order')
 const BaseURL = 'https://ipfs.io/ipfs/'
 let invoiceURI = ''
-let totalPrice = 0.0
+var totalPrice = 0.0
 let ItemStatus1 = true
 let ItemStatus2 = true
 
