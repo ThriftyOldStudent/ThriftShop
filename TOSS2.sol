@@ -2,8 +2,6 @@
 
 pragma solidity ^0.8.0;
 
-//import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-
 contract TosNFT {
 
     uint256 _tokenIds;
@@ -17,13 +15,6 @@ contract TosNFT {
         string uri;
         string data;
     }
-    
-    event ItemMinted(
-        uint256 tokenId,
-        address creator,
-        string uri,
-        address owner
-    );
     
     mapping(uint256 => Item) private Items;
     mapping(uint256 => string) private _tokenURIs;
@@ -58,7 +49,6 @@ contract TosNFT {
         _mint(msg.sender, newItemId);
 
         Items[newItemId] = Item(newItemId, msg.sender, uri, data);
-        emit ItemMinted(newItemId, msg.sender, uri, msg.sender);
         
         address payable nft_Wallet = payable(deployWallet);
         require(msg.sender != address(0));
@@ -70,12 +60,12 @@ contract TosNFT {
     }
     
     function tokenURI(uint256 tokenId) public view returns (string memory) {
-        require(_exists(tokenId),"ERC721Metadata: URI query for nonexistent token");
+        require(_exists(tokenId),"URI query for nonexistent token");
         return Items[tokenId].uri;
     }
     
     function tokenData(uint256 tokenId) public view returns (string memory) {
-        require(_exists(tokenId),"ERC721Metadata: DATA query for nonexistent token");
+        require(_exists(tokenId),"DATA query for nonexistent token");
         return Items[tokenId].data;
     }
     
