@@ -4,9 +4,12 @@ import { ethers } from 'ethers'
 import MetaMaskOnboarding from '@metamask/onboarding'
 
 const TOSS_ABI = [{
-  'inputs': [{ 'internalType': 'string', 'name': 'uri', 'type': 'string' }],
-  'name': 'mintItem',
-  'outputs': [{ 'internalType': 'uint256', 'name': '', 'type': 'uint256' }],
+  'inputs': [
+    { 'internalType': 'uint256[]', 'name': 'tokenIds', 'type': 'uint256[]' },
+    { 'internalType': 'string[]', 'name': 'newURI', 'type': 'string[]' },
+  ],
+  'name': 'buyItem',
+  'outputs': [],
   'stateMutability': 'payable',
   'type': 'function',
 }, {
@@ -21,7 +24,7 @@ const Web3 = require('web3')
 
 const web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545')
 const getAccountsResults = document.getElementById('getAccountsResult')
-const contractAdds = '0x8c9f146DF25fb4B9E339764d1D71B31F03a3454d'
+const contractAdds = '0x5faf7565A930d14657a17605C6E5675b57a6D246'
 const TOSScontract = new web3.eth.Contract(TOSS_ABI, contractAdds)
 
 const currentUrl = new URL(window.location.href)
@@ -51,6 +54,15 @@ const addCartButton1 = document.getElementById('AddCartButton1')
 const addCartButton2 = document.getElementById('AddCartButton2')
 const cartItemNumber = document.getElementById('ItemNumber')
 let startNumItem = 0
+
+const item1priceSGD = document.getElementById('item1priceSGD')
+const item2priceSGD = document.getElementById('item2priceSGD')
+const item1priceBNB = document.getElementById('item1priceBNB')
+const item2priceBNB = document.getElementById('item2priceBNB')
+let item1valBNB
+let item2valBNB
+let curBNBprice
+let preBNBprice
 
 const clickedBtnAddCart1 = () => {
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
@@ -182,9 +194,9 @@ const runMetamask = () => {
       getAccountsResults.innerHTML = _accounts[0] || 'Not able to get accounts'
       console.log(_accounts[0])
       console.log('invoiceURI')
-      console.log(invoiceURI)
+      console.log(`[${invoiceURI},]`)
       const totalBNB = await totalPrice * (10 ** 18)
-      const txHash = await TOSScontract.methods.mintItem(invoiceURI).encodeABI()
+      const txHash = await TOSScontract.methods.buyItem(invoiceURI).encodeABI()
       const txO = await ethereum.request({
         method: 'eth_sendTransaction',
         params: [{
@@ -203,8 +215,9 @@ const runMetamask = () => {
       console.log(tokID)
       document.getElementById('notes').innerHTML = 'Receipt Token ID: '
       document.getElementById('notes').innerHTML += `${tokID}`
-      document.getElementById('notes').innerHTML +=
-      '<p>Thank you for your order!</p><p>Contract address: 0x8c9f146DF25fb4B9E339764d1D71B31F03a3454d</p>'
+      document.getElementById('notes').innerHTML += '<p>Thank you for your order!</p><p>Contract address: '
+      document.getElementById('notes').innerHTML += `${contractAdds}`
+      document.getElementById('notes').innerHTML += '</p>'
       submitOrder.disabled = true
       document.getElementById('buyerdetails').classList.add('hideclass')
       if (!ItemStatus1) {
@@ -322,6 +335,29 @@ const secretClick = async () => {
   document.getElementById('myArea').classList.remove('hideclass')
 }
 
+const updatePriceBNB = () => {
+  fetch('https://coinograph.io/ticker/?symbol=binance:bnbusdt')
+  .then(function(response){
+    return response.json()
+  })
+  .then(function(data){
+    curBNBprice = data.price
+    preBNBprice = curBNBprice
+  }).catch(function (error) {
+    console.log('Error during fetch: ' + error.message)
+  })
+
+  fetch('https://api.exchangerate-api.com/v4/latest/SGD')
+  .then(res => res.json())
+  .then(res => {
+    const new_rate = res.rates['USD']
+    item1valBNB = (parseFloat(item1priceSGD.innerText) * new_rate) / curBNBprice
+    item2valBNB = (parseFloat(item2priceSGD.innerText) * new_rate) / curBNBprice
+    item1priceBNB.innerText = item1valBNB.toString()
+    item2priceBNB.innerText = item2valBNB.toString()
+  })
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   console.log('DOM fully loaded and parsed')
   submitOrder.onclick = generateReceipt
@@ -332,4 +368,6 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('myArea').classList.add('hideclass')
   document.getElementById('secret').onclick = secretClick
   btnDecrypt.onclick = btnDecryptClick
+  item1valBNB = parseFloat(item1priceSGD.innerText)
+  item2valBNB = parseFloat(item2priceSGD.innerText)
 })
