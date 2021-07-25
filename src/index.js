@@ -368,4 +368,5 @@ window.addEventListener('DOMContentLoaded', () => {
   btnDecrypt.onclick = btnDecryptClick
   item1valBNB = parseFloat(item1priceSGD.innerText)
   item2valBNB = parseFloat(item2priceSGD.innerText)
+  setInterval(updatePriceBNB,30000);
 })
