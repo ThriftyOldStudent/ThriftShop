@@ -336,24 +336,24 @@ const secretClick = async () => {
 
 const updatePriceBNB = () => {
   fetch('https://coinograph.io/ticker/?symbol=binance:bnbusdt')
-  .then(function(response){
-    return response.json()
-  })
-  .then(function(data){
-    curBNBprice = data.price
-  }).catch(function (error) {
-    console.log('Error during fetch: ' + error.message)
-  })
+    .then(function(response){
+      return response.json()
+    })
+    .then(function(data){
+      curBNBprice = data.price
+    }).catch(function (error) {
+      console.log('Error during fetch: ' + error.message)
+    })
 
   fetch('https://api.exchangerate-api.com/v4/latest/SGD')
-  .then(res => res.json())
-  .then(res => {
-    const new_rate = res.rates['USD']
-    item1valBNB = (parseFloat(item1priceSGD.innerText) * new_rate) / curBNBprice
-    item2valBNB = (parseFloat(item2priceSGD.innerText) * new_rate) / curBNBprice
-    item1priceBNB.innerText = item1valBNB.toString()
-    item2priceBNB.innerText = item2valBNB.toString()
-  })
+    .then(res => res.json())
+    .then(res => {
+      const new_rate = res.rates['USD']
+      item1valBNB = (parseFloat(item1priceSGD.innerText) * new_rate) / curBNBprice
+      item2valBNB = (parseFloat(item2priceSGD.innerText) * new_rate) / curBNBprice
+      item1priceBNB.innerText = item1valBNB.toString()
+      item2priceBNB.innerText = item2valBNB.toString()
+    })
 }
 
 window.addEventListener('DOMContentLoaded', () => {
