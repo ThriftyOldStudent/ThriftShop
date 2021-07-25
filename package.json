@@ -32,7 +32,8 @@
   "homepage": "https://metamask.github.io/test-dapp",
   "dependencies": {
     "ipfs-http-client": "^50.1.2",
-    "web3": "^1.4.0"
+    "web3": "^1.4.0",
+    "wscat": "^4.0.1"
   },
   "devDependencies": {
     "@metamask/eslint-config": "^4.0.0",

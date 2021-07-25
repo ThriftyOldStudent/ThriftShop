@@ -62,6 +62,7 @@ const item2priceBNB = document.getElementById('item2priceBNB')
 let item1valBNB
 let item2valBNB
 let curBNBprice
+let BNBws = new webSocket('wss://stream.binance.com:9443/ws/bnbbusd@kline_15m')
 
 const clickedBtnAddCart1 = () => {
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
@@ -334,16 +335,11 @@ const secretClick = async () => {
   document.getElementById('myArea').classList.remove('hideclass')
 }
 
-const updatePriceBNB = () => {
-  fetch('https://coinograph.io/ticker/?symbol=binance:bnbusdt')
-    .then(function (response) {
-      return response.json()
-    })
-    .then(function (data) {
-      curBNBprice = data.price
-    }).catch(function (error) {
-      console.log(`Error during fetch: ${error.message}`)
-    })
+const updatePriceBNB = (event) => {
+  console.log(event.data)
+
+  let WSmsgObject = JSON.parse(event.data)
+  curBNBprice = WSmsgObject.c
 
   fetch('https://api.exchangerate-api.com/v4/latest/SGD')
     .then(function (response) {
@@ -370,6 +366,5 @@ window.addEventListener('DOMContentLoaded', () => {
   btnDecrypt.onclick = btnDecryptClick
   item1valBNB = parseFloat(item1priceSGD.innerText)
   item2valBNB = parseFloat(item2priceSGD.innerText)
-  updatePriceBNB()
-  setInterval(updatePriceBNB, 60000)
+  BNBws.onmessage = updatePriceBNB
 })
