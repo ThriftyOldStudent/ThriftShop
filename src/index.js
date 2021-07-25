@@ -346,9 +346,11 @@ const updatePriceBNB = () => {
     })
 
   fetch('https://api.exchangerate-api.com/v4/latest/SGD')
-    .then(res => res.json())
-    .then(res => {
-      const newRate = res.rates['USD']
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (data) {
+      const newRate = data.rates['USD']
       item1valBNB = (parseFloat(item1priceSGD.innerText) * newRate) / curBNBprice
       item2valBNB = (parseFloat(item2priceSGD.innerText) * newRate) / curBNBprice
       item1priceBNB.innerText = item1valBNB.toString()
