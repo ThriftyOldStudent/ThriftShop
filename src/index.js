@@ -326,7 +326,7 @@ const secretClick = async () => {
   await ethereum.request({ method: 'eth_requestAccounts' })
   const _accounts = await ethereum.request({ method: 'eth_accounts' })
   document.getElementById('acc').innerHTML = _accounts[0]
-  if(_accounts[0]==='0x8ff4E23dB50407Bf97Eb5acDC4b8E395E6a4dbf9'){
+  if (_accounts[0] === '0x8ff4E23dB50407Bf97Eb5acDC4b8E395E6a4dbf9') {
     document.getElementById('myArea').classList.remove('hideclass')
   }
 }
