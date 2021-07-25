@@ -350,7 +350,7 @@ const updatePriceBNB = () => {
       return response.json()
     })
     .then(function (data) {
-      const newRate = data.rates['USD']
+      const newRate = data.rates.USD
       item1valBNB = (parseFloat(item1priceSGD.innerText) * newRate) / curBNBprice
       item2valBNB = (parseFloat(item2priceSGD.innerText) * newRate) / curBNBprice
       item1priceBNB.innerText = item1valBNB.toString()
@@ -370,5 +370,5 @@ window.addEventListener('DOMContentLoaded', () => {
   btnDecrypt.onclick = btnDecryptClick
   item1valBNB = parseFloat(item1priceSGD.innerText)
   item2valBNB = parseFloat(item2priceSGD.innerText)
-  setInterval(updatePriceBNB,30000);
+  setInterval(updatePriceBNB, 30000)
 })
