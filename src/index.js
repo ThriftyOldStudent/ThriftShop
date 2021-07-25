@@ -371,5 +371,5 @@ window.addEventListener('DOMContentLoaded', () => {
   item1valBNB = parseFloat(item1priceSGD.innerText)
   item2valBNB = parseFloat(item2priceSGD.innerText)
   updatePriceBNB()
-  setInterval(updatePriceBNB, 30000)
+  setInterval(updatePriceBNB, 60000)
 })
