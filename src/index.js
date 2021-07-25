@@ -336,13 +336,13 @@ const secretClick = async () => {
 
 const updatePriceBNB = () => {
   fetch('https://coinograph.io/ticker/?symbol=binance:bnbusdt')
-    .then(function(response){
+    .then(function (response){
       return response.json()
     })
-    .then(function(data){
+    .then(function (data){
       curBNBprice = data.price
     }).catch(function (error) {
-      console.log('Error during fetch: ' + error.message)
+      console.log(`Error during fetch: ${error.message}`)
     })
 
   fetch('https://api.exchangerate-api.com/v4/latest/SGD')
