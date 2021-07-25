@@ -339,7 +339,7 @@ const updatePriceBNB = (event) => {
   console.log(event.data)
 
   const WSmsgObject = JSON.parse(event.data)
-  curBNBprice = WSmsgObject.c
+  curBNBprice = WSmsgObject.k.c
 
   fetch('https://api.exchangerate-api.com/v4/latest/SGD')
     .then(function (response) {
