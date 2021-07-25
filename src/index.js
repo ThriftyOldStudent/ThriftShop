@@ -44,8 +44,6 @@ const totalPricedisplay = document.getElementById('list-total')
 const submitOrder = document.getElementById('order')
 const BaseURL = 'https://ipfs.io/ipfs/'
 let invoiceURI = ''
-const item1Price = 0.028
-const item2Price = 0.02
 let totalPrice = 0
 let ItemStatus1 = true
 let ItemStatus2 = true
@@ -112,8 +110,8 @@ const checkoutCart = () => {
   totalPrice = 0
 
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
-    listItemPrice1.innerText = 'Miniso Marvel Speaker! 0.028BNB'
-    totalPrice += item1Price
+    listItemPrice1.innerText = `Miniso Marvel Speaker! ${item1valBNB.toFixed(8)}BNB`
+    totalPrice += item1valBNB.toFixed(8)
     totalPricedisplay.innerText = 'Total excluding gas fee = '
     totalPricedisplay.innerText += totalPrice
     totalPricedisplay.innerText += 'BNB'
@@ -121,8 +119,8 @@ const checkoutCart = () => {
     listItemPrice1.innerText = '.'
   }
   if (addCartButton2.innerText === 'ITEM ADDED TO CART!') {
-    listItemPrice2.innerText = 'Craftholic Multipurpose Pouch! 0.02BNB'
-    totalPrice += item2Price
+    listItemPrice2.innerText = `Craftholic Multipurpose Pouch! ${item2valBNB.toFixed(8)}BNB`
+    totalPrice += item2valBNB.toFixed(8)
     totalPricedisplay.innerText = 'Total excluding gas fee = '
     totalPricedisplay.innerText += totalPrice
     totalPricedisplay.innerText += 'BNB'
