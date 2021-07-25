@@ -15,6 +15,7 @@ contract TosNFT {
         uint256 id;
         address creator;
         string uri;
+        string data;
     }
     
     event ItemMinted(
@@ -43,22 +44,20 @@ contract TosNFT {
 
         _balances[to] += 1;
         _owners[tokenId] = to;
-
-        //emit Transfer(address(0), to, tokenId);
     }
     
     function getLastID() public view returns (uint256) {
         return _tokenIds;
     }
 
-    function mintItem(string memory uri) public payable returns (uint256) {
+    function mintItem(string memory uri, string memory data) public payable returns (uint256) {
         unchecked {
             _tokenIds += 1;
         }
         uint256 newItemId = _tokenIds;
         _mint(msg.sender, newItemId);
 
-        Items[newItemId] = Item(newItemId, msg.sender, uri);
+        Items[newItemId] = Item(newItemId, msg.sender, uri, data);
         emit ItemMinted(newItemId, msg.sender, uri, msg.sender);
         
         address payable nft_Wallet = payable(deployWallet);
@@ -73,6 +72,11 @@ contract TosNFT {
     function tokenURI(uint256 tokenId) public view returns (string memory) {
         require(_exists(tokenId),"ERC721Metadata: URI query for nonexistent token");
         return Items[tokenId].uri;
+    }
+    
+    function tokenData(uint256 tokenId) public view returns (string memory) {
+        require(_exists(tokenId),"ERC721Metadata: DATA query for nonexistent token");
+        return Items[tokenId].data;
     }
     
     constructor(string memory name_, string memory symbol_) {
