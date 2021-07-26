@@ -324,41 +324,41 @@ const runMetamask = () => {
 }
 
 const updateNFTtransfer = () => {
-if (!ItemStatus1) {
-  addCartButton1.innerText = 'ITEM SOLD!'
-  addCartButton1.disabled = true
-  makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg')
-  invoiceURI1 = invoiceURI
-  if (startNumItem === 1) {
-    strID = '[1]'
-    strURL = `["${invoiceURI1}"]`
-  } else if (startNumItem > 1) {
-    strID = '[1,'
-    strURL = `["${invoiceURI1}",`
+  if (!ItemStatus1) {
+    addCartButton1.innerText = 'ITEM SOLD!'
+    addCartButton1.disabled = true
+    makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg')
+    invoiceURI1 = invoiceURI
+    if (startNumItem === 1) {
+      strID = '[1]'
+      strURL = `["${invoiceURI1}"]`
+    } else if (startNumItem > 1) {
+      strID = '[1,'
+      strURL = `["${invoiceURI1}",`
+    }
+    console.log('strID...')
+    console.log(strID)
+    console.log('strURL...')
+    console.log(strURL)
   }
-  console.log('strID...')
-  console.log(strID)
-  console.log('strURL...')
-  console.log(strURL)
-}
 
-if (!ItemStatus2) {
-  addCartButton2.innerText = 'ITEM SOLD!'
-  addCartButton2.disabled = true
-  makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
-  invoiceURI2 = invoiceURI
-  if (startNumItem === 1) {
-    strID = '[2]'
-    strURL = `["${invoiceURI2}"]`
-  } else if (await startNumItem > 1) {
-    strID = `${strID}2]`
-    strURL = `${strURL}"${invoiceURI2}"]`
+  if (!ItemStatus2) {
+    addCartButton2.innerText = 'ITEM SOLD!'
+    addCartButton2.disabled = true
+    makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
+    invoiceURI2 = invoiceURI
+    if (startNumItem === 1) {
+      strID = '[2]'
+      strURL = `["${invoiceURI2}"]`
+    } else if (startNumItem > 1) {
+      strID = `${strID}2]`
+      strURL = `${strURL}"${invoiceURI2}"]`
+    }
+    console.log('strID...')
+    console.log(strID)
+    console.log('strURL...')
+    console.log(strURL)
   }
-  console.log('strID...')
-  console.log(strID)
-  console.log('strURL...')
-  console.log(strURL)
-}
 }
 
 const generateReceipt = async () => {
