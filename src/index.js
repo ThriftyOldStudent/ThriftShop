@@ -106,6 +106,18 @@ const convertImageUrlToBase64 = (url, callback, outputFormat) => {
   img.src = url
 }
 
+const makeSoldStamp = () => {
+  convertImageUrlToBase64('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg', function (url) {
+    document.querySelector('#fromUrl').innerHTML = url
+    var canvas = document.getElementById('canv')
+    var context = canvas.getContext('2d')
+    context.beginPath()
+    var image = new Image()
+    image.src = url
+    context.drawImage(image,  0, 0, 100, 100 * image.height / image.width)
+  })
+}
+
 const clickedBtnAddCart1 = () => {
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
     ItemStatus1 = true
