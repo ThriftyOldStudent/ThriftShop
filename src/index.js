@@ -52,6 +52,8 @@ const submitOrder = document.getElementById('order')
 const BaseURL = 'https://ipfs.io/ipfs/'
 let invoiceURI = ''
 let totalPrice
+let strID
+let strURL
 let ItemStatus1 = true
 let ItemStatus2 = true
 
@@ -338,6 +340,41 @@ const generateReceipt = () => {
   const form = document.getElementById('hiddenForm')
   form.submit()
   
+  if (!ItemStatus1) {
+    addCartButton1.innerText = 'ITEM SOLD!'
+    addCartButton1.disabled = true
+    makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg')
+    if (startNumItem === 1) {
+      strID = '[1]'
+      strURL = `["${invoiceURI}"]`
+    } else if (startNumItem > 1) {
+      strID = '[1,'
+      strURL = `["${invoiceURI}",`
+    }
+    console.log('strID...')
+    console.log(strID)
+    console.log('strURL...')
+    console.log(strURL)
+  }
+  invoiceURI = ''
+  if (!ItemStatus2) {
+    addCartButton2.innerText = 'ITEM SOLD!'
+    addCartButton2.disabled = true
+    makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpeg')
+    if (startNumItem === 1) {
+      strID = '[2]'
+      strURL = `["${invoiceURI}"]`
+    } else if (startNumItem > 1) {
+      strID = '2]'
+      strURL = `["${invoiceURI}"]`
+    }
+    console.log('strID...')
+    console.log(strID)
+    console.log('strURL...')
+    console.log(strURL)
+  }
+
+
 
 
   console.log('done generate canvas')
