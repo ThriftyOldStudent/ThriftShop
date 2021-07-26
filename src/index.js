@@ -175,9 +175,6 @@ const clickedBtnAddCart2 = () => {
   }
 }
 
-addCartButton1.onclick = clickedBtnAddCart1
-addCartButton2.onclick = clickedBtnAddCart2
-
 const scrollToTop = () => {
   const c = document.documentElement.scrollTop || document.body.scrollTop
   if (c > 0) {
@@ -216,8 +213,6 @@ const checkoutCart = () => {
   }
   scrollToTop()
 }
-
-shopCartBtn.onclick = checkoutCart
 
 document.getElementById('close-btn').addEventListener('click', function () {
   Overlay.classList.remove('is-visible')
@@ -267,6 +262,7 @@ const runMetamask = () => {
         method: 'eth_accounts',
       })
       getAccountsResults.innerHTML = _accounts[0] || 'Not able to get accounts'
+      console.log('_accounts[0]')
       console.log(_accounts[0])
 
       const totalBNB = await totalPrice * (10 ** 18)
@@ -283,6 +279,7 @@ const runMetamask = () => {
         console.log('result')
         console.log(result)
       })
+      console.log('txO')
       console.log(txO)
       document.getElementById('notes').innerHTML = 'Receipt Token ID: '
       document.getElementById('notes').innerHTML += `${strID}`
@@ -362,8 +359,8 @@ const updateNFTtransfer = () => {
 }
 
 const generateReceipt = async () => {
-  const encryptionKey = 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg='
-  const encryptMessageInput = `${formName.value};${formEmail.value};${formMail.value};${formPhone.value};`
+  const encryptionKey = await 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg='
+  const encryptMessageInput = await `${formName.value};${formEmail.value};${formMail.value};${formPhone.value};`
 
   try {
     document.getElementById('entry.763798046').value = await stringifiableToHex(
@@ -373,8 +370,10 @@ const generateReceipt = async () => {
         'x25519-xsalsa20-poly1305',
       ),
     )
+    console.log('document value')
     console.log(document.getElementById('entry.763798046').value)
   } catch (error) {
+    console.log('error')
     console.log(`Error: ${error.message}`)
   }
   const form = await document.getElementById('hiddenForm')
@@ -446,6 +445,9 @@ const loadItems = async () => {
 window.addEventListener('DOMContentLoaded', () => {
   console.log('DOM fully loaded and parsed')
   submitOrder.onclick = generateReceipt
+  shopCartBtn.onclick = checkoutCart
+  addCartButton1.onclick = clickedBtnAddCart1
+  addCartButton2.onclick = clickedBtnAddCart2
   formName.onchange = checkform
   formEmail.onchange = checkform
   formMail.onchange = checkform
