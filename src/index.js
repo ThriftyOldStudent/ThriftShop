@@ -115,7 +115,20 @@ const convertImageUrlToBase64 = (url, callback, outputFormat) => {
   img.src = url
 }
 
-const makeSoldStamp = async (stampItemUrl) => {
+const blobAdd = async (blobby) => {
+    try {
+      const postresponse = await client.add(blobby)
+      invoiceURI = await `${BaseURL}${postresponse.path}`
+      console.log('invoiceURI...')
+      console.log(invoiceURI)
+    } catch (error) {
+      console.log('error...')
+      console.log(error)
+    }
+  })
+}
+
+const makeSoldStamp = (stampItemUrl) => {
   convertImageUrlToBase64(stampItemUrl, function (url) {
     const image = new Image()
     image.src = url
@@ -125,15 +138,7 @@ const makeSoldStamp = async (stampItemUrl) => {
     const blob = new Blob([binary], { type: 'image/png' })
     console.log('Submitting File to IPFS...')
     console.log(blob)
-    try {
-      const postresponse = client.add(blob)
-      invoiceURI = `${BaseURL}${postresponse.path}`
-      console.log('invoiceURI...')
-      console.log(invoiceURI)
-    } catch (error) {
-      console.log('error...')
-      console.log(error)
-    }
+    blobAdd(blob)
   })
 }
 
