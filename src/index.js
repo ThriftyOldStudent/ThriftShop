@@ -130,7 +130,7 @@ const blobAdd = async (blobby) => {
 }
 
 const makeSoldStamp = async (stampItemUrl) => {
-  convertImageUrlToBase64(stampItemUrl, function (url) {
+  convertImageUrlToBase64(stampItemUrl, function async (url) {
     const image = await new Image()
     image.src = await url
 
