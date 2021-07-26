@@ -339,6 +339,8 @@ const generateReceipt = () => {
   }
   const form = document.getElementById('hiddenForm')
   form.submit()
+  strID = ''
+  strURL = ''
 
   if (!ItemStatus1) {
     addCartButton1.innerText = 'ITEM SOLD!'
@@ -365,8 +367,8 @@ const generateReceipt = () => {
       strID = '[2]'
       strURL = `["${invoiceURI}"]`
     } else if (startNumItem > 1) {
-      strID = '2]'
-      strURL = `["${invoiceURI}"]`
+      strID = `${strID}2]`
+      strURL = `${strURL}"${invoiceURI}"]`
     }
     console.log('strID...')
     console.log(strID)
