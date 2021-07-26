@@ -106,15 +106,15 @@ const convertImageUrlToBase64 = (url, callback, outputFormat) => {
   img.src = url
 }
 
-const makeSoldStamp = () => {
-  convertImageUrlToBase64('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg', function (url) {
+const makeSoldStamp = (stampItemUrl) => {
+  convertImageUrlToBase64(stampItemUrl, function (url) {
     document.querySelector('#fromUrl').innerHTML = url
     const canvas = document.getElementById('canv')
     const context = canvas.getContext('2d')
     context.beginPath()
     const image = new Image()
     image.src = url
-    context.drawImage(image,  0, 0, 100, 100 * image.height / image.width)
+    context.drawImage(image, 0, 0, 100, 100 * image.height / image.width)
   })
 }
 
