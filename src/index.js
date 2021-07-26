@@ -19,7 +19,7 @@ const TOSS_ABI = [{
   'stateMutability': 'view',
   'type': 'function',
 }, {
-  'inputs': [{ 'internalType': 'uint256', 'name': 'tokenId', 'type': 'uint256' }], 
+  'inputs': [{ 'internalType': 'uint256', 'name': 'tokenId', 'type': 'uint256' }],
   'name': 'ownerOf',
   'outputs': [{ 'internalType': 'address', 'name': '', 'type': 'address' }],
   'stateMutability': 'view',
@@ -357,6 +357,24 @@ const updatePriceBNB = (event) => {
     })
 }
 
+const loadItems = () => {
+  const totalItems = TOSScontract.methods.getLastID().call()
+  console.log('totalItems')
+  console.log(totalItems)
+
+  for (var i = 0; i < Number(totalItems); i++) {
+    const findItemsOwner = TOSScontract.methods.ownerOf().call()
+    console.log(`ownerOf ${i}: `)
+    console.log(findItemsOwner)
+  }
+
+  const findItems = TOSScontract.methods.ownerOf().call()
+  console.log('ownerOf')
+  console.log(ownerOf)
+
+
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   console.log('DOM fully loaded and parsed')
   submitOrder.onclick = generateReceipt
@@ -370,4 +388,5 @@ window.addEventListener('DOMContentLoaded', () => {
   item1valBNB = parseFloat(item1priceSGD.innerText)
   item2valBNB = parseFloat(item2priceSGD.innerText)
   BNBws.onmessage = updatePriceBNB
+  loadItems()
 })
