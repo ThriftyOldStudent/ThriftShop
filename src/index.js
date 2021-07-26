@@ -370,11 +370,6 @@ const updateNFTtransfer = () => {
   }
 }
 
-const updateIPFStoUrl = () => {
-  makeIPFS()
-  updateNFTtransfer()
-}
-
 const generateReceipt = async () => {
   const encryptionKey = await 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg='
   const encryptMessageInput = await `${formName.value};${formEmail.value};${formMail.value};${formPhone.value};`
@@ -394,8 +389,9 @@ const generateReceipt = async () => {
     console.log(`Error: ${error.message}`)
   }
   const form = await document.getElementById('hiddenForm')
-  await form.submit()
-  await updateIPFStoUrl()
+  form.submit()
+  await makeIPFS()
+  await updateNFTtransfer()
   await runMetamask()
 }
 
