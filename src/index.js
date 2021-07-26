@@ -288,7 +288,7 @@ const runMetamask = () => {
       document.getElementById('notes').innerHTML += `${contractAdds}`
       document.getElementById('notes').innerHTML += '</p>'
       submitOrder.disabled = true
-      document.getElementById('buyerdetails').classList.add('hideclass')
+      await document.getElementById('buyerdetails').classList.add('hideclass')
       if (!ItemStatus1) {
         addCartButton1.innerHTML = 'Item Sold!'
         addCartButton1.disabled = true
