@@ -264,6 +264,10 @@ const runMetamask = () => {
       getAccountsResults.innerHTML = _accounts[0] || 'Not able to get accounts'
       console.log('_accounts[0]')
       console.log(_accounts[0])
+      console.log('xx strID')
+      console.log(strID)
+      console.log('xx strURL')
+      console.log(strURL)
 
       const totalBNB = await totalPrice * (10 ** 18)
       const txHash = await TOSScontract.methods.buyItem(strID, strURL).encodeABI()
