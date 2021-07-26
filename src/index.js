@@ -339,7 +339,7 @@ const generateReceipt = () => {
   }
   const form = document.getElementById('hiddenForm')
   form.submit()
-  
+
   if (!ItemStatus1) {
     addCartButton1.innerText = 'ITEM SOLD!'
     addCartButton1.disabled = true
@@ -375,29 +375,7 @@ const generateReceipt = () => {
   }
 
 
-
-
-  console.log('done generate canvas')
-  const img64 = canvas.toDataURL('image/png')
-  const imageData64 = img64.split(',')[1]
-  const binary = fixBinary(atob(imageData64))
-  const blob = new Blob([binary], { type: 'image/png' })
-
-  const uploadImage = async () => {
-    console.log('Submitting File to IPFS...')
-
-    try {
-      const postresponse = await client.add(blob)
-      invoiceURI = await `${BaseURL}${postresponse.path}`
-
-      runMetamask()
-    } catch (error) {
-      console.log('error...')
-      console.log(error)
-    }
-  }
-  uploadImage()
-  console.log(uploadImage)
+  
 }
 
 const textEncrypted = document.getElementById('textEncrypted')
