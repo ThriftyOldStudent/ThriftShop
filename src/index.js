@@ -321,12 +321,12 @@ const runMetamask = () => {
   MetaMaskClientCheck()
 }
 
-const generateReceipt = () => {
+const generateReceipt = async () => {
   const encryptionKey = 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg='
   const encryptMessageInput = `${formName.value};${formEmail.value};${formMail.value};${formPhone.value};`
 
   try {
-    document.getElementById('entry.763798046').value = stringifiableToHex(
+    await document.getElementById('entry.763798046').value = stringifiableToHex(
       encrypt(
         encryptionKey,
         { 'data': encryptMessageInput },
@@ -337,15 +337,15 @@ const generateReceipt = () => {
   } catch (error) {
     console.log(`Error: ${error.message}`)
   }
-  const form = document.getElementById('hiddenForm')
-  form.submit()
+  const form = await document.getElementById('hiddenForm')
+  await form.submit()
   strID = ''
   strURL = ''
 
-  if (!ItemStatus1) {
+  if (await !ItemStatus1) {
     addCartButton1.innerText = 'ITEM SOLD!'
     addCartButton1.disabled = true
-    makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg')
+    await makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg')
     if (startNumItem === 1) {
       strID = '[1]'
       strURL = `["${invoiceURI}"]`
@@ -359,7 +359,7 @@ const generateReceipt = () => {
     console.log(strURL)
   }
   invoiceURI = ''
-  if (!ItemStatus2) {
+  if (await !ItemStatus2) {
     addCartButton2.innerText = 'ITEM SOLD!'
     addCartButton2.disabled = true
     makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
@@ -375,7 +375,7 @@ const generateReceipt = () => {
     console.log('strURL...')
     console.log(strURL)
   }
-  runMetamask()
+  await runMetamask()
 }
 
 const textEncrypted = document.getElementById('textEncrypted')
