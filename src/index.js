@@ -18,6 +18,12 @@ const TOSS_ABI = [{
   'outputs': [{ 'internalType': 'uint256', 'name': '', 'type': 'uint256' }],
   'stateMutability': 'view',
   'type': 'function',
+}, {
+  'inputs': [{ 'internalType': 'uint256', 'name': 'tokenId', 'type': 'uint256' }], 
+  'name': 'ownerOf',
+  'outputs': [{ 'internalType': 'address', 'name': '', 'type': 'address' }],
+  'stateMutability': 'view',
+  'type': 'function',
 }]
 
 const Web3 = require('web3')
@@ -25,6 +31,7 @@ const Web3 = require('web3')
 const web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545')
 const getAccountsResults = document.getElementById('getAccountsResult')
 const contractAdds = '0x5faf7565A930d14657a17605C6E5675b57a6D246'
+const TOSadd = '0x8ff4E23dB50407Bf97Eb5acDC4b8E395E6a4dbf9'
 const TOSScontract = new web3.eth.Contract(TOSS_ABI, contractAdds)
 
 const currentUrl = new URL(window.location.href)
@@ -326,7 +333,7 @@ const secretClick = async () => {
   await ethereum.request({ method: 'eth_requestAccounts' })
   const _accounts = await ethereum.request({ method: 'eth_accounts' })
   document.getElementById('acc').innerHTML = _accounts[0]
-  if (_accounts[0] === '0x8ff4E23dB50407Bf97Eb5acDC4b8E395E6a4dbf9') {
+  if (_accounts[0] === TOSadd) {
     document.getElementById('myArea').classList.remove('hideclass')
   }
 }
