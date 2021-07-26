@@ -396,7 +396,6 @@ const secretClick = async () => {
 }
 
 const updatePriceBNB = (event) => {
-  console.log(event.data)
 
   const WSmsgObject = JSON.parse(event.data)
   curBNBprice = WSmsgObject.k.c
