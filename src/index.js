@@ -326,7 +326,7 @@ const generateReceipt = async () => {
   const encryptMessageInput = `${formName.value};${formEmail.value};${formMail.value};${formPhone.value};`
 
   try {
-    await document.getElementById('entry.763798046').value = stringifiableToHex(
+    document.getElementById('entry.763798046').value = await stringifiableToHex(
       encrypt(
         encryptionKey,
         { 'data': encryptMessageInput },
