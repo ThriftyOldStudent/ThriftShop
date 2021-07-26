@@ -346,10 +346,10 @@ const generateReceipt = async () => {
     addCartButton1.innerText = 'ITEM SOLD!'
     addCartButton1.disabled = true
     await makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg')
-    if (startNumItem === 1) {
+    if (await startNumItem === 1) {
       strID = '[1]'
       strURL = `["${invoiceURI}"]`
-    } else if (startNumItem > 1) {
+    } else if (await startNumItem > 1) {
       strID = '[1,'
       strURL = `["${invoiceURI}",`
     }
@@ -363,10 +363,10 @@ const generateReceipt = async () => {
     addCartButton2.innerText = 'ITEM SOLD!'
     addCartButton2.disabled = true
     makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
-    if (startNumItem === 1) {
+    if (await startNumItem === 1) {
       strID = '[2]'
       strURL = `["${invoiceURI}"]`
-    } else if (startNumItem > 1) {
+    } else if (await startNumItem > 1) {
       strID = `${strID}2]`
       strURL = `${strURL}"${invoiceURI}"]`
     }
