@@ -357,21 +357,16 @@ const updatePriceBNB = (event) => {
     })
 }
 
-const loadItems = () => {
-  const totalItems = TOSScontract.methods.getLastID().call()
+const loadItems = async () => {
+  const totalItems = await TOSScontract.methods.getLastID().call()
   console.log('totalItems')
   console.log(totalItems)
 
   for (var i = 0; i < Number(totalItems); i++) {
-    const findItemsOwner = TOSScontract.methods.ownerOf().call()
+    const findItemsOwner = await TOSScontract.methods.ownerOf().call()
     console.log(`ownerOf ${i}: `)
     console.log(findItemsOwner)
   }
-
-  const findItems = TOSScontract.methods.ownerOf().call()
-  console.log('ownerOf')
-  console.log(ownerOf)
-
 
 }
 
