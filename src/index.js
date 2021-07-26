@@ -50,6 +50,8 @@ const listItemPrice2 = document.getElementById('list-items2')
 const totalPricedisplay = document.getElementById('list-total')
 const submitOrder = document.getElementById('order')
 const BaseURL = 'https://ipfs.io/ipfs/'
+let invoiceURI1 = ''
+let invoiceURI2 = ''
 let invoiceURI = ''
 let totalPrice
 let strID
@@ -321,6 +323,44 @@ const runMetamask = () => {
   MetaMaskClientCheck()
 }
 
+const updateNFTtransfer = () => {
+if (!ItemStatus1) {
+  addCartButton1.innerText = 'ITEM SOLD!'
+  addCartButton1.disabled = true
+  makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg')
+  invoiceURI1 = invoiceURI
+  if (startNumItem === 1) {
+    strID = '[1]'
+    strURL = `["${invoiceURI1}"]`
+  } else if (startNumItem > 1) {
+    strID = '[1,'
+    strURL = `["${invoiceURI1}",`
+  }
+  console.log('strID...')
+  console.log(strID)
+  console.log('strURL...')
+  console.log(strURL)
+}
+
+if (!ItemStatus2) {
+  addCartButton2.innerText = 'ITEM SOLD!'
+  addCartButton2.disabled = true
+  makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
+  invoiceURI2 = invoiceURI
+  if (startNumItem === 1) {
+    strID = '[2]'
+    strURL = `["${invoiceURI2}"]`
+  } else if (await startNumItem > 1) {
+    strID = `${strID}2]`
+    strURL = `${strURL}"${invoiceURI2}"]`
+  }
+  console.log('strID...')
+  console.log(strID)
+  console.log('strURL...')
+  console.log(strURL)
+}
+}
+
 const generateReceipt = async () => {
   const encryptionKey = 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg='
   const encryptMessageInput = `${formName.value};${formEmail.value};${formMail.value};${formPhone.value};`
@@ -339,40 +379,7 @@ const generateReceipt = async () => {
   }
   const form = await document.getElementById('hiddenForm')
   await form.submit()
-
-  if (await !ItemStatus1) {
-    addCartButton1.innerText = 'ITEM SOLD!'
-    addCartButton1.disabled = true
-    await makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg')
-    if (await startNumItem === 1) {
-      strID = '[1]'
-      strURL = `["${invoiceURI}"]`
-    } else if (await startNumItem > 1) {
-      strID = '[1,'
-      strURL = `["${invoiceURI}",`
-    }
-    console.log('strID...')
-    console.log(strID)
-    console.log('strURL...')
-    console.log(strURL)
-  }
-  invoiceURI = ''
-  if (await !ItemStatus2) {
-    addCartButton2.innerText = 'ITEM SOLD!'
-    addCartButton2.disabled = true
-    await makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
-    if (await startNumItem === 1) {
-      strID = '[2]'
-      strURL = `["${invoiceURI}"]`
-    } else if (await startNumItem > 1) {
-      strID = `${strID}2]`
-      strURL = `${strURL}"${invoiceURI}"]`
-    }
-    console.log('strID...')
-    console.log(strID)
-    console.log('strURL...')
-    console.log(strURL)
-  }
+  await updateNFTtransfer()
   await runMetamask()
 }
 
