@@ -115,18 +115,18 @@ const convertImageUrlToBase64 = (url, callback, outputFormat) => {
   img.src = url
 }
 
-const makeSoldStamp = (stampItemUrl) => {
+const makeSoldStamp = async (stampItemUrl) => {
   convertImageUrlToBase64(stampItemUrl, function (url) {
-    const image = new Image()
-    image.src = url
+    const image = await new Image()
+    image.src = await url
 
-    const imageData64 = url.split(',')[1]
-    const binary = fixBinary(atob(imageData64))
-    const blob = new Blob([binary], { type: 'image/png' })
+    const imageData64 = await url.split(',')[1]
+    const binary = await fixBinary(atob(imageData64))
+    const blob = await new Blob([binary], { type: 'image/png' })
     console.log('Submitting File to IPFS...')
-
+    await console.log(blob)
     try {
-      const postresponse = client.add(blob)
+      const postresponse = await client.add(blob)
       invoiceURI = `${BaseURL}${postresponse.path}`
       console.log('invoiceURI...')
       console.log(invoiceURI)
