@@ -362,7 +362,7 @@ const generateReceipt = async () => {
   if (await !ItemStatus2) {
     addCartButton2.innerText = 'ITEM SOLD!'
     addCartButton2.disabled = true
-    makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
+    await makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
     if (await startNumItem === 1) {
       strID = '[2]'
       strURL = `["${invoiceURI}"]`
