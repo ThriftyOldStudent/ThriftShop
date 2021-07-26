@@ -116,7 +116,7 @@ const convertImageUrlToBase64 = (url, callback, outputFormat) => {
 }
 
 const makeSoldStamp = async (stampItemUrl) => {
-  await convertImageUrlToBase64(stampItemUrl, function (url) {
+  await convertImageUrlToBase64(stampItemUrl, function async (url) {
     const image = await new Image()
     image.src = await url
 
