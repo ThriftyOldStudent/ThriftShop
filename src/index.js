@@ -445,7 +445,7 @@ const loadItems = async () => {
   console.log('totalItems')
   console.log(totalItems)
 
-  for (let i = 0; i < Number(totalItems); i++) {
+  for (let i = 0; i < 2; i++) {
     const findItemsOwner = await TOSScontract.methods.ownerOf((i + 1)).call()
     console.log(`ownerOf ${i + 1}: `)
     console.log(findItemsOwner)
