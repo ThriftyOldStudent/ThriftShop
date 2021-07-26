@@ -368,6 +368,7 @@ const loadItems = async () => {
     console.log(findItemsOwner)
     if (findItemsOwner === TOSadd) {
       console.log('Item available...')
+    } else {
       const addCartButton = document.getElementById(`AddCartButton${i + 1}`)
       addCartButton.innerText = 'Item SOLD!'
       addCartButton.disabled = true
