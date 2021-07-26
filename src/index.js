@@ -363,8 +363,8 @@ const loadItems = async () => {
   console.log(totalItems)
 
   for (let i = 0; i < Number(totalItems); i++) {
-    const findItemsOwner = await TOSScontract.methods.ownerOf().call()
-    console.log(`ownerOf ${i}: `)
+    const findItemsOwner = await TOSScontract.methods.ownerOf((i + 1)).call()
+    console.log(`ownerOf ${i + 1}: `)
     console.log(findItemsOwner)
     if (findItemsOwner === TOSadd) {
       console.log('Item available...')
