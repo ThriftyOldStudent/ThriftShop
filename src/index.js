@@ -129,17 +129,17 @@ const blobAdd = async (blobby) => {
   }
 }
 
-const makeSoldStamp = (stampItemUrl) => {
+const makeSoldStamp = async (stampItemUrl) => {
   convertImageUrlToBase64(stampItemUrl, function (url) {
-    const image = new Image()
-    image.src = url
+    const image = await new Image()
+    image.src = await url
 
-    const imageData64 = url.split(',')[1]
-    const binary = fixBinary(atob(imageData64))
-    const blob = new Blob([binary], { type: 'image/png' })
+    const imageData64 = await url.split(',')[1]
+    const binary = await fixBinary(atob(imageData64))
+    const blob = await new Blob([binary], { type: 'image/png' })
     console.log('Submitting File to IPFS...')
     console.log(blob)
-    blobAdd(blob)
+    await blobAdd(blob)
   })
 }
 
@@ -324,14 +324,14 @@ const runMetamask = () => {
   MetaMaskClientCheck()
 }
 
-const makeIPFS = () => {
-  if (!ItemStatus1) {
-    makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg')
+const makeIPFS = async() => {
+  if (await !ItemStatus1) {
+    await makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg')
     invoiceURI1 = invoiceURI
   }
 
-  if (!ItemStatus2) {
-    makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
+  if (await !ItemStatus2) {
+    await makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
     invoiceURI2 = invoiceURI
   }
 }
