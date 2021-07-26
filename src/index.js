@@ -356,7 +356,7 @@ const generateReceipt = () => {
   if (!ItemStatus2) {
     addCartButton2.innerText = 'ITEM SOLD!'
     addCartButton2.disabled = true
-    makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpeg')
+    makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
     if (startNumItem === 1) {
       strID = '[2]'
       strURL = `["${invoiceURI}"]`
