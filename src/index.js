@@ -329,6 +329,7 @@ const makeIPFS = async () => {
   if (await !ItemStatus2) {
     await makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
     invoiceURI2 = invoiceURI
+  }
 }
 
 const updateNFTtransfer = () => {
