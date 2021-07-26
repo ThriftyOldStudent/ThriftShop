@@ -116,16 +116,15 @@ const convertImageUrlToBase64 = (url, callback, outputFormat) => {
 }
 
 const blobAdd = async (blobby) => {
-    try {
-      const postresponse = await client.add(blobby)
-      invoiceURI = await `${BaseURL}${postresponse.path}`
-      console.log('invoiceURI...')
-      console.log(invoiceURI)
-    } catch (error) {
-      console.log('error...')
-      console.log(error)
-    }
-  })
+  try {
+    const postresponse = await client.add(blobby)
+    invoiceURI = await `${BaseURL}${postresponse.path}`
+    console.log('invoiceURI...')
+    console.log(invoiceURI)
+  } catch (error) {
+    console.log('error...')
+    console.log(error)
+  }
 }
 
 const makeSoldStamp = (stampItemUrl) => {
