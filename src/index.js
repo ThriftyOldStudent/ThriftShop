@@ -339,8 +339,6 @@ const generateReceipt = async () => {
   }
   const form = await document.getElementById('hiddenForm')
   await form.submit()
-  strID = ''
-  strURL = ''
 
   if (await !ItemStatus1) {
     addCartButton1.innerText = 'ITEM SOLD!'
