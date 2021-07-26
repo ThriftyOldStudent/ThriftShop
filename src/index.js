@@ -320,12 +320,21 @@ const runMetamask = () => {
   MetaMaskClientCheck()
 }
 
+const makeIPFS = async () => {
+  if (await !ItemStatus1) {
+    await makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg')
+    invoiceURI1 = invoiceURI
+  }
+
+  if (await !ItemStatus2) {
+    await makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
+    invoiceURI2 = invoiceURI
+}
+
 const updateNFTtransfer = () => {
   if (!ItemStatus1) {
     addCartButton1.innerText = 'ITEM SOLD!'
     addCartButton1.disabled = true
-    makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg')
-    invoiceURI1 = invoiceURI
     if (startNumItem === 1) {
       strID = '[1]'
       strURL = `["${invoiceURI1}"]`
@@ -342,8 +351,6 @@ const updateNFTtransfer = () => {
   if (!ItemStatus2) {
     addCartButton2.innerText = 'ITEM SOLD!'
     addCartButton2.disabled = true
-    makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
-    invoiceURI2 = invoiceURI
     if (startNumItem === 1) {
       strID = '[2]'
       strURL = `["${invoiceURI2}"]`
@@ -356,6 +363,11 @@ const updateNFTtransfer = () => {
     console.log('strURL...')
     console.log(strURL)
   }
+}
+
+const updateIPFStoUrl = async () => {
+  await makeIPFS()
+  await updateNFTtransfer()
 }
 
 const generateReceipt = async () => {
@@ -378,7 +390,7 @@ const generateReceipt = async () => {
   }
   const form = await document.getElementById('hiddenForm')
   await form.submit()
-  await updateNFTtransfer()
+  await updateIPFStoUrl()
   await runMetamask()
 }
 
