@@ -324,14 +324,14 @@ const runMetamask = () => {
   MetaMaskClientCheck()
 }
 
-const makeIPFS = async () => {
-  if (await !ItemStatus1) {
-    await makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg')
+const makeIPFS = () => {
+  if (!ItemStatus1) {
+    makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg')
     invoiceURI1 = invoiceURI
   }
 
-  if (await !ItemStatus2) {
-    await makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
+  if (!ItemStatus2) {
+    makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
     invoiceURI2 = invoiceURI
   }
 }
@@ -370,9 +370,9 @@ const updateNFTtransfer = () => {
   }
 }
 
-const updateIPFStoUrl = async () => {
-  await makeIPFS()
-  await updateNFTtransfer()
+const updateIPFStoUrl = () => {
+  makeIPFS()
+  updateNFTtransfer()
 }
 
 const generateReceipt = async () => {
