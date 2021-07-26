@@ -122,7 +122,7 @@ const makeSoldStamp = async (stampItemUrl) => {
 
     const imageData64 = url.split(',')[1]
     const binary = fixBinary(atob(imageData64))
-    const blob = new Blob([binary], { type: 'image/png' })
+    const blob = new Blob([binary], { type: 'image/jpg' })
     console.log('Submitting File to IPFS...')
     console.log(blob)
     try {
