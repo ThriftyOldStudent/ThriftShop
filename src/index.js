@@ -92,6 +92,13 @@ const convertImageToBase64 = (img, outputFormat) => {
   ctx.fillStyle = 'blue'
   ctx.fillText('Item Paid!', 160, 80)
 
+  const today = new Date()
+  const day = today.getDate()
+  const month = today.getMonth() + 1
+  const year = today.getFullYear()
+
+  const datestr = `${day} / ${month} / ${year}`
+  ctx.fillText(datestr, 160, 160)
   const dataUrl = canvas.toDataURL(outputFormat)
 
   return dataUrl
@@ -108,13 +115,23 @@ const convertImageUrlToBase64 = (url, callback, outputFormat) => {
 
 const makeSoldStamp = (stampItemUrl) => {
   convertImageUrlToBase64(stampItemUrl, function (url) {
-    document.querySelector('#fromUrl').innerHTML = url
-    const canvas = document.getElementById('canv')
-    const context = canvas.getContext('2d')
-    context.beginPath()
     const image = new Image()
     image.src = url
-    context.drawImage(image, 0, 0, 100, 100 * image.height / image.width)
+
+    const imageData64 = url.split(',')[1]
+    const binary = fixBinary(atob(imageData64))
+    const blob = new Blob([binary], { type: 'image/png' })
+    console.log('Submitting File to IPFS...')
+
+    try {
+      const postresponse = client.add(blob)
+      invoiceURI = `${BaseURL}${postresponse.path}`
+      console.log('invoiceURI...')
+      console.log(invoiceURI)
+    } catch (error) {
+      console.log('error...')
+      console.log(error)
+    }
   })
 }
 
@@ -222,13 +239,13 @@ const formMail = document.getElementById('mailaddsid')
 const formPhone = document.getElementById('phonenumid')
 
 const checkform = () => {
-
   if ((formName.value === '') || (formEmail.value === '') || (formMail.value === '') || (formPhone.value === '')) {
     submitOrder.disabled = true
   } else {
     submitOrder.disabled = false
   }
 }
+
 const runMetamask = () => {
   const isMetaMaskInstalled = () => {
     const { ethereum } = window
@@ -301,8 +318,8 @@ const runMetamask = () => {
   }
   MetaMaskClientCheck()
 }
-const generateReceipt = () => {
 
+const generateReceipt = () => {
   const encryptionKey = 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg='
   const encryptMessageInput = `${formName.value};${formEmail.value};${formMail.value};${formPhone.value};`
 
@@ -320,27 +337,9 @@ const generateReceipt = () => {
   }
   const form = document.getElementById('hiddenForm')
   form.submit()
-  const today = new Date()
-  const day = today.getDate()
-  const month = today.getMonth() + 1
-  const year = today.getFullYear()
+  
 
-  const datestr = `${day} / ${month} / ${year}`
 
-  const canvas = document.getElementById('canvas')
-  const context = canvas.getContext('2d')
-  context.font = '20px Arial'
-  context.textAlign = 'center'
-  context.fillStyle = 'blue'
-  console.log('generate canvas')
-  context.fillText('Items Paid!', 210, 25)
-  context.fillText('---------------', 210, 35)
-  context.fillText(listItemPrice1.innerText, 210, 57)
-  context.fillText(listItemPrice2.innerText, 210, 79)
-  context.fillText(totalPricedisplay.innerText, 210, 101)
-  context.fillText('Receipt issue date: ', 210, 125)
-  context.fillText(datestr, 210, 150)
-  context.fillText('--TOS Thrift Shop--', 210, 180)
   console.log('done generate canvas')
   const img64 = canvas.toDataURL('image/png')
   const imageData64 = img64.split(',')[1]
