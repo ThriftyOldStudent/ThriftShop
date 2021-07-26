@@ -362,12 +362,17 @@ const loadItems = async () => {
   console.log('totalItems')
   console.log(totalItems)
 
-  for (var i = 0; i < Number(totalItems); i++) {
+  for (let i = 0; i < Number(totalItems); i++) {
     const findItemsOwner = await TOSScontract.methods.ownerOf().call()
     console.log(`ownerOf ${i}: `)
     console.log(findItemsOwner)
+    if (findItemsOwner === TOSadd){
+      console.log('Item available...')
+      const addCartButton = document.getElementById(`AddCartButton${i+1}`)
+      addCartButton.innerText = 'Item SOLD!'
+      addCartButton.disabled = true
+    }
   }
-
 }
 
 window.addEventListener('DOMContentLoaded', () => {
