@@ -69,6 +69,39 @@ let item2valBNB
 let curBNBprice
 const BNBws = new WebSocket('wss://stream.binance.com:9443/ws/bnbbusd@kline_15m')
 
+const convertImageToBase64 = (img, outputFormat) => {
+  let originalWidth = img.style.width
+  let originalHeight = img.style.height
+  
+  img.style.width = 'auto'
+  img.style.height = 'auto'
+  img.crossOrigin = 'Anonymous'
+  
+  let canvas = document.createElement('canvas')
+  canvas.width = img.width
+  canvas.height = img.height
+
+  let ctx = canvas.getContext('2d')
+  ctx.drawImage(img, 0, 0)
+
+  img.style.width = originalWidth
+  img.style.height = originalHeight
+  
+  ctx.font = '60px Arial'
+  ctx.textAlign = 'center'
+  ctx.fillStyle = 'blue'
+  ctx.fillText('Item Paid!', 160, 80)
+  
+  // Get the data-URL formatted image
+  // Firefox supports PNG and JPEG. You could check img.src to
+  // guess the original format, but be aware the using "image/jpg"
+  // will re-encode the image.
+  let dataUrl = canvas.toDataURL(outputFormat)
+
+  //return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+  return dataUrl
+}
+
 const clickedBtnAddCart1 = () => {
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
     ItemStatus1 = true
