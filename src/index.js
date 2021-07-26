@@ -100,7 +100,7 @@ const convertImageToBase64 = (img, outputFormat) => {
 const convertImageUrlToBase64 = (url, callback, outputFormat) => {
   const img = new Image()
   img.crossOrigin = 'anonymous'
-  img.onload = function() {
+  img.onload = function () {
     callback(convertImageToBase64(this, outputFormat))
   }
   img.src = url
