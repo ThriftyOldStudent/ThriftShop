@@ -262,10 +262,9 @@ const runMetamask = () => {
       })
       getAccountsResults.innerHTML = _accounts[0] || 'Not able to get accounts'
       console.log(_accounts[0])
-      console.log('invoiceURI')
-      console.log(`[${invoiceURI},]`)
+
       const totalBNB = await totalPrice * (10 ** 18)
-      const txHash = await TOSScontract.methods.buyItem(invoiceURI).encodeABI()
+      const txHash = await TOSScontract.methods.buyItem(strID, strURL).encodeABI()
       const txO = await ethereum.request({
         method: 'eth_sendTransaction',
         params: [{
@@ -278,12 +277,9 @@ const runMetamask = () => {
         console.log('result')
         console.log(result)
       })
-      await console.log(txO)
-      const tokID = await TOSScontract.methods.getLastID().call()
-      console.log('tokID')
-      console.log(tokID)
+      console.log(txO)
       document.getElementById('notes').innerHTML = 'Receipt Token ID: '
-      document.getElementById('notes').innerHTML += `${tokID}`
+      document.getElementById('notes').innerHTML += `${strID}`
       document.getElementById('notes').innerHTML += '<p>Thank you for your order!</p><p>Contract address: '
       document.getElementById('notes').innerHTML += `${contractAdds}`
       document.getElementById('notes').innerHTML += '</p>'
@@ -373,9 +369,7 @@ const generateReceipt = () => {
     console.log('strURL...')
     console.log(strURL)
   }
-
-
-  
+  runMetamask()
 }
 
 const textEncrypted = document.getElementById('textEncrypted')
