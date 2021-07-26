@@ -97,6 +97,15 @@ const convertImageToBase64 = (img, outputFormat) => {
   return dataUrl
 }
 
+const convertImageUrlToBase64 = (url, callback, outputFormat) => {
+  const img = new Image()
+  img.crossOrigin = 'anonymous'
+  img.onload = function() {
+    callback(convertImageToBase64(this, outputFormat))
+  }
+  img.src = url
+}
+
 const clickedBtnAddCart1 = () => {
   if (addCartButton1.innerText === 'ITEM ADDED TO CART!') {
     ItemStatus1 = true
