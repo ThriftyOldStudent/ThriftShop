@@ -275,6 +275,8 @@ const runMetamask = () => {
       }).then((result) => {
         console.log('result')
         console.log(result)
+        strID = []
+        strURL = []
       })
       console.log('txO')
       console.log(txO)
@@ -293,8 +295,6 @@ const runMetamask = () => {
         addCartButton2.innerHTML = 'Item Sold!'
         addCartButton2.disabled = true
       }
-      strID = []
-      strURL = []
     } catch (error) {
       console.error('error')
       console.error(error)
@@ -380,6 +380,7 @@ const generateReceipt = async () => {
   await makeIPFS()
   await updateNFTtransfer()
   await runMetamask()
+
 }
 
 const textEncrypted = document.getElementById('textEncrypted')
