@@ -73,11 +73,13 @@ let item2valBNB
 let curBNBprice
 const BNBws = new WebSocket('wss://stream.binance.com:9443/ws/bnbbusd@kline_15m')
 
-const convertImageToBase64 = async (imgURL) => {
-  const img = await new Image()
 
-  img.crossOrigin = 'anonymous'
+const convertImageToBase64 = async (imgURL) => {
+  const img = new Image()
   img.src = imgURL
+  img.crossOrigin = 'anonymous'
+
+  await img.decode();
 
   const originalWidth = img.style.width
   const originalHeight = img.style.height
