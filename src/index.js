@@ -76,16 +76,16 @@ const BNBws = new WebSocket('wss://stream.binance.com:9443/ws/bnbbusd@kline_15m'
 const convertImageToBase64 = async (imgURL) => {
   const img = await new Image()
 
-  img.onload = function () {
-    img.src = this.src
+  img.crossOrigin = 'anonymous'
+  img.src = imgURL
+  img.src = this.src
 
-    const originalWidth = img.style.width
-    const originalHeight = img.style.height
+  const originalWidth = img.style.width
+  const originalHeight = img.style.height
 
-    img.style.width = 'auto'
-    img.style.height = 'auto'
-    img.crossOrigin = 'Anonymous'
-  }
+  img.style.width = 'auto'
+  img.style.height = 'auto'
+  img.crossOrigin = 'Anonymous'
 
   const canvas = await document.createElement('canvas')
   canvas.width = img.width
@@ -110,8 +110,6 @@ const convertImageToBase64 = async (imgURL) => {
   ctx.fillText(datestr, 160, 160)
 
   const dataUrl = await canvas.toDataURL('image/png')
-  img.crossOrigin = 'anonymous'
-  img.src = imgURL
 
   return dataUrl
 }
