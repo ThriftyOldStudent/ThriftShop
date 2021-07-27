@@ -126,6 +126,7 @@ const blobAdd = async (blobby) => {
 
 const makeSoldStamp = async (stampItemUrl) => {
   const IMGdataURL = await convertImageToBase64(stampItemUrl)
+  console.log(IMGdataURL)
   const imageData64 = await IMGdataURL.split(',')[1]
   const binary = await fixBinary(atob(imageData64))
   const blob = await new Blob([binary], { type: 'image/png' })
