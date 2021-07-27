@@ -77,7 +77,7 @@ const convertImageToBase64 = async (imgURL) => {
   const img = await new Image()
 
   img.onload = function() {
-    _img.src = this.src;
+    img.src = this.src
   }
   
   img.crossOrigin = 'anonymous'
