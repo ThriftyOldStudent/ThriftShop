@@ -75,6 +75,11 @@ const BNBws = new WebSocket('wss://stream.binance.com:9443/ws/bnbbusd@kline_15m'
 
 const convertImageToBase64 = async (imgURL) => {
   const img = await new Image()
+
+  img.onload = function() {
+    _img.src = this.src;
+  }
+  
   img.crossOrigin = 'anonymous'
   img.src = imgURL
 
