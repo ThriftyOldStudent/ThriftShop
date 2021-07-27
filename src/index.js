@@ -78,7 +78,6 @@ const convertImageToBase64 = async (imgURL) => {
 
   img.crossOrigin = 'anonymous'
   img.src = imgURL
-  img.src = this.src
 
   const originalWidth = img.style.width
   const originalHeight = img.style.height
