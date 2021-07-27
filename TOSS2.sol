@@ -29,6 +29,28 @@ contract TosNFT {
         _;
     }
     
+    function toString(uint256 value) internal pure returns (string memory) {
+        // Inspired by OraclizeAPI's implementation - MIT licence
+        // https://github.com/oraclize/ethereum-api/blob/b42146b063c7d6ee1358846c198246239e9360e8/oraclizeAPI_0.4.25.sol
+
+        if (value == 0) {
+            return "0";
+        }
+        uint256 temp = value;
+        uint256 digits;
+        while (temp != 0) {
+            digits++;
+            temp /= 10;
+        }
+        bytes memory buffer = new bytes(digits);
+        while (value != 0) {
+            digits -= 1;
+            buffer[digits] = bytes1(uint8(48 + uint256(value % 10)));
+            value /= 10;
+        }
+        return string(buffer);
+    }
+    
     function ownerOf(uint256 tokenId) public view virtual returns (address) {
         address owner = _owners[tokenId];
         require(owner != address(0), "ERC721: owner query for nonexistent token");
@@ -105,11 +127,18 @@ contract TosNFT {
         payable(deployWallet).transfer(etherUsed);
         
     }
-    
-    function tokenURI(uint256 tokenId) public view returns (string memory) {
-        require(_exists(tokenId),"URI query for nonexistent token");
-        return Items[tokenId].uri;
+
+    function _baseURI() internal view virtual returns (string memory) {
+        return "";
     }
+    
+    function tokenURI(uint256 tokenId) public view virtual returns (string memory) {
+        require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
+
+        string memory baseURI = _baseURI();
+        return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI, toString(tokenId))) : "";
+    }
+    
     
     constructor(string memory name_, string memory symbol_) {
         name_ = name;
