@@ -322,12 +322,12 @@ const runMetamask = () => {
 const makeIPFS = async () => {
   if (await !ItemStatus1) {
     await makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg')
-    invoiceURI1 = invoiceURI
+    invoiceURI1 = `${invoiceURI}1`
   }
 
   if (await !ItemStatus2) {
     await makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
-    invoiceURI2 = invoiceURI
+    invoiceURI2 = `${invoiceURI}2`
   }
 }
 
