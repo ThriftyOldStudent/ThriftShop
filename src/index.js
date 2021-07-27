@@ -293,6 +293,8 @@ const runMetamask = () => {
         addCartButton2.innerHTML = 'Item Sold!'
         addCartButton2.disabled = true
       }
+      strID = []
+      strURL = []
     } catch (error) {
       console.error('error')
       console.error(error)
