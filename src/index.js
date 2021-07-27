@@ -107,12 +107,8 @@ const convertImageToBase64 = async (imgURL) => {
     ctx.fillStyle = 'blue'
     ctx.fillText('Item Paid!', 160, 80)
     ctx.fillText(datestr, 160, 160)
-
-    const dataUrl = await canvas.toDataURL('image/png')
-
-    return dataUrl
   }
-
+  const dataUrl = await canvas.toDataURL('image/png')
   img.crossOrigin = 'anonymous'
   img.src = imgURL
 
