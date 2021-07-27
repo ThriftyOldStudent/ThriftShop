@@ -30,7 +30,7 @@ const Web3 = require('web3')
 
 const web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545')
 const getAccountsResults = document.getElementById('getAccountsResult')
-const contractAdds = '0xC791BD709e29f6c60FaE2Cc8545F889681745754'
+const contractAdds = '0x0002386b0a1c30e32B26bf75A5398c4A5ce7f335'
 const TOSadd = '0x8ff4E23dB50407Bf97Eb5acDC4b8E395E6a4dbf9'
 const TOSScontract = new web3.eth.Contract(TOSS_ABI, contractAdds)
 
