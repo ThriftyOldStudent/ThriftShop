@@ -54,8 +54,8 @@ let invoiceURI1 = ''
 let invoiceURI2 = ''
 let invoiceURI = ''
 let totalPrice
-let strID = new Array()
-let strURL = new Array()
+let strID = []
+let strURL = []
 let ItemStatus1 = true
 let ItemStatus2 = true
 
