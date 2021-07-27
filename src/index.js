@@ -78,41 +78,42 @@ const convertImageToBase64 = async (imgURL) => {
 
   img.onload = function () {
     img.src = this.src
+
+    const originalWidth = img.style.width
+    const originalHeight = img.style.height
+
+    img.style.width = 'auto'
+    img.style.height = 'auto'
+    img.crossOrigin = 'Anonymous'
+
+    const canvas = await document.createElement('canvas')
+    canvas.width = img.width
+    canvas.height = img.height
+
+    const ctx = await canvas.getContext('2d')
+    ctx.drawImage(img, 0, 0)
+
+    img.style.width = originalWidth
+    img.style.height = originalHeight
+
+    const today = new Date()
+    const day = today.getDate()
+    const month = today.getMonth() + 1
+    const year = today.getFullYear()
+    const datestr = `${day} / ${month} / ${year}`
+
+    ctx.font = '60px Arial'
+    ctx.textAlign = 'center'
+    ctx.fillStyle = 'blue'
+    await ctx.fillText('Item Paid!', 160, 80)
+    await ctx.fillText(datestr, 160, 160)
+
+    const dataUrl = await canvas.toDataURL('image/png')
+
   }
 
   img.crossOrigin = 'anonymous'
   img.src = imgURL
-
-  const originalWidth = img.style.width
-  const originalHeight = img.style.height
-
-  img.style.width = 'auto'
-  img.style.height = 'auto'
-  img.crossOrigin = 'Anonymous'
-
-  const canvas = await document.createElement('canvas')
-  canvas.width = img.width
-  canvas.height = img.height
-
-  const ctx = await canvas.getContext('2d')
-  ctx.drawImage(img, 0, 0)
-
-  img.style.width = originalWidth
-  img.style.height = originalHeight
-
-  const today = new Date()
-  const day = today.getDate()
-  const month = today.getMonth() + 1
-  const year = today.getFullYear()
-  const datestr = `${day} / ${month} / ${year}`
-
-  ctx.font = '60px Arial'
-  ctx.textAlign = 'center'
-  ctx.fillStyle = 'blue'
-  await ctx.fillText('Item Paid!', 160, 80)
-  await ctx.fillText(datestr, 160, 160)
-
-  const dataUrl = await canvas.toDataURL('image/png')
 
   return dataUrl
 }
