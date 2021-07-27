@@ -85,29 +85,30 @@ const convertImageToBase64 = async (imgURL) => {
     img.style.width = 'auto'
     img.style.height = 'auto'
     img.crossOrigin = 'Anonymous'
-
-    const canvas = document.createElement('canvas')
-    canvas.width = img.width
-    canvas.height = img.height
-
-    const ctx = canvas.getContext('2d')
-    ctx.drawImage(img, 0, 0)
-
-    img.style.width = originalWidth
-    img.style.height = originalHeight
-
-    const today = new Date()
-    const day = today.getDate()
-    const month = today.getMonth() + 1
-    const year = today.getFullYear()
-    const datestr = `${day} / ${month} / ${year}`
-
-    ctx.font = '60px Arial'
-    ctx.textAlign = 'center'
-    ctx.fillStyle = 'blue'
-    ctx.fillText('Item Paid!', 160, 80)
-    ctx.fillText(datestr, 160, 160)
   }
+
+  const canvas = await document.createElement('canvas')
+  canvas.width = img.width
+  canvas.height = img.height
+
+  const ctx = await canvas.getContext('2d')
+  ctx.drawImage(img, 0, 0)
+
+  img.style.width = originalWidth
+  img.style.height = originalHeight
+
+  const today = new Date()
+  const day = today.getDate()
+  const month = today.getMonth() + 1
+  const year = today.getFullYear()
+  const datestr = `${day} / ${month} / ${year}`
+
+  ctx.font = '60px Arial'
+  ctx.textAlign = 'center'
+  ctx.fillStyle = 'blue'
+  ctx.fillText('Item Paid!', 160, 80)
+  ctx.fillText(datestr, 160, 160)
+
   const dataUrl = await canvas.toDataURL('image/png')
   img.crossOrigin = 'anonymous'
   img.src = imgURL
