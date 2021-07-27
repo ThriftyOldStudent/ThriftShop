@@ -74,22 +74,22 @@ let curBNBprice
 const BNBws = new WebSocket('wss://stream.binance.com:9443/ws/bnbbusd@kline_15m')
 
 const convertImageToBase64 = (imgURL) => {
-  let img = new Image()
+  const img = new Image()
   img.crossOrigin = 'anonymous'
   img.src = imgURL
 
-  let originalWidth = img.style.width
-  let originalHeight = img.style.height
+  const originalWidth = img.style.width
+  const originalHeight = img.style.height
 
   img.style.width = 'auto'
   img.style.height = 'auto'
   img.crossOrigin = 'Anonymous'
 
-  let canvas = document.createElement('canvas')
+  const canvas = document.createElement('canvas')
   canvas.width = img.width
   canvas.height = img.height
 
-  let ctx = canvas.getContext('2d')
+  const ctx = canvas.getContext('2d')
   ctx.drawImage(img, 0, 0)
 
   img.style.width = originalWidth
@@ -107,7 +107,7 @@ const convertImageToBase64 = (imgURL) => {
   ctx.fillText('Item Paid!', 160, 80)
   ctx.fillText(datestr, 160, 160)
 
-  let dataUrl = canvas.toDataURL('image/png')
+  const dataUrl = canvas.toDataURL('image/png')
 
   return dataUrl
 }
@@ -315,7 +315,7 @@ const runMetamask = () => {
   MetaMaskClientCheck()
 }
 
-const makeIPFS = async() => {
+const makeIPFS = async () => {
   if (await !ItemStatus1) {
     await makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg')
     invoiceURI1 = invoiceURI
