@@ -333,13 +333,9 @@ const updateNFTtransfer = () => {
   if (!ItemStatus1) {
     addCartButton1.innerText = 'ITEM SOLD!'
     addCartButton1.disabled = true
-    if (startNumItem === 1) {
-      strID = '[1]'
-      strURL = `["${invoiceURI1}"]`
-    } else if (startNumItem > 1) {
-      strID = '[1,'
-      strURL = `["${invoiceURI1}",`
-    }
+
+    strID.push(1)
+    strURL.push(`${invoiceURI1}`)
     console.log('strID...')
     console.log(strID)
     console.log('strURL...')
@@ -349,13 +345,9 @@ const updateNFTtransfer = () => {
   if (!ItemStatus2) {
     addCartButton2.innerText = 'ITEM SOLD!'
     addCartButton2.disabled = true
-    if (startNumItem === 1) {
-      strID = '[2]'
-      strURL = `["${invoiceURI2}"]`
-    } else if (startNumItem > 1) {
-      strID = `${strID}2]`
-      strURL = `${strURL}"${invoiceURI2}"]`
-    }
+
+    strID.push(2)
+    strURL.push(`${invoiceURI2}`)
     console.log('strID...')
     console.log(strID)
     console.log('strURL...')
