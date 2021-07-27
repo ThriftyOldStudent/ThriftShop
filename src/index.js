@@ -73,48 +73,43 @@ let item2valBNB
 let curBNBprice
 const BNBws = new WebSocket('wss://stream.binance.com:9443/ws/bnbbusd@kline_15m')
 
-const convertImageToBase64 = (img, outputFormat) => {
-  const originalWidth = img.style.width
-  const originalHeight = img.style.height
+const convertImageToBase64 = (imgURL) => {
+  let img = new Image()
+  img.crossOrigin = 'anonymous'
+  img.src = imgURL
+
+  let originalWidth = img.style.width
+  let originalHeight = img.style.height
 
   img.style.width = 'auto'
   img.style.height = 'auto'
   img.crossOrigin = 'Anonymous'
 
-  const canvas = document.createElement('canvas')
+  let canvas = document.createElement('canvas')
   canvas.width = img.width
   canvas.height = img.height
 
-  const ctx = canvas.getContext('2d')
+  let ctx = canvas.getContext('2d')
   ctx.drawImage(img, 0, 0)
 
   img.style.width = originalWidth
   img.style.height = originalHeight
 
-  ctx.font = '60px Arial'
-  ctx.textAlign = 'center'
-  ctx.fillStyle = 'blue'
-  ctx.fillText('Item Paid!', 160, 80)
-
   const today = new Date()
   const day = today.getDate()
   const month = today.getMonth() + 1
   const year = today.getFullYear()
-
   const datestr = `${day} / ${month} / ${year}`
+
+  ctx.font = '60px Arial'
+  ctx.textAlign = 'center'
+  ctx.fillStyle = 'blue'
+  ctx.fillText('Item Paid!', 160, 80)
   ctx.fillText(datestr, 160, 160)
-  const dataUrl = canvas.toDataURL(outputFormat)
+
+  let dataUrl = canvas.toDataURL('image/png')
 
   return dataUrl
-}
-
-const convertImageUrlToBase64 = (url, callback, outputFormat) => {
-  const img = new Image()
-  img.crossOrigin = 'anonymous'
-  img.onload = function () {
-    callback(convertImageToBase64(this, outputFormat))
-  }
-  img.src = url
 }
 
 const blobAdd = async (blobby) => {
@@ -130,17 +125,13 @@ const blobAdd = async (blobby) => {
 }
 
 const makeSoldStamp = async (stampItemUrl) => {
-  convertImageUrlToBase64(stampItemUrl, function async (url) {
-    const image = await new Image()
-    image.src = await url
-
-    const imageData64 = await url.split(',')[1]
-    const binary = await fixBinary(atob(imageData64))
-    const blob = await new Blob([binary], { type: 'image/png' })
-    console.log('Submitting File to IPFS...')
-    console.log(blob)
-    await blobAdd(blob)
-  })
+  const IMGdataURL = await convertImageToBase64(stampItemUrl)
+  const imageData64 = await IMGdataURL.split(',')[1]
+  const binary = await fixBinary(atob(imageData64))
+  const blob = await new Blob([binary], { type: 'image/png' })
+  console.log('Submitting File to IPFS...')
+  console.log(blob)
+  await blobAdd(blob)
 }
 
 const clickedBtnAddCart1 = () => {
