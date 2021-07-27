@@ -73,8 +73,8 @@ let item2valBNB
 let curBNBprice
 const BNBws = new WebSocket('wss://stream.binance.com:9443/ws/bnbbusd@kline_15m')
 
-const convertImageToBase64 = (imgURL) => {
-  const img = new Image()
+const convertImageToBase64 = async (imgURL) => {
+  const img = await new Image()
   img.crossOrigin = 'anonymous'
   img.src = imgURL
 
@@ -85,11 +85,11 @@ const convertImageToBase64 = (imgURL) => {
   img.style.height = 'auto'
   img.crossOrigin = 'Anonymous'
 
-  const canvas = document.createElement('canvas')
+  const canvas = await document.createElement('canvas')
   canvas.width = img.width
   canvas.height = img.height
 
-  const ctx = canvas.getContext('2d')
+  const ctx = await canvas.getContext('2d')
   ctx.drawImage(img, 0, 0)
 
   img.style.width = originalWidth
@@ -104,10 +104,10 @@ const convertImageToBase64 = (imgURL) => {
   ctx.font = '60px Arial'
   ctx.textAlign = 'center'
   ctx.fillStyle = 'blue'
-  ctx.fillText('Item Paid!', 160, 80)
-  ctx.fillText(datestr, 160, 160)
+  await ctx.fillText('Item Paid!', 160, 80)
+  await ctx.fillText(datestr, 160, 160)
 
-  const dataUrl = canvas.toDataURL('image/png')
+  const dataUrl = await canvas.toDataURL('image/png')
 
   return dataUrl
 }
