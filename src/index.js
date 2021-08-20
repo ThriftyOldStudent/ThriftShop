@@ -402,11 +402,11 @@ const secretClick = async () => {
   const _accounts = await ethereum.request({ method: 'eth_accounts' })
   document.getElementById('acc').innerHTML = await _accounts[0]
   console.log(_accounts[0])
-  if (_accounts[0] === TOSadd) {
+  if (_accounts[0].toLowerCase() === TOSadd.toLowerCase()) {
     document.getElementById('myArea').classList.remove('hideclass')
   } else {
     console.log('error!')
-    console.log((_accounts[0] === TOSadd))
+    console.log((_accounts[0].toLowerCase() === TOSadd.toLowerCase()))
   }
 }
 
