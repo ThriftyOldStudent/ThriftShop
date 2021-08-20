@@ -386,12 +386,11 @@ const generateReceipt = async () => {
 const textEncrypted = document.getElementById('textEncrypted')
 const btnDecrypt = document.getElementById('btnDecrypt')
 const textArea = document.getElementById('msg')
-
+console.log(textEncrypted.innerText.value)
+console.log(textEncrypted.value)
+console.log(textEncrypted.innerText)
+console.log(document.getElementById('acc').innerText)
 const btnDecryptClick = async () => {
-  console.log(textEncrypted.innerText.value)
-  console.log(textEncrypted.value)
-  console.log(textEncrypted.innerText)
-  console.log(document.getElementById('acc').innerText)
   try {
     textArea.innerText = await ethereum.request({
       method: 'eth_decrypt',
