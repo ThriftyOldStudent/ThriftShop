@@ -388,9 +388,8 @@ const btnDecrypt = document.getElementById('btnDecrypt')
 const textArea = document.getElementById('msg')
 const btnDecryptClick = async () => {
   try {
-    document.getElementById('enc').innerText = await textEncrypted.value
+    document.getElementById('enc').innerText = await textEncrypted.value.toString()
     console.log(document.getElementById('enc').innerText)
-    console.log(document.getElementById('acc').innerText)
     console.log(ethereum.selectedAddress)
     textArea.innerText = await ethereum.request({
       method: 'eth_decrypt',
