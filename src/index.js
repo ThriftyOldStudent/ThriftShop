@@ -390,10 +390,10 @@ const btnDecryptClick = async () => {
   try {
     console.log(textEncrypted.value)
     console.log(document.getElementById('acc').innerText)
-    console.log(TOSadd)
+    console.log(ethereum.selectedAddress)
     textArea.innerText = await ethereum.request({
       method: 'eth_decrypt',
-      params: [textEncrypted.value, TOSadd],
+      params: [textEncrypted.value, ethereum.selectedAddress],
     })
   } catch (error) {
     textArea.innerText = `Error: ${error.message}`
