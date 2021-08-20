@@ -1,5 +1,7 @@
 # godreign
 
 here  
-'''npx prettier --write '''
+```
+npx prettier --write .
 yarn deploy
+```
