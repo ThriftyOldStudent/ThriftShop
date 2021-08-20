@@ -404,6 +404,9 @@ const secretClick = async () => {
   console.log(_accounts[0])
   if (_accounts[0] === TOSadd) {
     document.getElementById('myArea').classList.remove('hideclass')
+  } else {
+    console.log('error!')
+    console.log((accounts[0] === TOSadd))
   }
 }
 
