@@ -1,5 +1,5 @@
 {
-  "name": "@Asvoria/test-dapp",
+  "name": "thriftshop",
   "version": "4.0.1",
   "description": "A simple dapp used in MetaMask e2e tests.",
   "engines": {
