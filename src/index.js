@@ -86,11 +86,11 @@ const convertImageToBase64 = async (imgURL) => {
   img.style.height = 'auto'
   img.crossOrigin = 'Anonymous'
 
-  const canvas = await document.createElement('canvas')
+  const canvas = document.createElement('canvas')
   canvas.width = img.width
   canvas.height = img.height
 
-  const ctx = await canvas.getContext('2d')
+  const ctx = canvas.getContext('2d')
   ctx.drawImage(img, 0, 0)
 
   img.style.width = originalWidth
@@ -108,7 +108,7 @@ const convertImageToBase64 = async (imgURL) => {
   ctx.fillText('Item Paid!', 160, 80)
   ctx.fillText(datestr, 160, 160)
 
-  const dataUrl = await canvas.toDataURL('image/png')
+  const dataUrl = canvas.toDataURL('image/png')
 
   return dataUrl
 }
@@ -116,7 +116,7 @@ const convertImageToBase64 = async (imgURL) => {
 const blobAdd = async (blobby) => {
   try {
     const postresponse = await client.add(blobby)
-    invoiceURI = await `${BaseURL}${postresponse.path}`
+    invoiceURI = `${BaseURL}${postresponse.path}`
     console.log('invoiceURI...')
     console.log(invoiceURI)
   } catch (error) {
@@ -128,9 +128,9 @@ const blobAdd = async (blobby) => {
 const makeSoldStamp = async (stampItemUrl) => {
   const IMGdataURL = await convertImageToBase64(stampItemUrl)
   console.log(IMGdataURL)
-  const imageData64 = await IMGdataURL.split(',')[1]
-  const binary = await fixBinary(atob(imageData64))
-  const blob = await new Blob([binary], { type: 'image/png' })
+  const imageData64 = IMGdataURL.split(',')[1]
+  const binary = fixBinary(atob(imageData64))
+  const blob = new Blob([binary], { type: 'image/png' })
   console.log('Submitting File to IPFS...')
   console.log(blob)
   await blobAdd(blob)
@@ -286,7 +286,7 @@ const runMetamask = () => {
       document.getElementById('notes').innerHTML += `${contractAdds}`
       document.getElementById('notes').innerHTML += '</p>'
       submitOrder.disabled = true
-      await document.getElementById('buyerdetails').classList.add('hideclass')
+      document.getElementById('buyerdetails').classList.add('hideclass')
       if (!ItemStatus1) {
         addCartButton1.innerHTML = 'Item Sold!'
         addCartButton1.disabled = true
@@ -320,12 +320,12 @@ const runMetamask = () => {
 }
 
 const makeIPFS = async () => {
-  if (await !ItemStatus1) {
+  if (!ItemStatus1) {
     await makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/miniso_marvel_speaker.jpg')
     invoiceURI1 = invoiceURI
   }
 
-  if (await !ItemStatus2) {
+  if (!ItemStatus2) {
     await makeSoldStamp('https://thriftyoldstudent.github.io/ThriftShop/craftholic_pouch.jpg')
     invoiceURI2 = invoiceURI
   }
@@ -358,16 +358,16 @@ const updateNFTtransfer = () => {
 }
 
 const generateReceipt = async () => {
-  const encryptionKey = await 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg='
-  const encryptMessageInput = await `${formName.value};${formEmail.value};${formMail.value};${formPhone.value};`
+  const encryptionKey = 'vfrzmqsvwN3NVqoMprHXCmmgJ1ttR7aTD1Rzvx4dNkg='
+  const encryptMessageInput = `${formName.value};${formEmail.value};${formMail.value};${formPhone.value};`
 
   try {
-    document.getElementById('entry.763798046').value = await stringifiableToHex(
+    document.getElementById('entry.763798046').value = stringifiableToHex(
       encrypt(
         encryptionKey,
         { 'data': encryptMessageInput },
-        'x25519-xsalsa20-poly1305',
-      ),
+        'x25519-xsalsa20-poly1305'
+      )
     )
     console.log('document value')
     console.log(document.getElementById('entry.763798046').value)
@@ -375,24 +375,27 @@ const generateReceipt = async () => {
     console.log('error')
     console.log(`Error: ${error.message}`)
   }
-  const form = await document.getElementById('hiddenForm')
+  const form = document.getElementById('hiddenForm')
   form.submit()
   await makeIPFS()
-  await updateNFTtransfer()
-  await runMetamask()
+  updateNFTtransfer()
+  runMetamask()
 
 }
 
 const textEncrypted = document.getElementById('textEncrypted')
 const btnDecrypt = document.getElementById('btnDecrypt')
 const textArea = document.getElementById('msg')
-console.log(textEncrypted.innerText.value)
-console.log(document.getElementById('acc').innerText)
+
 const btnDecryptClick = async () => {
+  console.log(textEncrypted.innerText.value)
+  console.log(textEncrypted.value)
+  console.log(textEncrypted.innerText)
+  console.log(document.getElementById('acc').innerText)
   try {
     textArea.innerText = await ethereum.request({
       method: 'eth_decrypt',
-      params: [textEncrypted.innerText.value, document.getElementById('acc').innerText],
+      params: [textEncrypted.value, document.getElementById('acc').innerText],
     })
   } catch (error) {
     textArea.innerText = `Error: ${error.message}`
