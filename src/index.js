@@ -400,7 +400,8 @@ const btnDecryptClick = async () => {
 const secretClick = async () => {
   await ethereum.request({ method: 'eth_requestAccounts' })
   const _accounts = await ethereum.request({ method: 'eth_accounts' })
-  document.getElementById('acc').innerHTML = _accounts[0]
+  document.getElementById('acc').innerHTML = await _accounts[0]
+  console.log(_accounts[0])
   if (_accounts[0] === TOSadd) {
     document.getElementById('myArea').classList.remove('hideclass')
   }
